@@ -1,3 +1,9 @@
+---
+author: 
+owner: 
+lastupdate: 
+---
+
 # About the Gaia Platform
 
 The information contained in this document represents information about prerelease features of the product. Features might change when the product is released for general availability.

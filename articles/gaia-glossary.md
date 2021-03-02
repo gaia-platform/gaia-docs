@@ -1,3 +1,9 @@
+---
+author: 
+owner: 
+lastupdate: 
+---
+
 # Gaia Terminology
 
 ## A

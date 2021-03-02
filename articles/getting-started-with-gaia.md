@@ -1,3 +1,9 @@
+---
+author: 
+owner: 
+lastupdate: 
+---
+
 # Getting Started with the Gaia Platform
 
 ---

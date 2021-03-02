@@ -1,3 +1,9 @@
+---
+author: 
+owner: 
+lastupdate: 
+---
+
 # Rules development example
 
 This document describes the creation of rules for a sample pallet
