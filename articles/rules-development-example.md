@@ -6,8 +6,7 @@ lastupdate:
 
 # Rules development example
 
-This document describes the creation of rules for a sample pallet
-tracking system.
+This document describes the creation of rules for a sample pallet tracking system.
 
 You define rules to respond whenever data is changed is committed to the database, whether that is at the row level, or an individual field.
 
@@ -53,8 +52,7 @@ Determine what the code is:
 
 ## Database schema
 
-To support the initial definition of the business logic, we define our
-database schema as follows:
+To support the initial definition of the business logic, we define our database schema as follows:
 
 ```
 facility
@@ -353,148 +351,3 @@ The translation process renders each rule as two C++ functions:
 
  Next question is how does this get executed? Recall that I said this was an active field defined in the schema. That active designation is very important. Writing a Rule that reads an active field causes that Rule to be subscribed to all changes to that field. Whenever this active field is updated and committed in the greeting table, this specific rule iswill be automatically executed. When the Rule is executed, the row that was operated on iswill be delivered to the rule as an automatic parameter. In our example the greetings table is automatically selected based on the fact that the field name my_name is unique and only appears in that table. The my_name reference then is literally referring to the my_name field in the row that was inserted into the greeting table. Since the entire row was passed into the rule, all defined fields from that row are available for use in this rule.
 
-Holding area
-
-================
-
-\#include &lt;atomic&gt;
-
-\#include &lt;algorithm&gt;
-
-\#include &lt;string.h&gt;
-
-\#include &lt;memory&gt;
-
-\#include "../inc/ismartpallet.hpp"
-
-bool debug\mode = true;
-
-// - Use of imperative code in the ruleset definition file
-
-//
-
-// Here we define a function that can be called from with any rule.
-
-// While standard imperative code is supported within rules, the
-
-// pattern of using procedures in code is of benefit here as it is
-
-// in any code.
-
-//
-
-/\*\*
-
-\* Send an alert message
-
-\*
-
-\* @param\[in\] std::string title
-
-\* @param\[in\] std::string body
-
-\* @param\[in\] int severity
-
-\* @param\[in\] std::string arg1
-
-\* @return void
-
-\* @throws
-
-\* @exceptsafe yes
-
-\*/
-
-void send\alert\message(std::string title,
-
-std::string body, int severity, std::string arg1)
-
-{
-
-auto cbc = ismartpallet::get\callback\class();
-
-cbc-&gt;cb\alert(title, body, severity, arg1);
-
-}
-
-/\*\*
-
-\* Send an status message
-
-\*
-
-\* @param\[in\] const std::string status\code
-
-\* @param\[in\] const std::string description
-
-\* @param\[in\] const std::string color
-
-\* @return void
-
-\* @throws
-
-\* @exceptsafe yes
-
-\*/
-
-void send\status\message(const std::string status\code,
-
-const std::string description, const std::string color)
-
-{
-
-if(!debug\mode)
-
-if(status\code == std::string("DEBUG"))
-
-return;
-
-auto cbc = ismartpallet::get\callback\class();
-
-cbc-&gt;cb\status(status\code, description, color);
-
-}
-
-enum object\type\enum
-
-{
-
-unknown\type = 0,
-
-loading\area\type = 1,
-
-pallet\type = 2,
-
-package\type = 3
-
-};
-
-const std::string m\type\prefix\loading\area = "LA";
-
-const std::string m\type\prefix\pallet = "PT";
-
-const std::string m\type\prefix\package = "PK";
-
-object\type\enum get\object\type(std::string code\id)
-
-{
-
-object\type\enum object\type =
-
-object\type\enum::unknown\type;
-
-if(code\id.substr(0,2) == m\type\prefix\loading\area)
-
-object\type = object\type\enum::loading\area\type;
-
-else if(code\id.substr(0,2) == m\type\prefix\pallet)
-
-object\type = object\type\enum::pallet\type;
-
-if(code\id.substr(0,2) == m\type\prefix\package)
-
-object\type = object\type\enum::package\type;
-
-return object\type;
-
-}
