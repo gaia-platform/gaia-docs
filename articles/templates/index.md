@@ -1,3 +1,3 @@
 # Templates overview
 
-Something about the templates
+Coming soon.

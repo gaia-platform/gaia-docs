@@ -1,34 +1,5 @@
 - name: Overview
 - href: index.md
-- name: Vertical one
-  items:
-    - name: Template 1
-      href:
-    - name: Template 2
-      href:
-    - name: Template 3
-      href:
-- name: Vertical two
-  items:
-    - name: Template 1
-      href:
-    - name: Template 2
-      href:
-    - name: Template 3
-      href:
-- name: Vertical three
-  items:
-    - name: Template 1
-      href:
-    - name: Template 2
-      href:
-    - name: Template 3
-      href:
-- name: Vertical four
-  items:
-    - name: Template 1
-      href:
-    - name: Template 2
-      href:
-    - name: Template 3
-      href:
+- name: Ring Demonstration
+- href:
+
