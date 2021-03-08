@@ -70,16 +70,10 @@ database startup or entity creation.
 
 \[TBD\]
 
-Usage: Proper capitalization? Gaia Platform vs Gaia platform.
-
 ### Gaia Pointer (*Database*)**
 
 A Gaia Pointer is an opaque handle that can be used to reference a
 TrueGraphDB entity. It is implemented as a ***locator*** reference.
-
--   Needs discussion about the implementation
-
-Usage: Both words capitalized.
 
 ## L
 ### Locator (Database)**

@@ -20,3 +20,19 @@ Folders:
 * images - DocFx wide images
 * src - contains code to customize the DocFx output
 * obj - DocFX internal
+
+## Topic metadata
+
+```
+---
+author: 
+owner: 
+lastupdate: 
+---
+```
+
+*author* is the original author of the topic.
+
+*owner* is the current maintainer of the topic. This is the person to contact for updates to the content.
+
+*lastupdate* is the last major update to the content. Additions, major corrections, changes in functionality, etc. Do not update for typo corrections, grammar corrections, or minor corrections
