@@ -6,6 +6,14 @@ lastupdate:
 
 # Rules development example
 
+---
+
+**NOTE**
+
+The information contained in this document represents information about prerelease features of the product. Features might change when the product is released for general availability.
+
+---
+
 This document describes the creation of rules for a sample pallet tracking system.
 
 You define rules to respond whenever data is changed is committed to the database, whether that is at the row level, or an individual field.

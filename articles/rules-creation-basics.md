@@ -46,7 +46,7 @@ You can specify which fields are active in two ways:
     }
     ```
 
-**NOTE**: These two methods of specifying the active fields in a rule are mutually exclusive. 
+**NOTE**: These two methods of specifying the active fields in a rule are mutually exclusive. If you inadvertently mix them, gaiat notifies you with the following error message: "Since a rule attribute was provided, specifying active fields inside the rule is not supported."
 
 If your rule is simple, using the @ symbol is an easy way to visually identify which fields are active and where they are used.
 
