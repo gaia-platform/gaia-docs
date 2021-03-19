@@ -10,6 +10,8 @@ lastupdate:
 
 **NOTE**
 
+At this time, Gaia Platform is in private preview. To request access, visit the [developer page](https://www.gaiaplatform.io/developers) on the main Gaia Platform website and complete the request form at the bottom of the page.
+
 The information contained in this document represents information about prerelease features of the product. Features might change when the product is released for general availability.
 
 ---
@@ -106,9 +108,9 @@ To start the server on a machine that supports systemd:
 
 When starting the Gaia server on WSL, use the --data-dir argument to specify the location in which to store the database. We recommend that you store it locally in ~/.local/gaia/db.
 
-To start the server on Ubuntu running on WSL2 (Gaia has not been tested on WSL1):
+To start the server on Ubuntu and run it in the backgroun on WSL2 (Gaia has not been tested on WSL1):
 
-**gaia_db_server & --data-dir ~/.local/gaia/db**
+**gaia_db_server --data-dir ~/.local/gaia/db &**
 
 ## Build and run the incubator example
 
@@ -194,3 +196,9 @@ To state this another way:
 -   Rules run on separate threads. When data identified by an Active Field changes, it is possible for your app to check the database before rules based on the field run.
 -   Rules processing is atomic, a rule must complete before you can see the results of actions due to the changes.
 -   Rules only fire after the transaction that contains the change to the [Active Field](gaia-glossary.md#active-fields-rules-engine) is committed. Said more succinctly, rules run post-commit.
+
+
+## Next Steps
+
+* [Write your first Gaia App](../tutorials/writing-first-gaia-application.md)
+* [Learn the basics of creating rules](rules-creation-basics.md)

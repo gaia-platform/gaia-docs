@@ -155,7 +155,7 @@ The rules code looks very much like C++ but, before you can compile it, you must
 
 To generate C++ code for these rules, execute the following command:
 
-**gaiat hello.ruleset -output hello_rules.cpp -- -I /usr/lib/clang/10/include/ -I /opt/gaia/include/**
+**gaiat hello.ruleset -output hello_ruleset.cpp -- -I /usr/lib/clang/10/include/ -I /opt/gaia/include/**
 
 **NOTE**: The two include paths of this command might need to be updated if Gaia and clang are installed in a non-standard way or if you're using a version of Clang other than 10.
 
@@ -202,7 +202,7 @@ Let's go over the main steps of this code:
 
 To build this code, use the following command:
 
-**clang++-8 hello.cpp hello_rules.cpp /usr/local/lib/libgaia.so -I /opt/gaia/include -Wl,-rpath,/usr/local/lib -o hello -lpthread**
+**clang++-10 hello.cpp hello_ruleset.cpp /usr/local/lib/libgaia.so -I /opt/gaia/include -Wl,-rpath,/usr/local/lib -lpthread -o hello**
 
 If you are using a newer version of the clang compiler or if Gaia is installed in a non-standard location, update the command accordingly.
 
