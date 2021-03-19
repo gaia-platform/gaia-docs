@@ -81,22 +81,13 @@ OnInsert(names)
 
 ### Forward chaining of events
 
-A compelling design concept of applications written in Gaia is the idea
-of “forward chaining.” forward chaining occurs when the firing of one
-rule results in a change to the state of the database that immediately
-triggers the firing of a subsequent rule.
+A compelling design concept of applications written in Gaia is the idea of “forward chaining.” forward chaining occurs when the firing of one rule results in a change to the state of the database that immediately triggers the firing of a subsequent rule.
 
 ## Creating a ruleset
 
-Rules are simple, grouped by named blocks called “rulesets”. Rulesets
-are typically contained in files with extension .ruleset. They are
-written using special Gaia Declarative Syntax extensions to C++ (and
-other host languages in the future). This is composed of a modified
-version of C++ code that includes ways to refer directly to fields in
-the database in novel and powerful ways.
+Rules are simple, grouped by named blocks called “rulesets”. Rulesets are typically contained in files with extension .ruleset. They are written using special Gaia Declarative Syntax extensions to C++ (and other host languages in the future). This is composed of a modified version of C++ code that includes ways to refer directly to fields in the database in novel and powerful ways.
 
-Note: Do not modify these files directly. If you need to update the
-rules, modify the .ruleset file and run gaiat again.
+**Note**: Do not modify these files directly. If you need to update the rules, modify the .ruleset file and run gaiat again.
 
 The following template shows the basic format of a ruleset declaration.
 

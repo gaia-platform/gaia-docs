@@ -26,6 +26,7 @@ The example walks you through most aspects of the Gaia Platform system.You'll le
 
 For information about the Gaia Platform prerequisites and installing the SDK, see [Getting Started with the Gaia Platform](../articles/getting-started-with-gaia.md).
 
+This walkthrough assumes that you are using Clang 10. 
 # The Hello application
 
 The goal of the application is to generate greetings for input names. To demonstrate the features of the system, the code inserts names into a table, which triggers a rule that generates greetings for those names and inserts them into a second table. The insertions into the second table trigger a second rule that prints the greetings to the console.
@@ -154,9 +155,9 @@ The rules code looks very much like C++ but, before you can compile it, you must
 
 To generate C++ code for these rules, execute the following command:
 
-**gaiat hello.ruleset -output hello_rules.cpp -- -I /usr/lib/clang/8/include/ -I /opt/gaia/include/**
+**gaiat hello.ruleset -output hello_rules.cpp -- -I /usr/lib/clang/10/include/ -I /opt/gaia/include/**
 
-**NOTE**: The two include paths of this command might need to be updated if Gaia and clang are installed in a non-standard way or if you're using a version of Clang other than 8.
+**NOTE**: The two include paths of this command might need to be updated if Gaia and clang are installed in a non-standard way or if you're using a version of Clang other than 10.
 
 The output of this step is the hello_rules.cpp that contains the C++ version of our rules. You are now ready to compile these into an application.
 

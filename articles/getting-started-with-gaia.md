@@ -18,8 +18,7 @@ This document provides guidance on setting up the Gaia SDK which includes the Ga
 
 ## Prerequisites
 
-Before you begin, make sure that you have the following prerequisites
-installed on your machine:
+Before you begin, make sure that you have the following prerequisites installed on your machine:
 
 -   Ubuntu Linux 18.04 or 20.04
 -   [Cmake](https://cmake.org/) build tools.
@@ -28,7 +27,7 @@ installed on your machine:
 
 If you don't currently have cmake and clang installed, you can use the following commands to install them:
 
-**sudo apt update && apt upgrade && apt install cmake clang1**
+**sudo apt update && apt upgrade && apt install cmake clang**
 
 ## Download the Gaia package
 
@@ -59,12 +58,12 @@ To update the package, remove it and install the updated package:
 
 1.  Download the updated package.
 2.  Navigate to the folder that contains the downloaded package.
-3.  Remove the currently installed package by running the following
+3.  To remove the currently installed package, run the following
     command:
 
     **sudo apt remove gaia**
 
-1.  At the command prompt, run the following command:
+1.  To install the new version, run the following command after replacing the x.y.z with the version number of the server that you are installing:
 
     **sudo apt install ./gaia-&lt;x.y.x&gt;_amd64.deb**
 
@@ -88,20 +87,28 @@ To update the package, remove it and install the updated package:
 
 ## Start the Gaia server
 
-The Gaia server must be running to build or run any solution that is
-based on the Gaia Platform.
+The Gaia server must be running to build or run any solution that is based on the Gaia Platform.
 
 We recommend that you don't run gaia\_db\_server under the root user, As with any daemon process that is accessible to the outside, running the Gaia server process as root, or any other account with special access rights, is a security risk. As best practice in production, run Gaia under a separate user account. This user account should only own the data that is managed by the server, and should not be used to run other daemons. For example, using the user nobody is not recommended.
 
 To prevent a compromised server process from modifying the Gaia executables, the user account must not own the Gaia executable files.
 
+The Gaia server supports two command line arguments:
+
+* --data-dir \<database-folder-path> specifies the location in which to store the Gaia database.
+* --configuration-file-path \<config-file-name> specifies the path and name of the configuration file that the Gaia server loads at startup.
+
 To start the server on a machine that supports systemd:
 
 **sudo systemctl start gaia**
 
-To start the server on Ubuntu running on WSL2 (not tested on WSL1):
+### Starting the Gaia server on WSL
 
-**gaia_db_server &**
+When starting the Gaia server on WSL, use the --data-dir argument to specify the location in which to store the database. We recommend that you store it locally in ~/.local/gaia/db.
+
+To start the server on Ubuntu running on WSL2 (Gaia has not been tested on WSL1):
+
+**gaia_db_server & --data-dir ~/.local/gaia/db**
 
 ## Build and run the incubator example
 
@@ -135,7 +142,7 @@ To build and run the incubator example:
 
 Use the menu to start, stop, show, and access the other functions of the simulation.
 
-To monitor the incubator simulation, open another terminal window and run the following command:
+To monitor the incubator simulation, open another terminal window. Navigate to the build folder and run the following command:
 
 **watch -n 1 ./incubator show**
 
@@ -186,4 +193,4 @@ To state this another way:
 
 -   Rules run on separate threads. When data identified by an Active Field changes, it is possible for your app to check the database before rules based on the field run.
 -   Rules processing is atomic, a rule must complete before you can see the results of actions due to the changes.
--   Rules only fire after the transaction that contains the change to the [Active Field](https://docs.google.com/document/d/17-cseJGZAL43d3YwBaLBF22DoiiwITCt_Ww0BaAyIeE/edit#heading=h.b7r1rpcs1grl) is committed. Said more succinctly, rules run post-commit.
+-   Rules only fire after the transaction that contains the change to the [Active Field](gaia-glossary.md#active-fields-rules-engine) is committed. Said more succinctly, rules run post-commit.

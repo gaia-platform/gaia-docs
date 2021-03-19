@@ -100,5 +100,5 @@ Gaia provides a catalog that binds the database to the Gaia rules engine. Rules 
 ## Next Steps
 
 * [Get started with the Gaia Platform](articles/getting-started-with-gaia.md)
-* [Write your first Gaia App](tutorials/writing-first-gaia-application.md)
+* [Write your first Gaia App](articles/tutorials/writing-first-gaia-application.md)
 * [Learn the basics of creating rules](articles/rules-creation-basics.md)
