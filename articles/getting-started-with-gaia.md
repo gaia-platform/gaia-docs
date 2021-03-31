@@ -29,7 +29,7 @@ Before you begin, make sure that you have the following prerequisites installed 
 
 If you don't currently have cmake and clang installed, you can use the following commands to install them:
 
-**sudo apt update && apt upgrade && sudo apt install cmake clang**
+**sudo apt update && sudo apt upgrade && sudo apt install cmake clang**
 
 ## Download the Gaia package
 

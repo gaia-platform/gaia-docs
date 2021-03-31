@@ -74,7 +74,7 @@ In your first terminal window, run the command:
 
 When the demo starts, it displays the following menu:
 
-![](images\incubator-example-1.png)
+![](images/incubator-example-1.png)
 
 To start the simulation, select **b**.
 
@@ -84,7 +84,7 @@ In the second terminal window, run the command:
 
 This command dumps the contents of the incubators' state and their sensors and fans to the screen. The output will appear similar to the following:
 
-![](images\incubator-example-2.png)
+![](images/incubator-example-2.png)
 
 The output shows the incubator and components being monitored. For each of the temperature sensors and fan actuators, the output displays a timestamp in the second column and the current temperature or fan actuator speed in the third column.
 
@@ -142,7 +142,7 @@ The second *if block* tells Gaia to check if a value field in the sensor table i
 
 You can see this behavior carried out by starting the simulation. When the temperature sensors exceed the maximum temperature value, the fan actuator value changes from 0 to 500.
 
-![](images\incubator-example-3.png)
+![](images/incubator-example-3.png)
 
 The rule fires whenever the temperature value changes, which means that the fan actuator might increase its speed several times. It can even increase fast enough to drive the temperature of the incubator below the specified minimum value. But this is okay. The *else if* block in the ruleset contains the necessary logic to reduce the fan actuator speed if it falls below the minimum temperature.
 
@@ -161,15 +161,15 @@ To set the new value:
 
 Now, when you monitor the incubators, you will see that Gaia increments the fan actuator values when the temperature exceeds the new maximum temperature.
 
-![](images\incubator-example-4.png)
+![](images/incubator-example-4.png)
 
 Before submitting the new max_temp, your tables should look like this.
 
-![](images\incubator-example-5.png)
+![](images/incubator-example-5.png)
 
 After you submit the new max value, both fan actuators associated with the incubator immediately start increasing their speed, like so:
 
-![](images\incubator-example-6.png)
+![](images/incubator-example-6.png)
 
 This application of the rule functions on the same principle as in the first example. The difference is that the change that triggers the rule is caused by our intervention rather than the changes driven by the environment.
 
@@ -206,6 +206,6 @@ We can now review how the first rule and the just-introduced rule will interact.
 
 To see this behavior, return to the simulation controller and allow the incubator to heat up considerably beyond its maximum temperature. To do this, after starting the simulation, select manage incubators from the menu, select an incubator and enter the command to turn off the power. This forces the incubator to stop actuating the fans (allowing the environment to heat up).
 
-![](images\incubator-example-7.png)
+![](images/incubator-example-7.png)
 
 Wait until the temperature of the incubator exceeds the maximum temperature range by a few degrees. When it does, enter the command to turn the incubator power back on. The associated fan actuator speed values start climbing in increments of 500. When the fan actuator speed reaches 3500, there is a jump to 5000 - a sudden change of 1500. This sudden jump is caused by the firing of rule 1 modifying the actuator.value (fan actuator speed) which triggers the immediate firing of rule 3. Use forward chaining to build out complex application behavior.
