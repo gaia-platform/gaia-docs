@@ -6,6 +6,14 @@ lastupdate:
 
 # Rules development example
 
+---
+
+**NOTE**
+
+The information contained in this document represents information about prerelease features of the product. Features might change when the product is released for general availability.
+
+---
+
 This document describes the creation of rules for a sample pallet tracking system.
 
 You define rules to respond whenever data is changed is committed to the database, whether that is at the row level, or an individual field.
@@ -17,10 +25,7 @@ You define rules to respond whenever data is changed is committed to the databas
 -   A basic understanding of rules and their creation. For more
     information, see [Rules creation basics](rules-creation-basics.md).
 
-In the design phase for your system, you define the business logic
-that describes how your system operates. After your initial design is
-complete, the architecture of the Gaia Platform lends itself best to the
-following workflow:
+In the design phase for your system, you define the business logic that describes how your system operates. After your initial design is complete, the architecture of the Gaia Platform lends itself best to the following workflow:
 
 -   Create a schema for your application.
     -   The schema defines tables and fields that contain the state of your system at any given time.
@@ -71,11 +76,6 @@ id : string,
 function\code : string,
 camera\data\code : string active,
 camera\\loading\area references loading\area
-
-seen\object
-
-id : string,
-seen\object\\camera references camera
 
 pallet
 
@@ -335,7 +335,7 @@ ruleset smartpallet_ruleset
 
 ### Rule Chaining
 
-The following figure presents the path of chaining implemented in the rules. Each of the rules presented in the section above has one or more inputs, outputs, and/or creates. Outputs and creates from one rule trigger the activation of rules which have inputs that match the outputs and creates.
+The following figure presents the path of chaining implemented in the rules. Each of the rules presented in the section above has one or more inputs, outputs, and/or creates. Outputs and creates from one rule triggers the activation of rules which have inputs that match the outputs and creates.
 
 Note that the complexity of the relationships may be more complex than shown in the chaining table, because rules may use non triggering objects in addition to triggering objects to change system state.
 
@@ -349,5 +349,5 @@ The translation process renders each rule as two C++ functions:
 2.  An additional set of C++ statements that are a contribution to the "well known" initialization function that subscribes this Rule’s  new function to the Event associated with the active fields that are referenced.
 
 
- Next question is how does this get executed? Recall that I said this was an active field defined in the schema. That active designation is very important. Writing a Rule that reads an active field causes that Rule to be subscribed to all changes to that field. Whenever this active field is updated and committed in the greeting table, this specific rule iswill be automatically executed. When the Rule is executed, the row that was operated on iswill be delivered to the rule as an automatic parameter. In our example the greetings table is automatically selected based on the fact that the field name my_name is unique and only appears in that table. The my_name reference then is literally referring to the my_name field in the row that was inserted into the greeting table. Since the entire row was passed into the rule, all defined fields from that row are available for use in this rule.
+ Next question is how does this get executed? Recall that I said this was an active field defined in the schema. That active designation is very important. Writing a Rule that reads an active field causes that Rule to be subscribed to all changes to that field. Whenever this active field is updated and committed in the greeting table, this specific rule is executed automatically. When the Rule is executed, the row that was operated on iswill be delivered to the rule as an automatic parameter. In our example the greetings table is automatically selected based on the fact that the field name my_name is unique and only appears in that table. The my_name reference then is literally referring to the my_name field in the row that was inserted into the greeting table. Since the entire row was passed into the rule, all defined fields from that row are available for use in this rule.
 

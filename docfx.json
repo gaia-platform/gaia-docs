@@ -50,7 +50,8 @@
       {
         "files": [
           "images/**",
-          "articles/images/**"
+          "articles/images/**",
+          "articles/tutorials/images/**"
         ]
       }
     ],
@@ -61,7 +62,8 @@
         ],
         "exclude": [
           "obj/**",
-          "_site/**"
+          "_site/**",
+          "README.md"
         ]
       }
     ],
@@ -77,7 +79,7 @@
       "_appLogoPath": "images/gaia-logo.png",
       "_appFaviconPath": "images/gaiafav.ico",
       "_enableSearch": "false",
-
+      "_disableContribution": "true"
     },
     "markdownEngineName": "markdig",
     "noLangKeyword": false,

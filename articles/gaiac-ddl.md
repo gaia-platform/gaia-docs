@@ -60,7 +60,7 @@ Use the CREATE TABLE command to create a table.
 
 ```sql
 CREATE TABLE [if not exists] *table\name* ( [
-{ *fieldname* *datatype* [ *active* ]
+{ *fieldname* *datatype*
 [, ... ]
 ] )
 ```
