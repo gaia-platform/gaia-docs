@@ -1,5 +1,5 @@
 - name: Overview
 - href: index.md
-- name: Ring Demonstration
-- href:
-
+  items:
+    - name: Gaia SmartPallet
+      href: smartpallet-template.md

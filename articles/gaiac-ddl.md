@@ -71,7 +71,7 @@ The following example creates a table named "department."
 CREATE TABLE if not exists department ( name string,current bool active);
 ```
 
-Active Fields are Database Column names that you refer to in the body of a Declarative Rule expression. When your declarative code refers to one of these Fields with a read operation, Gaia triggers an Event that schedules the associated Declarative Rules to execute.
+Active Fields are Database Column names that you refer to in the body of a Declarative Rule expression. When your declarative code refers to one of these Fields with a read operation, Gaia fires an Event that schedules the associated Declarative Rules to execute.
 
 ### REFERENCES
 

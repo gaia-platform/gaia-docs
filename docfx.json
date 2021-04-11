@@ -51,7 +51,8 @@
         "files": [
           "images/**",
           "articles/images/**",
-          "articles/tutorials/images/**"
+          "articles/tutorials/images/**",
+          "articles/templates/images/**"
         ]
       }
     ],
