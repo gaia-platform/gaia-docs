@@ -1,3 +1,9 @@
+---
+author: Don Glover
+owner: Don Glover
+lastupdate: 202104.14
+---
+
 # gaia-docs
 
 We are using the Microsoft Writing Style Guide as our basic guide to creating content. As we find areas where we need to or want to deviate from the guide we will create our own addendum document. 
@@ -31,8 +37,21 @@ lastupdate:
 ---
 ```
 
-*author* is the original author of the topic.
+*author* is the author of the topic. This is the person to contact to make updates to the topic. 
 
-*owner* is the current maintainer of the topic. This is the person to contact for updates to the content.
+*owner* is the current maintainer of the topic. This is the person on the hook to make sure that the content is current and accurate.
 
-*lastupdate* is the last major update to the content. Additions, major corrections, changes in functionality, etc. Do not update for typo corrections, grammar corrections, or minor corrections
+Note: Author and owner can be the same person.
+
+*lastupdate* is the last major update to the content. Additions, major corrections, changes in functionality, etc. Do not update for typo corrections, grammar corrections, or minor corrections.
+
+## Writing hints
+
+* Use no more than 30 words per sentence
+    * Due to the fact that: Use because
+    * Lacked the ability to: Use could not
+    * In order to: use to
+* Does it past the "so what" test?
+    * If you delete the paragraph, would the reader miss it?
+    * How does it enhance the reader's understanding?
+    * What are the implications of your claim?
