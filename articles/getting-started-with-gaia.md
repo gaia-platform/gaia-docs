@@ -22,7 +22,7 @@ This document provides guidance on setting up the Gaia SDK which includes the Ga
 
 Before you begin, make sure that you have the following prerequisites installed on your machine:
 
--   Ubuntu Linux 18.04 or 20.04
+-   Ubuntu Linux 20.04
 -   [Cmake](https://cmake.org/) build tools.
 -   The [clang](http://clang.org/) compiler version 8 or higher.
 -   A machine that supports the x86-64 architecture.

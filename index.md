@@ -10,25 +10,25 @@ The information contained in this document represents information about prerelea
 
 # Overview
 
-Gaia Platform is a software development framework that makes it easier to program autonomous systems at the edge. Gaia empowers programmers to make use of low-code features while still being appropriate for industrial use cases. Combining a high-speed in memory database with declarative C++ language extensions, Gaia provides a performant and intuitive model for development. Model your state in the database, and when things change, your declarative application logic will respond automatically.
+Gaia Platform is a software development framework that makes it easier to program autonomous systems at the edge. Gaia empowers programmers to make use of low-code features while still being appropriate for industrial use cases. Combining a high-speed in memory database with Declarative C++ language extensions, Gaia proviDes a performant and intuitive model for development. Model your state in the database, and when things change, your declarative application logic will respond automatically.
 
-As a developer, you can focus on what your program needs to do and let Gaia work out how it gets done. With Gaia, you’ll write less code that’s easier to read and more intuitive to debug and test. You can integrate multiple system components in a common setting with less boilerplate, from machine learning functions to ROS-enabled actuators. And you can run it all without the need for constant cloud connectivity.
+As a developer, you can focus on what your program needs to do and let Gaia work out how it gets done. With Gaia, you'll write less code that's easier to read and more intuitive to debug and test. You can integrate multiple system components in a common setting with less boilerplate, from machine learning functions to ROS-enabled actuators. And you can run it all without the need for constant cloud connectivity.
 
 In a phrase, Gaia Platform is the industrial-strength low-code development environment for apps at the edge.
 
 ## Why Gaia?
 
-Writing software is complicated. As you look to develop autonomous systems that need to operate reliably and intelligently out in the real world, you can find that the difficulty has only increased. There's a lot to get working and a lot of moving pieces to integrate. For example, machine learning has come a long way, but it takes more than obstacle detection to build an interesting product. Plus, these systems generate a ton of data we need to deal with, which results in lots of code that’s hard to debug and even harder to maintain over its lifetime.
+Writing software is complicated. As you look to develop autonomous systems that need to operate reliably and intelligently out in the real world, you can find that the difficulty has only increased. There's a lot to get working and a lot of moving pieces to integrate. For example, machine learning has come a long way, but it takes more than obstacle detection to build an interesting product. Plus, these systems generate a ton of data we need to deal with, which results in lots of code that's hard to debug and even harder to maintain over its lifetime.
 
 Gaia exists to overcome these challenges. The Gaia Platform is data-centric and responsive, like the world of autonomous machines. It is the nexus for integrating all the distributed components comprising your autonomous system and orchestrating their behavior to deliver on your mission's objectives.
 
-Are you looking for a way to accelerate the development of a new IoT prototype? Do you have subject matter experts with lots of knowledge and limited coding experience? What about a complex robotics product with an unwieldy state-machine? Or maybe you’re a hobbyist developer looking to play around with a Donkey Car but are frustrated by all the low-level details and just want an easier way to "make it do this thing!" In all of these cases, Gaia can help.
+Are you looking for a way to accelerate the development of a new IoT prototype? Do you have subject matter experts with lots of knowledge and limited coding experience? What about a complex robotics product with an unwieldy state-machine? Or maybe you're a hobbyist developer looking to play around with a Donkey Car but are frustrated by all the low-level details and just want an easier way to "make it do this thing!" In all of these cases, Gaia can help.
 
 ## How can you use Gaia?
 
-The Gaia Platform supports numerous application scenarios with a common theme of operating in complex scenarios at the edge. Gaia’s database and policies can be used to inform the behavior of an application directly. Write policies to respond to specific scenarios as informed by data (state) in the Gaia database.
+The Gaia Platform supports numerous application scenarios with a common theme of operating in complex scenarios at the edge. Gaia's database and policies can be used to inform the behavior of an application directly. Write policies to respond to specific scenarios as informed by data (state) in the Gaia database.
 
-For example, you’re building an Autonomous Guided Vehicle (AGV) to move material around a warehouse. You can use Gaia’s database to model inventory and waypoint data so that your AGV can work without a direct connection to the internet. Throughout its mission, your AGV might generate lots of interesting and frankly uninteresting data. Use Gaia’s DB to store it for the moment and implement data fusion and filtering logic with Gaia policies. You can write a policy that throws away intermediate navigation data but retains any discoveries about the location of inventory. At the end of the mission, your AGV can sync back only what’s critical so that you can save on cloud bandwidth and storage costs.
+For example, you're building an Autonomous Guided Vehicle (AGV) to move material around a warehouse. You can use Gaia's database to model inventory and waypoint data so that your AGV can work without a direct connection to the internet. Throughout its mission, your AGV might generate lots of interesting and frankly uninteresting data. Use Gaia's DB to store it for the moment and implement data fusion and filtering logic with Gaia policies. You can write a policy that throws away intermediate navigation data but retains any discoveries about the location of inventory. At the end of the mission, your AGV can sync back only what's critical so that you can save on cloud bandwidth and storage costs.
 
 In systems in which pair Machine Learning (ML) and Deep Learning (DL) with perception and action planning methods, the Gaia Platform provides robust rules handling and event messaging to understand the data.
 
@@ -40,7 +40,7 @@ Beyond applications in Autonomous Systems, Gaia provides an Industrial strength 
 
 ## How it works
 
-Gaia is a platform in the sense that users build their applications on top of its functionality. Gaia runs on the Linux operating system and supports C++ and (soon) Python programming languages with declarative functionality. Gaia's in-memory database is installed with the platform and enables seamless integration between database operations and application control code.
+Gaia is a platform in the sense that users build their applications on top of its functionality. Gaia runs on the Linux operating system and supports C++ (and in the future Python) programming language with declarative functionality. Gaia's in-memory database is installed with the platform and enables seamless integration between database operations and application control code.
 
 The Gaia Platform consists of the following elements:
 
@@ -102,3 +102,6 @@ Gaia provides a catalog that binds the database to the Gaia rules engine. Rules 
 * [Get started with the Gaia Platform](articles/getting-started-with-gaia.md)
 * [Write your first Gaia App](articles/tutorials/writing-first-gaia-application.md)
 * [Learn the basics of creating rules](articles/rules-creation-basics.md)
+
+------------------------------------------   
+© 2021 GAIA Platform. All rights reserved.  Declarative C++ is a trademark of GAIA Platform.
