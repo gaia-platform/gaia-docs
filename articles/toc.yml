@@ -1,7 +1,14 @@
 - name: Getting Started
   href: getting-started-with-gaia.md
-- name: Rules creation basics
-  href: rules-creation-basics.md
+- name: Gaia Rules
+  href: gaia_rulesets.md
+  items:
+  - name: Gaia programming model
+    href: gaia_programming_model.md
+  - name: Writing Rules with Gaia Declarative C++
+    href: writing_rules.md
+  - name: Analyzing Rules
+    href: analyzing_rules.md
 - name: Gaia terminology
   href: gaia-glossary.md
 - name: Gaiac and DDL

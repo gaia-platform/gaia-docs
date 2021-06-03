@@ -24,7 +24,7 @@ The example walks you through most aspects of the Gaia Platform system.You'll le
 
 # Prerequisites
 
-For information about the Gaia Platform prerequisites and installing the SDK, see [Getting Started with the Gaia Platform](../articles/getting-started-with-gaia.md).
+For information about the Gaia Platform prerequisites and installing the SDK, see [Getting Started with the Gaia Platform](../getting-started-with-gaia.md).
 
 This walkthrough assumes that you are using Clang 10. 
 # The Hello application

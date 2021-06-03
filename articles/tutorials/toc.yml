@@ -1,5 +1,5 @@
 - name: Start your journey
-- href:
+  href:
   items:
     - name: Writing your first Gaia application
       href: writing-first-gaia-application.md
