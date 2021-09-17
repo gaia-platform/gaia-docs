@@ -1,6 +1,6 @@
 ---
-author: 
-owner: 
+author: Don Glover
+owner: Don Glover
 lastupdate: 
 ---
 
@@ -23,7 +23,7 @@ This document provides guidance on setting up the Gaia SDK which includes the Ga
 Before you begin, make sure that you have the following prerequisites installed on your machine:
 
 -   Ubuntu Linux 20.04
--   [Cmake](https://cmake.org/) build tools.
+-   [CMake](https://cmake.org/) build tools.
 -   The [clang](http://clang.org/) compiler version 8 or higher.
 -   A machine that supports the x86-64 architecture.
 
@@ -31,11 +31,24 @@ If you don't currently have cmake and clang installed, you can use the following
 
 **sudo apt update && sudo apt upgrade && sudo apt install cmake clang**
 
-## Download the Gaia package
+To build Gaia samples using CMake and make tools, specify the clang compiler by setting the following variables in your environment:
+
+```
+export CC=/usr/bin/clang-10
+export CPP=/usr/bin/clang-cpp-10
+export CXX=/usr/bin/clang++-10
+export LDFLAGS=-fuse-ld=lld-10
+```
+
+## Download the Gaia SDK
 
 The Gaia SDK is delivered as a Debian software package (DEB).
 
-**gaia-0.1.0_amd64.deb**
+**gaia-x.y.z__amd64.deb**
+
+Where x.y.z represents the Gaia version number.
+
+The Gaia SDK includes the Gaia database server executable and the Gaia Declarative C++ SDK.
 
 To download the package, use the time-limited URL that was sent to you in your welcome email.
 
@@ -67,18 +80,18 @@ To update the package, remove it and install the updated package:
 
 1.  To install the new version, run the following command after replacing the x.y.z with the version number of the server that you are installing:
 
-    **sudo apt install ./gaia-&lt;x.y.x&gt;_amd64.deb**
+    **sudo apt install ./gaia-x.y.x_amd64.deb**
 
 ### Installed components
 
 <pre>
 /opt/gaia/bin
-    gaia\_db\_server - The Gaia database catalog server.
+    gaia_db_server - The Gaia database catalog server.
     gaiac - Gaia Catalog compiler.
     gaiat - Gaia Translation Engine.
 /opt/gaia/etc
     gaia.conf - Contains configuration settings for the platform and application loggers that the Gaia Platform uses.
-    Gaia\_log.conf - Configuration settings for the database and rules  engine that comprise the Gaia Platform.
+    Gaia_log.conf - Configuration settings for the database and rules  engine that comprise the Gaia Platform.
 /opt/gaia/examples/incubator
     Incubator example
 /opt/gaia/include
@@ -95,10 +108,15 @@ We recommend that you don't run gaia\_db\_server under the root user, As with an
 
 To prevent a compromised server process from modifying the Gaia executables, the user account must not own the Gaia executable files.
 
-The Gaia server supports two command line arguments:
+Gaia server command line arguments:
 
-* --data-dir \<database-folder-path> specifies the location in which to store the Gaia database.
-* --configuration-file-path \<config-file-name> specifies the path and name of the configuration file that the Gaia server loads at startup.
+|   |   |
+|---|---|
+|--data-dir \<database-folder-path>   | Specifies the location in which to store the Gaia database.  |
+|--configuration-file-path \<config-file-name>  | Specifies the location in which to store the Gaia database.  |
+| --disable-persistence  | No previous changes to the database will be visible after the database is started, and no changes made while the database is running will be visible after it is restarted.  | 
+| --disable-persistence-after-recovery  | Previous changes to the database will be visible after the database is started, but no changes made while the database is running will be visible after it is restarted.  | 
+|--reinitialize-persistent-store   |   All previous changes to the database will be deleted from persistent storage and will not be visible after the database is started, but changes made while the database is running will be visible after the database is restarted.  | 
 
 To start the server on a machine that supports systemd:
 
@@ -114,7 +132,7 @@ To start the server on Ubuntu and run it in the background on WSL2 (Gaia has not
 
 ## Build and run the incubator example
 
-You can verify that the Gaia SDK is installed properly by building and running the incubator demo. The source code for the incubator example is located in the /opt/gaia/examples/incubator folder.
+You can verify that the Gaia SDK is installed properly by building and running the incubator demo. The source code for the incubator example is located in the /opt/gaia/examples/incubator folder.  For a full explanation of this this samples, see [Gaia incubator example](tutorials/gaia-incubator-example.md).
 
 **Note**: If you encounter issues building and running the demo, the incubator folder contains a file named README.md. This document lists some of the common issues that you can encounter and suggested solutions.
 
@@ -161,18 +179,16 @@ After your design phase, the Gaia Platform architecture lends itself best to the
     -   Determine which columns in the schema drive the behavior. Your rules will act on these fields.
 
 -   In your makefile run gaiac to import the schema and create tables for your database.
-
-    -   Gaiac generates a header that contains the edc classes that define your schema in code. You include in this header your ruleset definition file.
-
--   Create your ruleset.
+    -   Gaiac generates a header that contains the edc classes that define your schema in code. You include in this header your Ruleset definition file.
+-   Create your Ruleset.
 
     -   Identify the actions to be performed when an Active Field changes.
 
--   Run gaiat to translate the ruleset into code files that you  in your app.
+-   Run gaiat to translate the Ruleset into code files that you  in your app.
 
 -   Create your application and call the code supplied by gaiat.
 
-This is, of course, an iterative process. As you refine your application, you will make changes to the schema and ruleset. A good start is to add the input table with an Active Field, then add a ruleset that contains a rule that fires when rows are inserted. Build from there (iterate) with tables for output and managing the application's state.
+This is, of course, an iterative process. As you refine your application, you will make changes to the schema and Ruleset. A good start is to add the input table with an Active Field, then add a Ruleset that contains a rule that fires when rows are inserted. Build from there (iterate) with tables for output and managing the application's state.
 
 You define the schema in a DDL file.
 

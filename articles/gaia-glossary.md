@@ -12,6 +12,8 @@ lastupdate:
 These are Database Column names that can be referred to in the body of a Declarative Rule expression. When any code in the system refers to one of these Fields with a read operation an Event (*defined below*) is generated to cause the associated Declarative Rule to be scheduled
 for execution.
 
+### Anchor Row ("Rules Engine")
+
 ### C
 ### Catalog
 
@@ -20,7 +22,7 @@ for execution.
 
 Declarative Chaining is a contract that defines specific automatic computation or transformation that is guaranteed by the system to occur as Fields, represented by nodes in the network, are modified.
 
-***Forward Chaining*** describes the 'automatic' recomputation of the values of fields that have defined declarative relationships. When a Field with a declarative rule defined on it changes, at some point in processing***\*1***, the value of any dependent Fields are reevaluated based on the declarative rule's definition.
+*Forward Chaining* describes the 'automatic' recomputation of the values of fields that have defined declarative relationships. When a Field with a declarative rule defined on it changes at some point in processing, the value of any dependent Fields are reevaluated based on the declarative rule's definition.
 
 This means that Forward Chaining can result in an open ended cascade of rule firing as the output from one declaratively defined Field is updated by the firing of other Field updates.
 
@@ -41,11 +43,11 @@ An edge captures a relationship between two Nodes. The edge metadata captures th
 
 ### Event (*Rules Engine*)
 
-Describes *<uany</u* input to the system that we wish to use to trigger some form of processing, usually rules. Events can be generated from incoming sensor data, Database operations (like a commit), Field updates, pretty much anything we wish to attach to a processing action (a rule). Events are defined at the source of the change (a sensor's input stream, a schema entry) and a type of event. The event also names a rule that is to be fired when the specific type of event occurs.
+Describes input to the system that Gaia uses to fire a rule. Events can be generated from incoming sensor data, Database operations (such as a commit), Field updates; pretty much anything that you can attach to a processing action (a rule). Events are defined at the source of the change (a sensor's input stream, a schema entry) and a type of event. The event also names a rule that is to be fired when the specific type of event occurs.
 
 Ex: Database:Insert, Database:Commit, ML:Identified (a pic), (in the schema)Field x:changed, Sensor Y: Output-Available, etc. Events are managed by a subsystem of the Rules Engine.
 
-### Extended Data Classes
+### Data Access Classes
 
 
 ## G
@@ -66,24 +68,19 @@ edges, not records). Internally, a Gaia ID maps to a locator, to allow
 access to its corresponding entity; this mapping is established at
 database startup or entity creation.
 
-### Gaia Platform**
+### Gaia Platform
 
 \[TBD\]
 
-### Gaia Pointer (*Database*)**
+### Gaia Pointer (*Database*)
 
 A Gaia Pointer is an opaque handle that can be used to reference a
 TrueGraphDB entity. It is implemented as a ***locator*** reference.
 
 ## L
-### Locator (Database)**
+### Locator (Database)
 
 An in-memory entity reference. Internally, a locator is implemented as a *slot id* in a *slot table* that contains memory offsets.
-
-## N
-### Node (*Database*)
-
-A node is an entity container that can be involved in relationships represented by edges. A node may also be thought of as a schematized list of properties. Every node can be identified by its Gaia ID. Nodes could directly reference other nodes, for example, to form various data structures.
 
 ## P
 ### Policy Set
@@ -110,6 +107,3 @@ none of the rules within are visible or executable.
 
 The subsystem that handles the management, code generation and execution of rules.
 
-### TrueGraphDB (*Database*)
-
-An in-memory, relational, graph-oriented, object database that also provides direct access to its entities/objects, which are nodes and edges of various types. Each entity can be seen as a record in the table represented by the collection of entities of the same type.
