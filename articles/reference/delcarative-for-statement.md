@@ -8,7 +8,7 @@ lastupdate:
 
 The for statement allows you to iterate over a set of rows in the database:
 
-- for(table) statement: Executes “statement” once for each row in the table.
+- for(table) statement: Executes "statement" once for each row in the table.
 - for(Table->Table1) statement: executes the statement once for each row in the 1:m list implied by the Navigation Path
 
 The declarative for statement is similar to the range-based for statement in standard C++. 

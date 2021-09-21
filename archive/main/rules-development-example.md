@@ -21,7 +21,7 @@ You define rules to respond whenever data is changed is committed to the databas
 ## Prerequisites
 
 -   A basic understanding of the Gaia database. For more information,
-    see [Gaiac and DDL](gaiac-ddl.md).
+    see [Gaia DDL](gaia-ddl.md).
 -   A basic understanding of rules and their creation. For more
     information, see [Rules creation basics](rules-creation-basics.md).
 

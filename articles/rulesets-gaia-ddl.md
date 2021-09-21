@@ -12,4 +12,4 @@ Although DDL source code and Rule source code exist in separate source files and
 
 In addition to identifying the names of tables and the fields within those tables, the DDL defines the relationships between tables. Unless the DDL shows a relationship between two tables, there can be no navigation directly from one to the other.
 
-For more information on the Gaia DDL, see [Gaiac and DDL](gaiac-ddl.md).
+For more information on the Gaia DDL, see [Gaiac and DDL](reference/gaia-ddl.md).

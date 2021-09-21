@@ -14,55 +14,14 @@
   - name: Using Tags
     href: rulesets-using-tags.md
   - name: Analyzing Rules
-    href: analyzing_rules.md
-- name: Gaia Declarative C++ extensions
-  href: declarative-extentions.md
-  items:
-  - name: rule_context structure
-    href: delcarative-rule_context-structure.md
-  - name: connect and disconnect
-    href: delcarative-connect-disconnet.md
-  - name: for(. . . )
-    href: delcarative-for-statement.md
-  - name: insert and remove
-    href: delcarative-insert-remove.md
-  - name: on_change
-    href: delcarative-on_change.md
-  - name: on_insert
-    href: delcarative-on_insert.md
-  - name: on_update
-    href: delcarative-on_update.md
-  - name: serial_group
-    href: delcarative-serial_group.md
-  - name: tables
-    href: delcarative-tables.md
-  - name: while and do while
-    href: delcarative-while-do-while.md
-- name: Gaiac DDL
-  href: gaia-ddl.md
-  - name: Common Fields
-    href: ddl-common-fields.md
-  - name: Relationships
-    href: ddl-relationships.md    
-  - name: create database
-    href: ddl-create-database.md
-  - name: create index
-    href: ddl-create-index.md
-  - name: drop index
-    href: ddl-drop-index.md
-  - name: create table
-    href: ddl-create-table.md
-  - name: drop table
-    href: ddl-drop-table.md
-  - name: use
-    href: ddl-use.md
+    href: rulesets-analyzing-rules.md
 - name: Tools
   items:
   - name: Gaiac
     href: tools\tool-gaiac.md
   - name: Gaiat
-    href: tools\tool_gaiat.md
+    href: tools\tool-gaiat.md
   - name: Using Postgres to access Gaia database information
     href: tools\using-postgress-with-gaia.md
 - name: Gaia terminology
-  href: gaia-glossary.md    
+  href: gaia-glossary.md

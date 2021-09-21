@@ -92,7 +92,7 @@ Gaia provides two ways to connect data in your tables:
 - Explicitly connect tables in your Ruleset code
 - Use references to common fields in your DDL
 
-To explicitly connect two tables using references you use the connect statement in your Ruleset code to establish the relationship between the tables. For more information about the connect and disconnect statements, see [connect and disconnect](ruleset-connect-disconnect.md).
+To explicitly connect two tables using references you use the connect statement in your Ruleset code to establish the relationship between the tables. For more information about the connect and disconnect statements, see [connect and disconnect](delcarative-connect-disconnet.md).
 
 References to common fields allow to you create links between tables. You can establish a relationship between two tables by specifying fields that, when set to the same value, allows Gaia to automatically relate records in those tables to each other in either a 1:1 or 1:M relationship. For more information on references to common fields, see [Common fields](ddl-common-fields.md).
 
