@@ -22,7 +22,7 @@ Usage: gaiac [options] [ddl_file]
 Command line arguments
 
 
-| **Argument**      |                       | **Description**       |
+| **Options**      |                       | **Description**       |
 |-------------------|-----------------------|-----------------------|
 | -d \<dbname\>     | \--db-name \<dbname\> | Specifies the database name to use when generating the Direct Acess source files.|
 | -i                | --interactive         | Run gaiac in interactive mode. For more information on the available commands, see the Interactive mode commands section below. |

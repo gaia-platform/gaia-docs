@@ -4,6 +4,14 @@ owner: Don Glover
 lastupdate: 05/28/2021
 ---
 
+---
+
+**NOTE**
+
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
+
+---
+
 # Gaia Rulesets
 
 ## Overview

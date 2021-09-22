@@ -4,6 +4,14 @@ owner:
 lastupdate: 
 ---
 
+---
+
+**NOTE**
+
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
+
+---
+
 # Relationships
 
 Creates a one to one or a one to  many link between tables.

@@ -1,12 +1,20 @@
 ---
-author: 
+author: Don Glover
 owner: 
-lastupdate: 
+lastupdate: 09/21/2021
+---
+
+---
+
+**NOTE**
+
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
+
 ---
 
 # on_insert
 
-Reacts to the insertion of a new row.
+Specifies that the rule fires on the insertion of a row in the specified table.
 
 Syntax:
 

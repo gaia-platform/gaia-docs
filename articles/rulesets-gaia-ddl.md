@@ -4,6 +4,14 @@ owner:
 lastupd:
 ---
 
+---
+
+**NOTE**
+
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
+
+---
+
 # Rulesets and Gaia DDL
 
 Every rule must refer to a catalog entity defined in the DDL for that application.

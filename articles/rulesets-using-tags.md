@@ -4,6 +4,14 @@ owner: Don Glover
 lastupdate: 05/28/2021
 ---
 
+---
+
+**NOTE**
+
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
+
+---
+
 # Using Tags
 
 When performing iterations in a Navigation Path, it is convenient to have a way to reference the current row. To address this, Gaia provides a tag feature that allows you to automatically create a local variable that you can use to work with the row in question. 

@@ -4,6 +4,13 @@ owner:
 lastupdate: 
 ---
 
+---
+
+**NOTE**
+
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
+
+---
 # create database
 
 Optional. Creates a new database. If the database already exists, gaiac returns an error and the database is not created. 
@@ -12,7 +19,7 @@ Optional. Creates a new database. If the database already exists, gaiac returns 
 
 The create keyword is optional.
 
-The `if not exists` operator is optional. If a database with the same name already exists, the command is ignored. However, there is no verification that the existing database has a structure identical to the one specified by the create database statement.
+The `if not exists` keyword is optional. If a database with the same name already exists, the command is ignored. However, there is no verification that the existing database has a structure identical to the one specified by the create database statement.
 
 Use the interactive feature of gaiac to list the instantiated databases:
 

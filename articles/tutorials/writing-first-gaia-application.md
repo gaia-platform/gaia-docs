@@ -10,7 +10,7 @@ lastupdate:
 
 **NOTE**
 
-The information contained in this document represents information about prerelease features of the product. Features might change when the product is released for general availability.
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
 
 ---
 
@@ -231,3 +231,8 @@ Hello Charles!
 Hello example has shut down.
 
 The order in which the rules are triggered is not deterministic. Due to this, the output of the program will vary from run to run.
+
+## Next Steps
+
+- Learn about [Gaia Rulesets](../rulesets-gaia-rulesets.md)
+- Rum the [Gaia incubator example](../tutorials/gaia-incubator-example.md)

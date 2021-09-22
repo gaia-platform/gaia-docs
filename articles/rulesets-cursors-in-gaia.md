@@ -4,6 +4,13 @@ owner: Don Glover
 lastupdate: 05/28/2021
 ---
 
+---
+
+**NOTE**
+
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
+
+---
 # Cursors in Gaia
 
 When getting a list of records from the database, Gaia gets a dynamic cursor to access the data. This means that all changes to the data are immediately visible to the transaction making the changes.

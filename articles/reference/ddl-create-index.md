@@ -4,6 +4,13 @@ owner:
 lastupdate: 
 ---
 
+---
+
+**NOTE**
+
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
+
+---
 # create index
 
 Creates an index that you can use as a field constraint.
@@ -29,3 +36,5 @@ CREATE TABLE flight (
 ```
 
 Using the `unique` keyword in the table creation statement is the preferred method to define uniqueness. 
+
+**Note**: When inserting multiple rows into a table that has a unique index, you must specify a value for the indexed field with each insert. If you do not specify a value, Gaia will use the default value for the type of the indexed field, which will cause an index collision.

@@ -4,6 +4,14 @@ owner: Don Glover
 lastupdate: 
 ---
 
+---
+
+**NOTE**
+
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
+
+---
+
 # Gaia Data Definition Language
 
 The Gaia Data Definition Language (DDL) is similar to SQL; many of the platform’s features, such as tables, indexes, and constraints, map naturally to similar or equivalent relational database features.

@@ -6,25 +6,27 @@
     href: declarative-extentions.md
     items:
     - name: rule_context structure
-      href: delcarative-rule_context-structure.md
+      href: declarative-rule_context-structure.md
     - name: connect and disconnect
-      href: delcarative-connect-disconnet.md
+      href: declarative-connect-disconnet.md
     - name: for(. . . )
-      href: delcarative-for-statement.md
+      href: declarative-for-statement.md
+    - name: if
+      href: declarative-if-statement.md
     - name: insert and remove
-      href: delcarative-insert-remove.md
+      href: declarative-insert-remove.md
     - name: on_change
-      href: delcarative-on_change.md
+      href: declarative-on_change.md
     - name: on_insert
-      href: delcarative-on_insert.md
+      href: declarative-on_insert.md
     - name: on_update
-      href: delcarative-on_update.md
+      href: declarative-on_update.md
     - name: serial_group
-      href: delcarative-serial_group.md
+      href: declarative-serial_group.md
     - name: tables
-      href: delcarative-tables.md
+      href: declarative-tables.md
     - name: while and do while
-      href: delcarative-while-do-while.md
+      href: declarative-while-do-while.md
   - name: Gaia DDL
     href: gaia-ddl.md
     items:

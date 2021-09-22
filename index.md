@@ -1,7 +1,7 @@
 ---
-author: 
+author: Don Glover
 owner: 
-lastupdate: 
+lastupdate: 09/21/2021
 ---
 
 # About the Gaia Platform
@@ -22,7 +22,7 @@ Writing software is complicated. As you look to develop autonomous systems that 
 
 Gaia exists to overcome these challenges. The Gaia Platform is data-centric and responsive, like the world of autonomous machines. It is the nexus for integrating all the distributed components comprising your autonomous system and orchestrating their behavior to deliver on your mission's objectives.
 
-Are you looking for a way to accelerate the development of a new IoT prototype? Do you have subject matter experts with lots of knowledge and limited coding experience? What about a complex robotics product with an unwieldy state-machine? Or maybe you're a hobbyist developer looking to play around with a Donkey Car but are frustrated by all the low-level details and just want an easier way to "make it do this thing!" In all of these cases, Gaia can help.
+Are you looking for a way to accelerate the development of a new IoT prototype? Do you have subject matter experts with lots of knowledge and limited coding experience? What about a complex robotics product with an unwieldy state-machine?
 
 ## How can you use Gaia?
 
@@ -102,6 +102,3 @@ Gaia provides a catalog that binds the database to the Gaia rules engine. Rules 
 * [Get started with the Gaia Platform](articles/getting-started-with-gaia.md)
 * [Write your first Gaia App](articles/tutorials/writing-first-gaia-application.md)
 * [Learn the basics of creating rules](articles/rules-creation-basics.md)
-
-------------------------------------------   
-© 2021 GAIA Platform. All rights reserved.  Declarative C++ is a trademark of GAIA Platform.

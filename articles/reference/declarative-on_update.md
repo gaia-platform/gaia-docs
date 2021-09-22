@@ -1,12 +1,20 @@
 ---
-author: 
+author: Don Glover
 owner: 
-lastupdate: 
+lastupdate: 09/21/2021
+---
+
+---
+
+**NOTE**
+
+The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
+
 ---
 
 # on_update
 
-Reacts to the change of the specified fields in existing rows in a table or a change to a specified table.
+Specifies that the rule fires when a change occurs to the specified fields in existing rows in a table or a change to a specified table.
 
 Syntax:
 
