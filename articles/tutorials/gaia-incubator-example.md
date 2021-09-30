@@ -67,7 +67,7 @@ The example includes the following files:
 -   incubator.ruleset - Defines the rules definitions for the example.
 -   Main.cpp - The incubator application that drives the simulation.
 -   README.md - Information about the example and troubleshooting instructions.
-- 
+
 Running the demo is the next thing to do to see what it does, then we can explain how it works.
 
 ### Running the incubator
@@ -110,13 +110,16 @@ The schema is located in the incubator.ddl and it defines three tables.
 -   actuator - Models the fans.
 -   sensor - Models the temperature sensor.
 
-ToDo: discuss relationships
+The schema also defines two [relationships](/reference/ddl-relationships.md):
 
-In Gaia the fields defined in the data definition file are considered potentially Active. This means that the Gaia rules engine executes rules when you refer to the field in the rule. 
+- incubator_sensors - Defines a one-to-many relationship between the incubator table and the sensor table.
+- incubator_actuators - Defines a one-to-many relationship between the incubator table and the actuator table.
+
+In Gaia the fields defined in the data definition file are considered potentially Active. This means that the Gaia Rules engine executes Rules when you refer to the field in the Rule. 
 
 You have two ways to specify which fields are active:
 
--   Use the `on_update()`or `on_change()` attribute to list the active fields in the rule.
+-   Use the `on_update()`or `on_change()` attribute to list the active fields in the Rules.
     OnUpdate(field1, field2, field3)
 -   Prepend an @ sign to the fields that are Active.
     @field1 = ...
@@ -126,7 +129,7 @@ The incubator.ruleset file defines the logic that acts on the Active Fields.
 This file contains several Gaia rules in the Ruleset. The second Rule is defined as follows:
 
 ```c++
-    // Rule 2:  Keep the temperature in range of the incubator limits.
+    // Rule 1:  Keep the temperature in range of the incubator limits.
     on_update(sensor.value)
     {
         if (!incubator.is_on)
@@ -134,14 +137,15 @@ This file contains several Gaia rules in the Ruleset. The second Rule is defined
             return;
         }
 
-        if (sensor.value >= incubator.min_temp &&
-            sensor.value <= incubator.max_temp)
+        if (sensor.value < incubator.min_temp 
+            || sensor.value > incubator.max_temp)
         {
-            return;
+            for (A:actuator)
+            {
+                A.value = adjust_temperature(incubator.min_temp, incubator.max_temp, sensor.value, A.value);
+                A.timestamp = g_timestamp;
+            }
         }
-
-        actuator.value = adjust_temperature(incubator.min_temp, incubator.max_temp, sensor.value, actuator.value);
-        actuator.timestamp = g_timestamp;
     }
 ```
 
@@ -161,23 +165,28 @@ So far, we've focused on changes to the sensor.value field. But we also have an 
     // Rule 1:  Verify the temperature is kept in range if the
     // incubator temperature limits change. 
     on_update(incubator.max_temp, incubator.min_temp)
+    on_update(incubator.max_temp, incubator.min_temp)
     {
         if (!incubator.is_on)
         {
             return;
         }
 
-        for(S:sensor)
+        sensor_loop:
+        for (S:sensor)
         {
-            if (S.value < incubator.min_temp ||
-                S.value > incubator.max_temp)
+            if (S.value < min_temp 
+                || S.value > max_temp)
             {
-                actuator.value = adjust_temperature(incubator.min_temp, incubator.max_temp, S.value, actuator.value);
-                actuator.timestamp = g_timestamp;
-                break;
+                for (A:actuator)
+                {
+                    A.value = adjust_temperature(min_temp, max_temp, S.value, A.value);
+                    A.timestamp = g_timestamp;
+                }
+                break sensor_loop;
             }
         }
-    }
+    
 ```
 
 In Rule 1 the for loop iterates over all the sensors in the incubator. The second *if block* tells Gaia to check whether th min_temp and max_temp fields in the incubator table are outside of the new values. If they are, we adjust the fan actuator values. We do this by assigning a new value to the actuator table, as seen in the if block's body.
@@ -209,7 +218,7 @@ In the first example, changes in sensor.value caused the Rule to fire and to com
 
 It is also worth observing that in this case, more than one fan actuator was associated with the incubator and both fan actuators had their speeds increased. The way that we have defined our Gaia data tables means actuators refer back to the incubator. Gaia is aware of this connection and can apply fan actuator increase logic to all the actuators associated with the puppies incubator.
 
-There is one more concept to review. So far, we have explored changes that come either from the ambient environment or direct user intervention. But a compelling design concept for writing programs in Gaia is the idea of "forward chaining." This is when the firing of one Rule can result in a change to state that immediately triggers the firing of a subsequent rule.
+There is one more concept to review. So far, we have explored changes that come either from the ambient environment or direct user intervention. But a compelling design concept for writing programs in Gaia is the idea of "forward chaining." This is when the firing of one Rule can result in a change to state that immediately triggers the firing of a subsequent Rule.
 
 Rule 4 in the the Ruleset file illustrates this functionality:
 
@@ -223,16 +232,22 @@ Rule 4 in the the Ruleset file illustrates this functionality:
             return;
         }
 
-        if (actuator.value > c_fan_threshold * c_fan_speed_limit && sensor.value > incubator.max_temp)
+        if_loop:
+        if (S:sensor.value > incubator.max_temp)
         {
-            actuator.value = c_fan_speed_limit;
+            if (actuator.value > c_fan_threshold * c_fan_speed_limit)
+            {
+                actuator.value = c_fan_speed_limit;
+                actuator.timestamp = g_timestamp;
+            }
+            break if_loop;
         }
     }
 ```
 
 The comment preceding the Rule describes its purpose. If the fan actuators have been ratcheting up to counteract a hot incubator, there comes a point when we do not want to wait for further incremental increases. Instead, we max out the fan actuator's speed. The first *if block* acts as a simple guard where the second encodes the real logic.
 
-There are several variables in the conditional. The primary active variable is the actuator.value field. This means that changes to the fan actuator speed trigger the rule. You will also notice two other variables from the prior rule, sensor.value and incubator.max_temp. However, these fields are not listed in the `on_upate()` attribute and therefore do not cause the Rule to fire.
+There are several variables in the conditional. The primary active variable is the actuator.value field. This means that changes to the fan actuator speed trigger the Rule. You will also notice two other variables from the prior Rule, sensor.value and incubator.max_temp. However, these fields are not listed in the `on_upate()` attribute and therefore do not cause the Rule to fire.
 
 We can now review how the first Rule and the just-introduced Rule will interact. As you recall, the first Rule is triggered by a change in the sensor.value field and results in the modification of the actuator.value field. This change now immediately causes Gaia to check the conditions described in Rule 3. This is forward chaining in action.
 

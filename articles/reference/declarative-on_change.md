@@ -25,7 +25,3 @@ field: A comma separated list of fields in the database to watch for changes.  A
 `on_change(table){ . . . }`
 
 table: Specifies the table to watch for changes in the database.
-
-Remarks
-
-Example

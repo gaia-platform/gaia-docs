@@ -44,6 +44,10 @@ Single line comment
 
 ```
 /* comment */
+
+or
+
+-- comment
 ```
 
 Block comment

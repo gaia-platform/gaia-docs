@@ -47,7 +47,7 @@ You can use connect/disconnect directly on tables if there is no ambiguity; othe
 
 You can specify a tag or a table name for the identifier. For more information about Tags, see Tags.
 
-Examples:
+## Example
 
 Connect and Disconnect for a one to one relationship:
 

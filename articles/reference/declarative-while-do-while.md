@@ -20,7 +20,7 @@ The while and do while statements allow you to iterate over a set of rows in the
 
 `do {...} while(Table->Table1)`
 
-Remarks
+## Remarks
 
 The navigation path does not guarantee the order of the returned results.
 

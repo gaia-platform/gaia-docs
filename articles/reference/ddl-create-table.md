@@ -30,7 +30,7 @@ The datatype parameter specifies the type of data the field holds (e.g. varchar,
 
 Valid data types are: 
 
-- bool -
+- bool - Boolean data type
 - int8 - 8-bit integer
 - Uint8 - unsigned 8-bit integer
 - Int16 - 16-bit integer

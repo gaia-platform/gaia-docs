@@ -14,7 +14,7 @@ The information contained in this document represents information about preview 
 
 ## Gaia programming model
 
-Gaia's Declarative C++ operates on Active Fields that are described in the Catalog. Active Fields are references to the columns described in the database schema. In addition, you can define local C++ variables to provide temporary storage during the processing of a rule. For clarity, this document refers to local C++ variables simply as variables and Active Fields as field references.
+Gaia's Declarative C++ operates on Active Fields that are described in the Catalog. Active Fields are references to the columns described in the database schema. In addition, you can define local C++ variables to provide temporary storage during the processing of a Rule. For clarity, this document refers to local C++ variables simply as variables and Active Fields as field references.
 
 Gaia enables you to write multi-threaded applications with components that execute asynchronously and in parallel with each other. When multiple database events, either insertion of or changes to fields, occur simultaneously, any corresponding rules associated with those fields fire automatically in parallel.
 
@@ -39,7 +39,7 @@ You can specify which fields are active in two ways:
 
 Many of the rules you will write will be very short with one or two Active Fields, and in those cases, using the @ syntax can keep your code readable and concise. If your Rule is more complex, keeping track of the field references using the **@** identifier method can become confusing. In this case, identifying all of the field references using an 'On' attribute keeps your rules cleaner and allows you to identify all of the Active Fields at a glance.
 
-All active fields must be part of the same table in a single rule. Gaia Platform does not support "multi-anchor" rules.
+All active fields must be part of the same table in a single Rule. Gaia Platform does not support "multi-anchor" rules.
 
 **NOTE**: These two methods of specifying the field references in a Rule are mutually exclusive. If you inadvertently mix them, gaiat notifies you with the following error message: "Since a Rule attribute was provided, specifying Active Fields inside the Rule is not supported."
 
@@ -55,7 +55,7 @@ Rules are created by authoring text files with the extension .ruleset. In the so
 
 ## Rule structure
 
-Each Rule is bracketed `{. . .}` to delineate the scope of the rule.
+Each Rule is bracketed `{. . .}` to delineate the scope of the Rule.
 
 The body of a Rule contains a mix of C++ statements and declarative statements. The C++ is unrestricted, so any valid statements are permitted. The declarative statements can contain field references. The way to think about references is that they are predefined variable references to fields defined in the Catalog that are globally visible to the rules you define. The reference is to either the 'current' row for which the rules engine fires the Rule (the Anchor Row) or the row(s) referenced in another table with a relationship with the Anchor Row. The Anchor Row specifies the starting point for the data that the Rule processes.
 
@@ -108,6 +108,6 @@ There are three forms of On:
     }
     ```
 
-The on_xxxx prefix provides a finer-grained control on the kind of data change that fires a rule. Additionally, the on_xxxx prefixes are more flexible than the '@'. They allow you to define rules that address active fields that are part of an Update vs an Insert, whereas '@' always behaves like on_change.
+The on_xxxx prefix provides a finer-grained control on the kind of data change that fires a Rule. Additionally, the on_xxxx prefixes are more flexible than the '@'. They allow you to define rules that address active fields that are part of an Update vs an Insert, whereas '@' always behaves like on_change.
 
 You might also find that as rules grow more complex, the on_xxxx() prefix aids in readability and understanding among different developers.

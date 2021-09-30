@@ -22,13 +22,13 @@ Syntax:
 
 table: Specifies the table in the database to watch for insertions.
 
-### Remarks:
+## Remarks:
 
 Unlike the other On prefixes, on_insert takes a single parameter that must be a table name. 
 
-Example:
+## Example
 
-```
+```c++
     // Rule 1: Whenever a name is inserted,
     // insert a new greeting into the greetings table.
     on_insert(names)

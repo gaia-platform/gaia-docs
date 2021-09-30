@@ -44,7 +44,7 @@ create table if not exists passenger (
 );
 ```
 
-**Example**
+## Example
 
 ```
 // Note that the following methods do not list all the parameters. 

@@ -39,10 +39,10 @@ The entire system depends on the fact that the Catalog fully describes the struc
 
 The Catalog makes it possible for row navigation to be invisible and automatic in declarative code. When a value in the database changes, Gaia consults the Catalog and fires the rules that are associated with the field. The Rule starts at the correct row, so no code is required to get there. It is the rules engine that decides which Rule to fire, not code that you provide.
 
-When writing your declarative code, keep in mind that each rule runs within a separate OS thread, and each thread can only have one outstanding transaction at a time. This provides transaction isolation. Two simultaneously running rules (each with a unique thread and transaction) will never see each other's changes. Before the rest of the system can see the actions resulting from the rule, the rule must exit to commit the transaction.
+When writing your declarative code, keep in mind that each Rule runs within a separate OS thread, and each thread can only have one outstanding transaction at a time. This provides transaction isolation. Two simultaneously running rules (each with a unique thread and transaction) will never see each other's changes. Before the rest of the system can see the actions resulting from the Rule, the Rule must exit to commit the transaction.
 
 To state this another way:
 
 - Rules run on separate threads. When data identified by an Active Field changes, your app can check the database before rules based on the field run. 
-=Rules processing is atomic. A rule must complete execution before you can see the results of actions due to the changes.
+=Rules processing is atomic. A Rule must complete execution before you can see the results of actions due to the changes.
 

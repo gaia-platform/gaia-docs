@@ -28,12 +28,12 @@ This document provides guidance on setting up the Gaia SDK which includes the Ga
 
 ## Prerequisites
 
-Before you begin, make sure that you have the following prerequisites installed on your machine:
+Before you begin, make sure that you have the following prerequisites:
 
 -   Ubuntu Linux 20.04
 -   [CMake](https://cmake.org/) build tools.
 -   The [clang](http://clang.org/) compiler version 8 or higher.
--   A machine that supports the x86-64 architecture.
+-   A machine that supports the x64 architecture.
 
 If you don't currently have cmake and clang installed, you can use the following commands to install them:
 
@@ -45,7 +45,7 @@ To build Gaia samples using CMake and make tools, specify the clang compiler by 
 export CC=/usr/bin/clang-10
 export CPP=/usr/bin/clang-cpp-10
 export CXX=/usr/bin/clang++-10
-export LDFLAGS=-fuse-ld=lld-10
+export LDFLAGS="-B/usr/lib/llvm-10/bin/ -fuse-ld=lld"
 ```
 
 ## Download the Gaia SDK

@@ -26,8 +26,7 @@ Command line arguments
 |-------------------|-----------------------|-----------------------|
 | -d \<dbname\>     | \--db-name \<dbname\> | Specifies the database name to use when generating the Direct Acess source files.|
 | -i                | --interactive         | Run gaiac in interactive mode. For more information on the available commands, see the Interactive mode commands section below. |
-| -g                | \--generate           | Generates the Gaia headers and database tables for the specified DDL file.
-<p>If the -d argument does not specify the database name, gaiac uses the default database '()'.|
+| -g                | \--generate           | Generates the Gaia headers and database tables for the specified DDL file.<br>If the -d argument does not specify the database name, gaiac uses the default database '()'.|
 | -o \<path\>       | \--output \<path\>    | Sets the output directory for all generated files.|
 | -h                | \--help               | Prints help information.          |
 | -v                | \--version            | Prints version information.          |
@@ -59,3 +58,7 @@ Gaiac has three modes of operation:
 - Loading: By default without specifying any mode, gaiac runs in loading mode. In this mode, gaiac reads the specified DDL file and translates them into catalog records without generating the Direct Access heard files.
 - Interactive : (--interactive or -i) provides a command-line interface that you can use to try DDL statements without creating a DDL file. DDL statements entered on the command line are executed and any output is displayed to the console.
 - Generation: (--generate or -g), In this mode, gaiac generates the Direct Access header files based on the specified database(s) to the specified output path
+
+## Next steps
+
+Learn more about the [Gaia Data Definition Language](../reference/ddl-gaia.md)

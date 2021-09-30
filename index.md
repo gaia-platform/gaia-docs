@@ -50,7 +50,7 @@ The Gaia Platform consists of the following elements:
 
 And provides the following tools:
 
--   Gaia Catalog compiler. The catalog compiler creates the datastore and tables that support your application. It also translates Gaia DDL files into the Gaia headers you include in your ruleset and     app code files. For more information, see [Gaiac and DDL](articles/reference/gaia-ddl.md).
+-   Gaia Catalog compiler. The catalog compiler creates the datastore and tables that support your application. It also translates Gaia DDL files into the Gaia headers you include in your ruleset and     app code files. For more information, see [Gaiac and DDL](articles/reference/ddl-gaia.md).
 -   Gaia Translation Engine. The translation engine converts your rulesets into code files that you include in your app.
 
 These components and tools interact to create an end-to-end solution. To accomplish this, Gaia addresses the PUA paradigm: Perceive, Understand, and Act. In Gaia, this is expressed as:
@@ -74,11 +74,11 @@ The Database is Active. This means that it functions as an Event system that mon
 
 The Gaia platform implements the database as an in memory high-performance data store.
 
-For more information about defining your Gaia database, see [Gaiac and DDL](articles/reference/gaia-ddl.md).
+For more information about defining your Gaia database, see [Gaiac and DDL](articles/reference/ddl-gaia.md).
 
 ### Understand
 
-The primary focus of rules is the Policy layer of applications. You define rules using easy-to-read and understand declarative code. The declarative code that defines a rule takes the form of "If this happens, then do that."
+The primary focus of rules is the Policy layer of applications. You define rules using easy-to-read and understand declarative code. The declarative code that defines a Rule takes the form of "If this happens, then do that."
 
 The rules engine and database work together to facilitate:
 
@@ -87,7 +87,7 @@ The rules engine and database work together to facilitate:
 
 If you find edge cases where you need just a bit more control, you can intermix declarative code (rules) with procedural code.
 
-For more information about defining your rules, see [Rules creation basics](articles/rules-creation-basics.md).
+For more information about defining your rules, see [Gaia Rulesets](articles/rulesets-gaia-rulesets.md).
 
 ### Act
 
@@ -101,4 +101,4 @@ Gaia provides a catalog that binds the database to the Gaia rules engine. Rules 
 
 * [Get started with the Gaia Platform](articles/getting-started-with-gaia.md)
 * [Write your first Gaia App](articles/tutorials/writing-first-gaia-application.md)
-* [Learn the basics of creating rules](articles/rules-creation-basics.md)
+* Learn more about [Gaia Rulesets](articles/rulesets-gaia-rulesets.md)

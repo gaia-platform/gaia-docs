@@ -28,7 +28,7 @@
     - name: while and do while
       href: declarative-while-do-while.md
   - name: Gaia DDL
-    href: gaia-ddl.md
+    href: ddl-gaia.md
     items:
     - name: Common Fields
       href: ddl-common-fields.md

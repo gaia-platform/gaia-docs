@@ -1,0 +1,51 @@
+@startuml
+' Airport Passenger and Luggage Processing
+
+object Airplane {
+  AirplaneID  
+  MaxWeight  
+}
+
+object Route {
+  RouteID  
+  DepartAirport  
+  ArriveAiport  
+}
+
+object Flight {
+ FlightID  
+ Route  
+ Date  
+ FlightMiles  
+ FlightWeight  
+ Status  
+}
+
+object Traveller {
+  TravelerID  
+  Name  
+  Surname  
+  MemberMiles  
+  MemberLevel  
+}
+
+object Trip {
+  TripID  
+  Traveller  
+  TripMiles  
+  TripSegments  
+}
+
+object Segment {
+  SegmentID  
+  Trip  
+  SegmentOrder  
+  FlightID  
+}
+
+Trip <-- Traveller
+Flight --> Airplane
+Flight --> Route
+Segment --> Flight
+Segment <-- Trip
+@enduml

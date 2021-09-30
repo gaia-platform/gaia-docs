@@ -22,9 +22,9 @@ behavior:
 | Option                       | Default if Unspecified | Description    |
 |------------------------------|------------------------|----------------|
 | stats\_log\_interval         | 10 seconds             | The interval in seconds for how frequently the rules engine logs statistics. All stats (counts, averages, etc) are calculated anew for each interval. |
-| log\_individual\_rule\_stats | False                  | If set to true, then in addition to rollup statistics for all rules, the same statistics are calculated for each rule. |
+| log\_individual\_rule\_stats | False                  | If set to true, then in addition to rollup statistics for all rules, the same statistics are calculated for each Rule. |
 
-Here is sample output when of the rule\_stats log when individual rule
+Here is sample output when of the Rule\_stats log when individual Rule
 statistics are not collected:
 
 ```
@@ -42,7 +42,7 @@ lat avg exec max exec
 For example, the first data row shows that 21 rules were scheduled and
 21 rules were invoked.
 
-If individual rule statistics are turned on, sample output might look
+If individual Rule statistics are turned on, sample output might look
 like:
 
 ```

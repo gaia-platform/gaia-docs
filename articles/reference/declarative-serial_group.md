@@ -32,7 +32,7 @@ To specify that all of the Rules within a Ruleset are serialized, use the serial
 
 Example
 
-```
+```c++
 ruleset BuildingPopulationTracker : serial_group(Pop_Tracker)
 {
     on_update(scan badge_scan)

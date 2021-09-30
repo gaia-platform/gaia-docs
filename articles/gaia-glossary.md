@@ -22,15 +22,15 @@ for execution.
 
 Declarative Chaining is a contract that defines specific automatic computation or transformation that is guaranteed by the system to occur as Fields, represented by nodes in the network, are modified.
 
-*Forward Chaining* describes the 'automatic' recomputation of the values of fields that have defined declarative relationships. When a Field with a declarative rule defined on it changes at some point in processing, the value of any dependent Fields are reevaluated based on the declarative rule's definition.
+*Forward Chaining* describes the 'automatic' recomputation of the values of fields that have defined declarative relationships. When a Field with a declarative Rule defined on it changes at some point in processing, the value of any dependent Fields are reevaluated based on the declarative Rule's definition.
 
-This means that Forward Chaining can result in an open ended cascade of rule firing as the output from one declaratively defined Field is updated by the firing of other Field updates.
+This means that Forward Chaining can result in an open ended cascade of Rule firing as the output from one declaratively defined Field is updated by the firing of other Field updates.
 
 Forward Chaining performs optimally on Fields that are updated infrequently where the resulting recomputed values are read frequently. Forward Chaining should be used instead of Backward Chaining in these cases.
 
 ### Declarative Rules (*Rules Engine*)
 
-Rules that are automatically fired by events when fields are updated. The definition of a declarative rule does not require a rule name, but must be annotated as declarative in some way. Upon entry Declarative Rules are parsed to generate the list of Fields that are referenced in the expression. The import and enabling of a Component containing declarative rules causes all referenced fields to be annotated in the schema as 'Active' fields. The field on the right side of the expression is also marked as read-only (for performance sake) since changing it would also immediately queue an event to reset its value.
+Rules that are automatically fired by events when fields are updated. The definition of a declarative Rule does not require a Rule name, but must be annotated as declarative in some way. Upon entry Declarative Rules are parsed to generate the list of Fields that are referenced in the expression. The import and enabling of a Component containing declarative rules causes all referenced fields to be annotated in the schema as 'Active' fields. The field on the right side of the expression is also marked as read-only (for performance sake) since changing it would also immediately queue an event to reset its value.
 
 Declarative Rules should be designed to be as light-weight as possible. Forward Chaining allows breaking up complex relationships into multiple rules.
 
@@ -43,7 +43,8 @@ An edge captures a relationship between two Nodes. The edge metadata captures th
 
 ### Event (*Rules Engine*)
 
-Describes input to the system that Gaia uses to fire a rule. Events can be generated from incoming sensor data, Database operations (such as a commit), Field updates; pretty much anything that you can attach to a processing action (a rule). Events are defined at the source of the change (a sensor's input stream, a schema entry) and a type of event. The event also names a rule that is to be fired when the specific type of event occurs.
+Describes input to the system that Gaia uses to fire a Rule. Events can be generated from incoming sensor data, Database operations (such as a commit), Field updates; pretty much anything that you can attach to a processing action (a Rule). Events are defined at the source of the change (a sensor's input stream, a schema entry) and a type of event. The event also names a Describes input to the system that Gaia uses to fire a Rule. Events can be generated from incoming sensor data, Database operations (such as a commit), Field updates; pretty much anything that you can attach to a processing action (a Rule). Events are defined at the source of the change (a sensor's input stream, a schema entry) and a type of event. The event also names a rRuleule that is to be fired when the specific type of event occurs.
+ that is to be fired when the specific type of event occurs.
 
 Ex: Database:Insert, Database:Commit, ML:Identified (a pic), (in the schema)Field x:changed, Sensor Y: Output-Available, etc. Events are managed by a subsystem of the Rules Engine.
 
@@ -53,7 +54,6 @@ Ex: Database:Insert, Database:Commit, ML:Identified (a pic), (in the schema)Fiel
 ## G
 
 ### Gaia Declarative Policy Platform
-
 
 ### Gaia Field Pointer (*Database*)
 

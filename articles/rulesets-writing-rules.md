@@ -22,10 +22,10 @@ Gaia rules are written in Declarative C++. Gaia Declarative C++ differs from tra
     - data context: you are handed the exact row that changed so you are working on the relevant data. 
     - navigation context:  you can navigate to related data in other tables relative to the data context.  
 
-Because the rule functions are invoked by the Gaia system, you are automatically operating on the data that caused the change.  
+Because the Rule functions are invoked by the Gaia system, you are automatically operating on the data that caused the change.  
 
-- Since gaia knows the type of relationship that exists between tables, it can automatically generate iteration over M rows in a 1:M relationship.In the case of a one-to-many relationship, referencing a related table can result in iteration over all of the rows related to the parent data context. Depending on the relationships in your schema, a field reference can return 0,1, or multiple rows. Because the rule functions are invoked by the Gaia system, you are automatically operating on the data that caused the change.  
-- Gaia Declarative C++ rules are multi-threaded by default.  Each rule is scheduled to run on a thread in a configurable thread pool and each thread runs in its own transaction. The Gaia system takes care of the synchronization of data in the database for you.
+- Since Gaia knows the type of relationship that exists between tables, it can automatically generate iteration over M rows in a 1:M relationship.In the case of a one-to-many relationship, referencing a related table can result in iteration over all of the rows related to the parent data context. Depending on the relationships in your schema, a field reference can return 0,1, or multiple rows. Because the Rule functions are invoked by the Gaia system, you are automatically operating on the data that caused the change.  
+- Gaia Declarative C++ rules are multi-threaded by default.  Each Rule is scheduled to run on a thread in a configurable thread pool and each thread runs in its own transaction. The Gaia system takes care of the synchronization of data in the database for you.
     - **Note**: While Gaia Declarative C++ doesn’t prohibit the use of global static variables, we recommend against it due to added overhead that you incur ensuring that your code is thread safe.
 - The Gaia tools translate the Declarative C++ code to traditional C++ code based on what Gaia knows about your data as represented in the Gaia Catalog. This means that you don't have to hand-write traditional data access and navigation code.
 
@@ -49,7 +49,7 @@ Member Rule 1
 }
 ```
 
-The key to understanding this Rule is that FlightMiles is designated as an Active Field. Whenever a change to that field is committed, the Rule engine automatically fires the rule.
+The key to understanding this Rule is that FlightMiles is designated as an Active Field. Whenever a change to that field is committed, the Rule engine automatically fires the Rule.
 
 Each flight has many passengers. There is a 1:many relationship between the Flight row in the database, which contains FlightMiles, and the Traveler row, which contains MemberMiles. The rules engine recognizes that relationship from the Catalog and automatically iterates this statement in the Rule for every passenger on the flight. So, that one assignment causes the system to:
 
@@ -78,7 +78,7 @@ We track each trip in a table called Trips which has a counter for TripSegments.
 }
 ```
 
-Before moving on, let’s examine what is taking place with both of these conditional statements. A flight segment was completed. An Active Field caused the rules engine to fire a rule. That Rule relates to a particular row for a particular flight. That row, in turn, is related to many Trip rows. Not only that, the path from the flight row to the appropriate trip row involves navigating through an intermediate segment row. We start with a simple one statement conditional and end up with:
+Before moving on, let’s examine what is taking place with both of these conditional statements. A flight segment was completed. An Active Field caused the rules engine to fire a Rule. That Rule relates to a particular row for a particular flight. That row, in turn, is related to many Trip rows. Not only that, the path from the flight row to the appropriate trip row involves navigating through an intermediate segment row. We start with a simple one statement conditional and end up with:
 
 - Code is generated to locate all segment rows that are related to the flight row.
 - The Rule is fired once for each of the many hops between airports (segments) associated with this flight.
@@ -99,12 +99,12 @@ In this case, the Rule is defined using the on_insert prefix.
 ```
 // Check for overweight situation and raise the alarm
 {
-      If  (@FlightWeight > MaxWeight )
-  { ActivateWeightAlarm(FlightWeight) }
+    If  (@FlightWeight > MaxWeight )
+        { ActivateWeightAlarm(FlightWeight) }
 }
 ```
 
-Since rules are written with statements which are, at their core, C++ statements, you can call functions that perform external actions from the body of the rule. The first Rule uses a C++ utility function which tracks the weight of the baggage loaded on the flight. This procedural utility could also update the database, which would in turn trigger the execution of Rules.
+Since rules are written with statements which are, at their core, C++ statements, you can call functions that perform external actions from the body of the Rule. The first Rule uses a C++ utility function which tracks the weight of the baggage loaded on the flight. This procedural utility could also update the database, which would in turn trigger the execution of Rules.
 
 Through Forward Chaining, the rules system fires the second Rule each time the value of FlightWeight changes. If the value of FlightWeight exceeds the maximum allowed baggage weight, the Rule calls the ActivateWeightAlarm method, which is a C++ function that can be external to the rules declarations.
 
@@ -116,7 +116,7 @@ Sometimes when a field’s value changes, a Rule fires against the individual ro
 
 One of the fundamental results of Forward Chaining is that the order in which Rules execute is determined by the order in which commits that contain changes to active fields occur.
 
-The power derives from the fact that there is no need to create queries, navigate through tables, copy and map data: Gaia handles all of that automatically. 
+The power derives from the fact that there is no need to create queries, navigate through tables, copy, and map data: Gaia handles all of that automatically. 
 
 ## Transactions
 
@@ -126,7 +126,7 @@ The rules engine automatically brackets every Rule with a Begin and Commit Trans
 
 When a transaction aborts, usually due to a conflict with another transaction, the aborted Rule is automatically rescheduled for execution by the Rules Engine. For example, two concurrent transactions might change the same field value. In this case, the first one to commit 'wins,’ and the second one must re-execute.
 
-In the declarative system, rules based on field changes are the only mechanism for moving from one Rule to the next; there is no explicit control flow. A single rule, particularly if it has multiple statements, might cause several other rules to fire. 
+In the declarative system, rules based on field changes are the only mechanism for moving from one Rule to the next; there is no explicit control flow. A single Rule, particularly if it has multiple statements, might cause several other rules to fire. 
 
 ## Parallelism
 
@@ -148,8 +148,8 @@ Suppose we have an if statement that iterates over all passengers, which referen
 
 ```
 If ( @passengerstatus == “missing” )
-         	{ if ( luggagestatus == “loaded” )
-             	{ . . . } }
+    { if ( luggagestatus == “loaded” )
+        { . . . } }
 ```
 
 Here we have a loop within a loop. The entire statement is executed once for each passenger. Then, while focused on that passenger, the inner if is executed once for each piece of luggage that belongs to the passenger.
