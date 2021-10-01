@@ -36,11 +36,11 @@ For information about the Gaia Platform prerequisites and installing the SDK, se
 
 1.  To copy the incubator demo into your current directory:
     
-    **cp -r /opt/gaia/examples/incubator/ .**
+    ```cp -r /opt/gaia/examples/incubator/ .```
 
 2.  Navigate to the incubator demo folder:
 
-  **cd incubator**
+  ```cd incubator```
 
 3.  If the Gaia database server is not running, start it now.
 
@@ -48,14 +48,14 @@ For information about the Gaia Platform prerequisites and installing the SDK, se
 
   **sudo systemctl start gaia**
 
-4.  Complete setup of the build environment by issuing the following
-      commands:
+4.  Complete setup of the build environment by issuing the following commands:
 
-      **mkdir build\
-      cd build\
-      cmake ..\
-      make**
-
+    ```
+    mkdir build\
+    cd build\
+    cmake ..\
+    make
+    ```
 ## The incubator demo
 
 The example includes the following files:
@@ -78,7 +78,7 @@ First, open two terminal windows. You will run the demo in one and monitor it in
 
 In your first terminal window, run the command:
 
-**./incubator sim**
+```./incubator sim```
 
 When the demo starts, it displays the following menu:
 
@@ -88,7 +88,7 @@ To start the simulation, select **b**.
 
 In the second terminal window, run the command:
 
-**watch -n .5 ./incubator show**
+```watch -n .5 ./incubator show```
 
 This command dumps the contents of the incubators' state and their sensors and fans to the screen. The output will appear similar to the following:
 

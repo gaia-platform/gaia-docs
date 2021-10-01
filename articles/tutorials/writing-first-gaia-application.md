@@ -47,9 +47,10 @@ To put all of this together, you'll also write a small application that inserts 
 
 Create a new folder in which to store the files for the application.
 
-**mkdir hello_sample**
-
-**cd hello_sample**
+```
+mkdir hello_sample
+cd hello_sample
+```
 
 You'll execute all of the commands specified in this document in this folder.
 
@@ -83,7 +84,7 @@ You will refer to the database column names in the body of Declarative Rule expr
 
 The next step is to compile the definitions and generate the tables in the Gaia database. To do this, you use the gaiac tool. At the command line, in the folder in which you created the hello.ddl file, run the following command:
 
-**gaiac hello.ddl -g --db-name hello -o hello**
+```gaiac hello.ddl -g --db-name hello -o hello```
 
 The command instructs gaiac to process the hello.ddl file which creates the database and tables. The -g option tells gaiac to generate the Direct Access header and source files. The --db-name specifies which database to use and the -o option specifies the output folder for the generated files.
 
@@ -93,7 +94,7 @@ Gaiac generates a second file name hello_generated.h. This is included by the ga
 
 To verify that the tables were successfully created, run gaiac in an interactive mode:
 
-**gaiac -i**
+```gaiac -i```
 
 At the prompt, type the following command to list all the database tables.
 
@@ -159,7 +160,7 @@ The rules code looks very much like C++ but, before you can compile it, you must
 
 To generate C++ code for these rules, execute the following command:
 
-**gaiat hello.ruleset -output hello_ruleset.cpp -- -I /usr/lib/clang/10/include/ -I /opt/gaia/include/ -I hello **
+```gaiat hello.ruleset -output hello_ruleset.cpp -- -I /usr/lib/clang/10/include/ -I /opt/gaia/include/ -I hello ```
 
 **NOTE**: The first two include paths of this command might need to be updated if Gaia and clang are installed in a non-standard way or if you're using a version of Clang other than 10.
 
@@ -206,7 +207,7 @@ Let's go over the main steps of this code:
 
 To build this code, use the following command:
 
-**clang++-10 hello.cpp hello_ruleset.cpp hello/gaia_hello.cpp /usr/local/lib/libgaia.so -I /opt/gaia/include -Wl,-rpath,/usr/local/lib -lpthread -o hello.run -I hello -stdlib=libc++**
+```clang++-10 hello.cpp hello_ruleset.cpp hello/gaia_hello.cpp /usr/local/lib/libgaia.so -I /opt/gaia/include -Wl,-rpath,/usr/local/lib -lpthread -o hello.run -I hello -stdlib=libc++```
 
 If you are using a newer version of the clang compiler or if Gaia is installed in a non-standard location, update the command accordingly.
 
@@ -216,19 +217,17 @@ The output is a *hello,run* executable which represents your Hello application.
 
 You are now ready to execute the app:
 
-**./hello.run**
+```./hello.run```
 
 You should see output that looks similar to the following:
 
+<pre>
 Hello example is running...
-
 Hello Bob!
-
 Hello Alice!
-
 Hello Charles!
-
 Hello example has shut down.
+</pre>
 
 The order in which the rules are triggered is not deterministic. Due to this, the output of the program will vary from run to run.
 

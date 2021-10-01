@@ -5,7 +5,6 @@ lastupdate:
 ---
 
 ---
-
 **NOTE**
 
 The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
@@ -18,8 +17,6 @@ The information contained in this document represents information about preview 
 
 **NOTE**
 
-At this time, Gaia Platform is in private preview. To request access, visit the [developer page](https://www.gaiaplatform.io/developers) on the main Gaia Platform website and complete the request form at the bottom of the page.
-
 The information contained in this document represents information about prerelease features of the product. Features might change when the product is released for general availability.
 
 ---
@@ -31,13 +28,9 @@ This document provides guidance on setting up the Gaia SDK which includes the Ga
 Before you begin, make sure that you have the following prerequisites:
 
 -   Ubuntu Linux 20.04
--   [CMake](https://cmake.org/) build tools.
--   The [clang](http://clang.org/) compiler version 8 or higher.
 -   A machine that supports the x64 architecture.
 
-If you don't currently have cmake and clang installed, you can use the following commands to install them:
-
-**sudo apt update && sudo apt upgrade && sudo apt install cmake clang**
+The Gaia SDK installer installs the Gaia tools and Clang 10.
 
 To build Gaia samples using CMake and make tools, specify the clang compiler by setting the following variables in your environment:
 
@@ -66,16 +59,23 @@ You must have sudo privileges to install the package.
 
 To install the package:
 
-1.  Navigate to the folder that contains the downloaded package.
-2.  At the command prompt, run the following command:
+1. Navigate to the folder that contains the downloaded package.
+1.  At the command prompt, run the following commands:
 
-**sudo apt install ./gaia-0.1.0_amd64.deb**
+    ```
+    sudo apt-get update
+    sudo apt install ./gaia-0.1.0_amd64.deb
+    ```
 
 To remove the package:
 
-1.  At the command prompt, run the following command:
+1. Update your Ubuntu packages: 
 
-    **sudo apt remove gaia**
+     ```sudo apt-get update```
+
+1. At the command prompt, run the following command:
+
+    ```sudo apt remove gaia```
 
 To update the package, remove it and install the updated package:
 
@@ -84,11 +84,11 @@ To update the package, remove it and install the updated package:
 3.  To remove the currently installed package, run the following
     command:
 
-    **sudo apt remove gaia**
+    ```sudo apt remove gaia```
 
 1.  To install the new version, run the following command after replacing the x.y.z with the version number of the server that you are installing:
 
-    **sudo apt install ./gaia-x.y.x_amd64.deb**
+    ```sudo apt install ./gaia-x.y.x_amd64.deb```
 
 ### Installed components
 
@@ -128,7 +128,7 @@ Gaia server command line arguments:
 
 To start the server on a machine that supports systemd:
 
-**sudo systemctl start gaia**
+```sudo systemctl start gaia```
 
 ### Starting the Gaia server on WSL
 
@@ -136,46 +136,8 @@ When starting the Gaia server on WSL, use the --data-dir argument to specify the
 
 To start the server on Ubuntu and run it in the background on WSL2 (Gaia has not been tested on WSL1):
 
-**gaia_db_server --data-dir ~/.local/gaia/db &**
+```gaia_db_server --data-dir ~/.local/gaia/db &```
 
-## Build and run the incubator example
-
-You can verify that the Gaia SDK is installed properly by building and running the incubator demo. The source code for the incubator example is located in the /opt/gaia/examples/incubator folder.  For a full explanation of this this samples, see [Gaia incubator example](tutorials/gaia-incubator-example.md).
-
-**Note**: If you encounter issues building and running the demo, the incubator folder contains a file named README.md. This document lists some of the common issues that you can encounter and suggested solutions.
-
-Before you can build the incubator example, you must run cmake to build the makefiles for the example. To run cmake against the supplied CMakeLists.txt file that is installed with the Package:
-
-1.  Copy the incubator demo into your folder:
-
-    **cp -r /opt/gaia/examples/incubator .**
-
-1.  Navigate to the incubator demo folder:
-
-    **cd incubator**
-
-To build and run the incubator example:
-
-1.  Complete setup of the build environment by issuing the following
-    commands:
-
-       **mkdir build**<br>
-       **cd build**<br>
-       **cmake ..**<br>
-       **make**
-
-2.  When the build finishes, use the following command to run the
-    example:
-
-    **./incubator sim**
-
-Use the menu to start, stop, show, and access the other functions of the simulation.
-
-To monitor the incubator simulation, open another terminal window. Navigate to the build folder and run the following command:
-
-**watch -n 1 ./incubator show**
-
-This command displays the state of the incubators as well as the state of their associated sensors and fans. The status updates every second.
 ## Next Steps
 
 * [Write your first Gaia App](tutorials/writing-first-gaia-application.md)
