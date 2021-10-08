@@ -68,7 +68,7 @@ When the rules use the OnUpdate or OnChange attributes to specify the Active Fie
 
 ### Acting on inserts to a table
 
-To specify that your rule fires when a new record is inserted in the table, use the OnInsert attribute.
+To specify that your rule fires when a new row is inserted in the table, use the OnInsert attribute.
 
 The following rule snippet watches for an insert into the names table:
 

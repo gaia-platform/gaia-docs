@@ -21,6 +21,14 @@ The create keyword is optional.
 
 The `if not exists` keyword is optional. If a database with the same name already exists, the command is ignored. However, there is no verification that the existing database has a structure identical to the one specified by the create database statement.
 
+## Remarks
+
+The `create database` statement automatically switches you to the new database. There is no need to invoke `use` if the intention is to create tables in the database that was just created. 
+
+The short form of the `create database` statement, in which you omit the create operator, drops the table before attempting to create it and has the same effect as the following:
+
+`drop database if exists database_nam; create database database_name;`
+
 Use the interactive feature of gaiac to list the instantiated databases:
 
 <pre>

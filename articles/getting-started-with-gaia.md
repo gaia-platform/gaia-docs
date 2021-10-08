@@ -32,6 +32,12 @@ Before you begin, make sure that you have the following prerequisites:
 
 The Gaia SDK installer installs the Gaia tools and Clang 10.
 
+CMake is the officially supported method for building Gaia applications.  In addition, the Gaia SDK uses CMake to automate code generation from DDL and ruleset files.
+
+To install CMake run the following command:
+
+`sudo apt-get install cmake`
+
 To build Gaia samples using CMake and make tools, specify the clang compiler by setting the following variables in your environment:
 
 ```
@@ -71,11 +77,11 @@ To remove the package:
 
 1. Update your Ubuntu packages: 
 
-     ```sudo apt-get update```
+     `sudo apt-get update`
 
 1. At the command prompt, run the following command:
 
-    ```sudo apt remove gaia```
+    `sudo apt remove gaia`
 
 To update the package, remove it and install the updated package:
 
@@ -84,11 +90,11 @@ To update the package, remove it and install the updated package:
 3.  To remove the currently installed package, run the following
     command:
 
-    ```sudo apt remove gaia```
+    `sudo apt remove gaia`
 
 1.  To install the new version, run the following command after replacing the x.y.z with the version number of the server that you are installing:
 
-    ```sudo apt install ./gaia-x.y.x_amd64.deb```
+    `sudo apt install ./gaia-x.y.x_amd64.deb`
 
 ### Installed components
 
@@ -128,7 +134,7 @@ Gaia server command line arguments:
 
 To start the server on a machine that supports systemd:
 
-```sudo systemctl start gaia```
+`sudo systemctl start gaia`
 
 ### Starting the Gaia server on WSL
 
@@ -136,7 +142,7 @@ When starting the Gaia server on WSL, use the --data-dir argument to specify the
 
 To start the server on Ubuntu and run it in the background on WSL2 (Gaia has not been tested on WSL1):
 
-```gaia_db_server --data-dir ~/.local/gaia/db &```
+`gaia_db_server --data-dir ~/.local/gaia/db &`
 
 ## Next Steps
 

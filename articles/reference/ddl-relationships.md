@@ -14,10 +14,11 @@ The information contained in this document represents information about preview 
 
 # Relationships
 
+## create
 Creates a one to one or a one to  many link between tables.
 
 ```
-CREATE RELATIONSHIP [if not exists] relationship_name (
+[create] relationship [if not exists] relationship_name (
     table_name_1.field_name_1 -> table_name_2[],
     table_name_2.field_name_2 -> table_name_1
     [, USING table_name_2(field_name_3,...), table_name_1(field_name_4, ...)]
@@ -25,6 +26,12 @@ CREATE RELATIONSHIP [if not exists] relationship_name (
 ```
 
 Removes the specified relationship from the catalog.
+
+The short form of the `create relationship` statement, in which you omit the create operator, drops the table before attempting to create it and has the same effect as the following:
+
+`drop relationship if exists foo; create relationship relationship_name;`
+
+## drop 
 
 `drop relationship_name;`
 

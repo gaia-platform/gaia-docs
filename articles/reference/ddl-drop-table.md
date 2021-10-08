@@ -17,3 +17,6 @@ The information contained in this document represents information about preview 
 Removes the table from the catalog.
 
 `drop table table_name;`
+
+
+**Important**: In the preview version of the database, 

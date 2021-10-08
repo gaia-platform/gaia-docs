@@ -47,6 +47,10 @@ Remarks
 
 Use the optional `if not exists' to prevent an error from occurring if the table exists. If a table with the same name already exists, the command is ignored. However, there is no verification that the existing table has a structure identical to that indicated by the CREATE TABLE statement.
 
+The short form of the `create table` statement, in which you omit the create operator, drops the table before attempting to create it and has the same effect as the following:
+
+`drop table if exists table_nam; create table table_name;`
+
 The following example creates a table named "department."
 
 CREATE TABLE if not exists department ( name string, current bool active);
@@ -101,7 +105,7 @@ Gaia provides two ways to connect data in your tables:
 
 To explicitly connect two tables using references you use the connect statement in your Ruleset code to establish the relationship between the tables. For more information about the connect and disconnect statements, see [connect and disconnect](declarative-connect-disconnet.md).
 
-References to common fields allow to you create links between tables. You can establish a relationship between two tables by specifying fields that, when set to the same value, allows Gaia to automatically relate records in those tables to each other in either a 1:1 or 1:M relationship. For more information on references to common fields, see [Common fields](ddl-common-fields.md).
+References to common fields allow to you create links between tables. You can establish a relationship between two tables by specifying fields that, when set to the same value, allows Gaia to automatically relate rwos in those tables to each other in either a 1:1 or 1:M relationship. For more information on references to common fields, see [Common fields](ddl-common-fields.md).
 
 You can have 4 types of connections between tables defined in the DDL:
 
