@@ -30,8 +30,6 @@
   - name: Gaia DDL
     href: ddl-gaia.md
     items:
-    - name: Common Fields
-      href: ddl-common-fields.md
     - name: Relationships
       href: ddl-relationships.md    
     - name: create database
@@ -46,3 +44,5 @@
       href: ddl-drop-table.md
     - name: use
       href: ddl-use.md
+    - name: Value Linked References
+      href: ddl-value-linked-references.md      

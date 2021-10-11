@@ -11,9 +11,9 @@ lastupdate:
 The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
 
 ---
-# Common Fields
+# Value Linked References
 
-`field_name references table_name [using [table_name].field_name]`
+`field_name references table_name [using [table_name].field_name] [where table_1.field = table_2.field]`
 
 The `using` keyword is optional. It is only needed when you have more than one relationship between the two specified tables.
 

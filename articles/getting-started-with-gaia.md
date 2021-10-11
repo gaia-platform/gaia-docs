@@ -66,18 +66,14 @@ You must have sudo privileges to install the package.
 To install the package:
 
 1. Navigate to the folder that contains the downloaded package.
-1.  At the command prompt, run the following commands:
+1.  At the command prompt, replace the x.y.z with the correct version number and run the following commands:
 
     ```
     sudo apt-get update
-    sudo apt install ./gaia-0.1.0_amd64.deb
+    sudo apt install ./gaia-x.y.z__amd64.deb
     ```
 
 To remove the package:
-
-1. Update your Ubuntu packages: 
-
-     `sudo apt-get update`
 
 1. At the command prompt, run the following command:
 
