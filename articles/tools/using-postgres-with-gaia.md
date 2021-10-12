@@ -7,11 +7,11 @@ lastupdate:
 
 # Using Postgres to access Gaia database information
 
-For information on how to setup and configure Postgres for use with the Gaia Foreign Data Wrapper (FDW), see <insert_document_reference>.
+For information on how to setup and configure Postgres for use with the Gaia Foreign Data Wrapper (FDW), see [PostgreSQL Downloads](https://www.postgresql.org/download/).
 
 Connect to Postgres using the Postgres account credentials:
 
-sudo -u postgres psql
+`sudo -u postgres psql`
 
 Execute the following commands in order, at the Postgres prompt:
 
@@ -47,4 +47,4 @@ select name from hello_fdw.gaia_table;
 
 To exit the Postgres session, use the following command:
 
-\q
+**\q**
