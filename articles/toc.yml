@@ -21,8 +21,6 @@
     href: tools\tool-gaiac.md
   - name: Gaiat
     href: tools\tool-gaiat.md
-  - name: Using Postgres to access Gaia database information
-    href: tools\using-postgres-with-gaia.md
 - name: Building apps with Gaia
   href: apps-building-gaia-apps.md    
 - name: Gaia terminology

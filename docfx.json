@@ -33,14 +33,6 @@
         },
         {
           "files": [
-            "articles/templates/**.md",
-            "articles/templates/**/toc.yml",
-            "toc.yml",
-            "*.md"
-          ]
-        },
-        {
-          "files": [
             "articles/reference/**.md",
             "articles/reference/**/toc.yml",
             "toc.yml",
