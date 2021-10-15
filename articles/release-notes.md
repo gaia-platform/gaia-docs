@@ -6,7 +6,7 @@ lastupdate:
 
 # Release Notes
 
-## Version 0.2.1.TBD 10/11/2021
+## Version 0.3.1.0-beta 10/15/2021
 
 The drop table command, in both it's long and short form does not remove any existing records from the database.
 
