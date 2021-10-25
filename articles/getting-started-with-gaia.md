@@ -120,9 +120,9 @@ To update the package, remove it and install the updated package:
 
 To build or run any solution that is based on the Gaia Platform, the Gaia server must be running .
 
-We recommend that you don't run gaia\_db\_server under the root user. As with any daemon process that is accessible to the outside, running the Database Server process as root, or any other account with special access rights, is a security risk. As best practice in production, run Gaia under a separate user account. This user account should only own the data that is managed by the server, and should not be used to run other daemons. For example, using the user `nobody` is not recommended.
+We recommend that you don't run gaia\_db\_server in production under the root user. As with any daemon process that is accessible to the outside, running the Database Server process as root, or any other account with special access rights, is a security risk. As best practice in production, run Gaia under a separate user account. This user account should only own the data that is managed by the server, and should not be used to run other daemons. For example, using the user `nobody` is not recommended.
 
-To prevent a compromised server process from modifying the Gaia executables, the user account must not own the Gaia executable files.
+To prevent a compromised server process from modifying the Gaia executables, in production the user account should not own the Gaia executable files.
 
 Gaia server command line arguments:
 
@@ -135,7 +135,7 @@ Gaia server command line arguments:
 
 ### Configuration settings
 
-### Overcommit policy
+#### Overcommit policy
 
 The Database Server can run normally with an overcommit policy value of 0 (heuristic overcommit.), but might become unstable under rare conditions.
 
@@ -157,7 +157,7 @@ To permanently enable this policy:
 
     sysctl -p
   
-### Open file descriptor limit
+#### Open file descriptor limit
 
 The Database Server requires a per-process open file descriptor limit of at least 65535.
 
@@ -178,7 +178,7 @@ To permanently set the minimum open file descriptor limit:
 
     **Note**: For enhanced security, replace the wild card '*' in these file entries with the user name of the account that is running the  Database Server.
 
-2. save the file and start a new terminal session.
+2. Save the file and start a new terminal session.
 
 ### Starting the Gaia Database Server on a machine that supports systemd
 
@@ -190,12 +190,12 @@ sudo systemctl start gaia
 
 ### Starting the Gaia Database Server on Windows Subsystem for Linux (WSL)
 
-When starting the Database Server on WSL, use the --data-dir argument to specify the location in which to store the database. We recommend that you store it locally in ~/.local/gaia/db.
+When starting the Database Server on WSL, use the --data-dir argument to specify the location to store the database. We recommend that you create a separate database for each project.
 
-To start the server on Ubuntu and run it in the background on WSL2 (Gaia has not been tested on WSL1):
+To start the server on WSL2 running Ubuntu and run it in the background (Gaia has not been tested on WSL1):
 
 ```bash
-gaia_db_server --data-dir ~/.local/gaia/db &
+gaia_db_server --data-dir .<dbname> &
 ```
 ## Next Steps
 
