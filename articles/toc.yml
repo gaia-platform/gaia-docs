@@ -22,7 +22,19 @@
   - name: Gaiat
     href: tools\tool-gaiat.md
 - name: Building apps with Gaia
-  href: apps-building-gaia-apps.md    
+  href: apps-building-gaia-apps.md
+  items:
+  - name: Using the Direct Access Classes
+    href: apps-direct-access.md
+    items:
+    - name: Inside the Direct Access Classes
+      href: apps-inside-direct-access-classes.md
+    - name: Relationships
+      href: apps-relationships.md
+    - name: Filtering
+      href: apps-filtering.md
+    - name: Troubleshooting
+      href: apps-Troubleshooting.md   
 - name: Gaia terminology
   href: gaia-glossary.md
 - name: Release Notes
