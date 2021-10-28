@@ -16,12 +16,6 @@ The information contained in this document represents information about preview 
 
 ---
 
-**NOTE**
-
-The information contained in this document represents information about prerelease features of the product. Features might change when the product is released for general availability.
-
----
-
 The following example models an incubator system for chickens and puppies. It simulates temperature sensors and cooling fans.
 
 The simulation has two distinct components: A simulator component that models the environment and a Gaia component that controls the incubators' behavior in response to changes.
@@ -220,7 +214,7 @@ It is also worth observing that in this case, more than one fan actuator was ass
 
 There is one more concept to review. So far, we have explored changes that come either from the ambient environment or direct user intervention. But a compelling design concept for writing programs in Gaia is the idea of "forward chaining." This is when the firing of one Rule can result in a change to state that immediately triggers the firing of a subsequent Rule.
 
-Rule 4 in the the Ruleset file illustrates this functionality:
+Rule 4 in the Ruleset file illustrates this functionality:
 
 ```c++
     // Rule 4:  If the fan is at 70% of its limit and the temperature is still too hot then

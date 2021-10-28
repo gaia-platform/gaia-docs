@@ -10,7 +10,7 @@ The Direct Access Classes (DAC) provide an API that allows you to work directly 
 
 Accessing a value in a database record in Gaia is as fast as accessing a variable; this sets Gaia apart from most other in-memory databases.
 
-This walkthrough models a
+This walkthrough models the doctor/patient relationships in a hospital setting.
 
 ## Generating Direct Access Classes
 
@@ -89,7 +89,7 @@ The following is a simple example of direct access API usage that creates a doct
 
 ```
 
-Run to following command to to manually compile the code:
+Use the following command to manually compile the code:
 
 ```
 clang++-10 hospital.cpp hospital/gaia_hospital.cpp /usr/local/lib/libgaia.so -I hospital/ -I /opt/gaia/include -lpthread -o hospital_app
