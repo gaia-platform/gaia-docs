@@ -36,11 +36,9 @@ For information about the Gaia Platform prerequisites and installing the SDK, se
 
   ```cd incubator```
 
-3.  If the Gaia database server is not running, start it now.
+3.  If the Gaia database server is not running, start it now. To start the server on a machine that supports systemd:
 
-    -   To start the server on a machine that supports systemd:
-
-  **sudo systemctl start gaia**
+      **sudo systemctl start gaia**
 
 4.  Complete setup of the build environment by issuing the following commands:
 
