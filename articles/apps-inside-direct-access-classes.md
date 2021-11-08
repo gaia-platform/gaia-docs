@@ -106,7 +106,6 @@ If you access an invalid record, you get an `invalid_object_id` exception:
 > terminate called after throwing an instance of 'gaia::db::invalid_object_id\' 
 >   what(): Cannot find an object with ID '0'.
 
-
 ## Iterate through all table records
 
 The `list()` method exposes an iterator over all the records in a table:
@@ -146,26 +145,24 @@ If you want to remove all the records in a table, you may be tempted to do the f
     }
 ```
 
-
 > terminate called after throwing an instance of'gaia::db::invalid_object_id\'
 >  what(): Cannot find an object with ID '0'.
-
 
 This approach does not work because you are modifying the container while iterating over it. 
 
 One of the correct ways to do this is:
 
 ```cpp
-    for (auto& doctor = *doctor_t::list().begin();
-         doctor; doctor = *doctor_t::list().begin())
+    for (auto doctor_it = doctor_t::list().begin();
+           doctor_it != doctor_t::list().end();)
     {
-        doctor.delete_row();
+        auto next_doctor_it = doctor_it++;
+        (*next_doctor_it).delete_row();
     }
 
     gaia_log::app().info("Num doctors: {}", doctor_t::list().size());
 ```
 
 > Num doctors: 0
-
 
 In the following sections, we will deal with the referential integrity in cases where the doctor is connected to other tables.
