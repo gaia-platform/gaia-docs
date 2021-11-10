@@ -88,7 +88,7 @@ The next step is to compile the definitions and generate the tables in the Gaia 
 
 The command instructs gaiac to process the hello.ddl file which creates the database and tables. The -g option tells gaiac to generate the Direct Access header and source files. The --db-name specifies which database to use and the -o option specifies the output folder for the generated files.
 
-Gaiac prints a message that tells you where it wrote the gaia_hello.h file. This file contains definitions necessary to programmatically interact with the tables that are generated based on the definitions. You will see these referred to as Direct Access code.
+Gaiac generates a gaia_hello.h file that contains definitions necessary to programmatically interact with the tables that are generated based on the definitions. You will see these referred to as Direct Access code.
 
 Gaiac generates a second file name hello_generated.h. This is included by the gaia_hello.h file; you will not reference this file directly.
 
@@ -207,11 +207,11 @@ Let's go over the main steps of this code:
 
 To build this code, use the following command:
 
-```clang++-10 hello.cpp hello_ruleset.cpp hello/gaia_hello.cpp /usr/local/lib/libgaia.so -I /opt/gaia/include -Wl,-rpath,/usr/local/lib -lpthread -o hello.run -I hello -stdlib=libc++```
+```clang++-10 hello.cpp hello_ruleset.cpp hello/gaia_hello.cpp /usr/local/lib/libgaia.so -I /opt/gaia/include -lpthread -o hello.run -I hello```
 
 If you are using a newer version of the clang compiler or if Gaia is installed in a non-standard location, update the command accordingly.
 
-The output is a *hello,run* executable which represents your Hello application.
+The output is a *hello.run* executable which represents your Hello application.
 
 # Executing the Hello application
 
