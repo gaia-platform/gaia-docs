@@ -45,4 +45,15 @@
     - name: use
       href: ddl-use.md
     - name: Value Linked References
-      href: ddl-value-linked-references.md      
+      href: ddl-value-linked-references.md
+  - name: Direct Access Classes
+    href: da-overview.md
+    items:
+    - name: Direct Access main class
+      href: da-class-api.md
+    - name: Reference class
+      href: da-reference-class-api.md
+    - name: Containter class
+      href: da-container-class-api.md
+    - name: Exceptions
+      href: da-exceptions.md
