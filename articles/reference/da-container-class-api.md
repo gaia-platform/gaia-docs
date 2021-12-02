@@ -10,46 +10,63 @@ lastupdate:
 
 The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
 
+
 ---
 
 # Container Class API
 
-The following are exposed as part of the container patient \_list_t
+The following are exposed as part of the container `patient _list_t`.
 
-(internal definition typedef
-gaia::direct_access::reference_chain_container_tpatient_t
-patients_list_t;)
+Examples in these articles are taken from the Direct Access sample app that is installed with the SDK at /opt/gaia/examples/direct_access.
 
-patients_t::list()
+`patients_t::list()`
 
 ## Methods on the container
 
+**insert**
+
 `patients_t::insert()` - Creates a relationship between the rows.
 
-insert() has two overrides:
+`insert()` has two overrides:
 
-* One that accepts a gaia_id_t, which isn\'t typesafe, and avoids the  creation of objects if you already have the Gaia id.
+* One that accepts a gaia_id_t, which isn't typesafe, and avoids the  creation of objects if you already have the Gaia id.
 * One that accepts an instance of a Direct Access class, which is typesafe, and does not allow passing instances of the wrong type.
+
+Synonym for disconnect.
+
+**remove**
 
 `patients_t::<list name>().remove()`
 
 Breaks a relationship between rows.
 
+Synonym for disconnect.
+
+**connect**
+
 `patients_t::<list name>().connect()`
 
 Aliased to insert.
+
+**disconnect**
 
 `patients_t::<list name>().disconnect()`
 
 Aliased to remove.
 
+**clear**
+
 `patients_t::<list name().clear()`
 
-that removes all relationships on a ...
+Removes all relationships (1 side of 1:1 or N side of 1:N) from this reference.
+
+**erase**
 
 `patients_t::list name().erase()`
 
 Removes a Value Linked Reference from the list.
+
+**size**
 
 `patients_t::list name().size()`
 
@@ -70,7 +87,7 @@ void delete_one_to_many_relationship(gaia_id_t doctor_id)
     doctor_t doctor = doctor_t::get(doctor_id);
     
     // Pick one of the doctor\'s patients.
-    patient_t patient = \*(doctor.patients().begin());
+    patient_t patient = *(doctor.patients().begin());
     
     // You can unlink a single element (there are still 2 connected).
     doctor.patients().remove(patient);
@@ -106,7 +123,7 @@ Example
 auto jacks_doctor_container = doctor_t::list().where(
 doctor_expr::patients.contains(
 patient_expr::name == Jack));
-auto jacks_doctor = \*jacks_doctor_container.begin();
+auto jacks_doctor = *jacks_doctor_container.begin();
 gaia_log::app().info("Jack's doctor is {}", jacks_doctor.name());
 
 // Contains with constant.
@@ -114,7 +131,7 @@ auto jane = *(patient_t::list().where(patient_expr::name ==Jane).begin());
 auto janes_doctor_container = doctor_t::list().where(
     doctor_expr::patients.contains(jane));
     auto janes_doctor = *janes_doctor_container.begin();
-    gaia_log::app().info("Jane\'s doctor is {}", janes_doctor.name());
+    gaia_log::app().info("Jane's doctor is {}", janes_doctor.name());
     auto doctors_with_no_patients =
         doctor_t::list().where(doctor_expr::patients.empty());
 
@@ -129,31 +146,41 @@ auto janes_doctor_container = doctor_t::list().where(
 
 It is possible to evaluate predicates on relationships. The supported predicates are: contains, empty, count.
 
+**contains**
+
 `contains()`
 
 Evaluates to true when a container contains a certain predicate or a specific object.
+
+**empty**
 
 `empty()`
 
 Evaluates to true if a container is empty.
 
+**count**
+
 `count()`
 
-Evaluates to true when a container contains the specified number of elements:
+Evaluates to true when a container contains the specified number of elements.
+
+## Example
+
+The following code snippet shows the usage of the `contains()` and `empty()` methods.
 
 ```cpp
 // Contains with expression.
 auto jacks_doctor_container = doctor_t::list().where(
     doctor_expr::patients.contains(patient_expr::name == Jack));
-auto jacks_doctor = \*jacks_doctor_container.begin();
+auto jacks_doctor = *jacks_doctor_container.begin();
 gaia_log::app().info("Jack\'s doctor is {}", jacks_doctor.name());
 
 // Contains with constant.
-auto jane = \*(patient_t::list().where(patient_expr::name == Jane).begin());
+auto jane = *(patient_t::list().where(patient_expr::name == Jane).begin());
 auto janes_doctor_container = doctor_t::list().where(
     doctor_expr::patients.contains(jane));
-auto janes_doctor = \*janes_doctor_container.begin();
-gaia_log::app().info("Jane\'s doctor is {}", janes_doctor.name());
+auto janes_doctor = \janes_doctor_container.begin();
+gaia_log::app().info("Jane's doctor is {}", janes_doctor.name());
 auto doctors_with_no_patients =
     doctor_t::list().where(doctor_expr::patients.empty());
 ...

@@ -10,6 +10,8 @@ lastupdate:
 
 The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
 
+Examples in these articles are taken from the Direct Access sample app that is installed with the SDK at /opt/gaia/examples/direct_access.
+
 ---
 
 # Direct Access Classes API
@@ -18,12 +20,12 @@ The Direct Access Classes model the tables in the database.
 
 For each table in the database, gaiac generates code for a Direct Access Class (DAC) that includes the following items.
 
-Accessors: The DAC implements an accessor for each field in the table to retrieve the value of the field. Accessors take the following forms:
+Accessors: The DAC implements an accessor for each field in the table to retrieve the value of the field. For example:
 
-* `const char doctor_t::*field name*() const`
-* `uint64_t doctor_t::*field name*() const`
-* `float doctor_t::*field name*() const`
-* `bool doctor_t::*field name*() const`
+* `const char* doctor_t::field_name1() const`
+* `uint64_t doctor_t::field_name2() const`
+* `float doctor_t::field_name3() const`
+* `bool doctor_t::field_name4() const`
 
 For information on the full set of supported types, see [create table](ddl-create-table.md).
 
@@ -31,17 +33,25 @@ For information on the full set of supported types, see [create table](ddl-creat
 
 `doctor_t:doctor_t()`
 
-Public default constructor. Creates an "invalid" DAC instance.
+Public default constructor. Creates an empty DAC instance.
+
+It is valid to cache DAC across transaction boundaries. The system guarantees that the correct data is maintained.
 
 ## Methods
 
-`gaia::common::gaia_id_t doctor_t::insert_row(<field 1, <field2,...)`
+**insert_row**
+
+`gaia::common::gaia_id_t doctor_t::insert_row(<field 1, <field2>,...)`
 
 Adds a row to the table described by the class.
+
+**gaia_typename**
 
 `const char* doctor_t::gaia_typename()`
 
 Returns the class name *doctor_t*.
+
+**list**
 
 `gaia::direct_access::edc_container_t<c_gaia_type_address, doctor_t doctor_t::list()`
 
@@ -68,19 +78,27 @@ It this example doctor is the class name that replaces \[class name\] in the tem
 
 In addition, the DAC exposes additional methods that enable you to work with table data.
 
+**writer**
+
 `doctor_t writer();`
 
-Return a reference that is pre-populated with values from the row.
+Returns a reference that is pre-populated with values from the row.
+
+**gaia_type**
 
 `gaia::common::gaia_type_t gaia_type() override;`
 
-This can be used when you are passed an edc_base_t object and want to know the type at runtime.
+Returns the type id for the DAC.
+
+**get**
 
 `static T_gaia get(gaia::common::gaia_id_t id);`
 
-Retrieves a specific object based on its ID. References to this method must be qualified by the container_type_id, and that type must match the type of the identified object.
+Retrieves a specific object of the type `T_gaia` based on its `ID`. An exception is thrown if the object represented by the id is not of type `T_gaia`.
 
-@param id the gaia_id_t of a specific database object, of type container_type_id
+@param id the `gaia_id_t` of a specific database object, of type `container_type_id`.
+
+**delete_row**
 
 `void delete_row();`
 
@@ -90,40 +108,47 @@ Delete the database object. This doesn\'t destroy the extended data class object
 
 Delete the database object specified by the id.
 
-## Operators on numbers
-
-Numerical fields support all the basic operators on numerical values: \, \=, \<, \<=, ==, !=.
-
 ## Writer Class API
 
-The writer class provides methods that allow you to add, update, and delete rows from a DAC.
+The writer class provides methods that allow you to add, update, and delete rows from DAC.
 
 Code is not generated for the following exposed methods:
 
-`*class name_t::delete_row()`
+**delete_row**
 
-Deletes the current row pointed to by a Direct Access \*class name\* \_t object.
+`doctor_t::delete_row()`
+
+Deletes the current row pointed to by the Direct Access `doctor_t` object.
 
 ```c++
 for (auto doctor_it = doctor_t::list().begin();
 doctor_it != doctor_t::list().end();)
 {
     auto next_doctor_it = doctor_it++;
-    next_doctor_it-\delete_row();
+    next_doctor_it->delete_row();
 }
 ```
 
-\*class name\*\_writer (as a typedef in the generated code)
+**doctor_writer** (as a typedef in the generated code)
 
-* setters for each field
+Includes setters for each field in the class.
 
-`*class name*_writer::update_row`
+**update_row**
 
-Updates current row pointed to by a DA \_t object.
+`doctor_writer::update_row`
 
-`*class name*_writer::insert_row`
+Updates current row pointed to by a DA _t object.
 
-Adds a new row in a Direct Access \*class name\* \_t object.
+**insert_row**
+
+`doctor_writer::insert_row`
+
+Adds a new row in a Direct Access \*class name\*_t object.
+
+
+## Example
+
+The following code snippet inserts a new patient and then update his information after the row was inserted.
 
 ```c++
 gaia_id_t id = patient_t::insert_row("John", 175, false, nullptr, {});
