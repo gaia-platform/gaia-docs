@@ -66,6 +66,8 @@ Removes all relationships (1 side of 1:1 or N side of 1:N) from this reference.
 
 Removes a Value Linked Reference from the list.
 
+The `erase()` method is functionally the equivalent to the `disconnect()` method except that it takes an iterator that points to the item to disconnect and returns an iterator to the next item in the list.
+
 **size**
 
 `patients_t::list name().size()`
@@ -103,7 +105,7 @@ void delete_one_to_many_relationship(gaia_id_t doctor_id)
 }
 ```
 
-Methods on Value Linked Relationships
+## Methods on Value Linked Relationships
 
 `patients_t::list().begin()`
 
@@ -114,7 +116,7 @@ Methods on Value Linked Relationships
 The `where()` takes a predicate as input and returns a container with the filtered elements as output.
 The predicate is expressed as `std::function bool (const > T_class&)` where the T_class is the Direct Access class contained by the container.
 
-edc_invalid_object_type: Argument does not match the class type.
+`edc_invalid_object_type`: Argument does not match the class type.
 
 Example
 
@@ -144,13 +146,13 @@ auto janes_doctor_container = doctor_t::list().where(
 
 ## **Operators on containers**
 
-It is possible to evaluate predicates on relationships. The supported predicates are: contains, empty, count.
+The following methods are used to evaluate predicates on relationships.  
 
 **contains**
 
 `contains()`
 
-Evaluates to true when a container contains a certain predicate or a specific object.
+Evaluates to true when at least one object in the container matches a filter predicate.
 
 **empty**
 

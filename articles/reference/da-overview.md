@@ -20,18 +20,18 @@ Examples in these articles are taken from the Direct Access sample app that is i
 
 For a discussion of the sample, see [Using the Direct Access Classes](../apps-direct-access.md).
 
-There are four classes that you use when writing Direct Access code:
-
-* DA class (class name_t)
-  * There is one class for each table defined in the database schema.
+There are four classes that you use when interacting with your data:
+* DA class (class_name_t)
+  * There is one class generated for each table defined in the database schema.
 
 In addition to the DA classes, there are three other classes that are defined that you will use when writing DA code:
 
-* writer (\*class name\*_writer)
-* reference (\*class name\*_ref_t) -> for 1:1 relationships
-* container (\*class name\*_list_t) -> for 1:n relationships
+* writer (class_name_writer)
+* reference (class_name_ref_t) -> for 1:1 relationships
+* container (class_name_list_t) -> for 1:n relationships
+  * The container class is also used to iterate over all the top-level objects of a specific type in a database. 
 
- The \*class name\* for each of these class types is the table name listed in the schema.
+ The class_name for each of these class types is the table name listed in the schema.
 
 For example, for the following table definition:
 
