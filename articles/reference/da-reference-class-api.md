@@ -30,11 +30,11 @@ Exposes:
 
 **Constructor**
 
-    ```
-        doctor_t(gaia::common::gaia_id_t parent,
-                gaia::common::gaia_id_t child,
-                gaia::common::reference_offset_t child_offset);
-    ```
+```cpp
+    doctor_t(gaia::common::gaia_id_t parent,
+            gaia::common::gaia_id_t child,
+            gaia::common::reference_offset_t child_offset);
+```
 
 
 **Connect and Disconnect methods**

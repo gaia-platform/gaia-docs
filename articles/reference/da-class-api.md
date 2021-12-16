@@ -29,7 +29,7 @@ Accessors: The DAC implements an accessor for each field in the table to retriev
 
 For information on the full set of supported types, see [create table](ddl-create-table.md).
 
-## constructors
+## Constructors
 
 `doctor_t:doctor_t()`
 
@@ -41,7 +41,7 @@ It is valid to cache DAC across transaction boundaries. The system guarantees th
 
 **insert_row**
 
-`gaia::common::gaia_id_t doctor_t::insert_row(<field 1, <field2>,...)`
+`gaia::common::gaia_id_t doctor_t::insert_row(<field 1>, <field2>,...)`
 
 Adds a row to the table described by the class.
 
@@ -94,9 +94,9 @@ Returns the type id for the DAC.
 
 `static T_gaia get(gaia::common::gaia_id_t id);`
 
-Retrieves a specific object of the type `T_gaia` based on its `ID`. An exception is thrown if the object represented by the id is not of type `T_gaia`.
+Retrieves a specific object of the type `T_gaia` based on its ID. An exception is thrown if the object represented by the ID is not of type `T_gaia`.
 
-@param id the `gaia_id_t` of a specific database object, of type `container_type_id`.
+@param ID the `gaia_id_t` of a specific database object, of type `container_type_id`.
 
 **delete_row**
 
@@ -106,7 +106,7 @@ Delete the database object. This doesn\'t destroy the extended data class object
 
 `static void delete_row(gaia::common::gaia_id_t id);`
 
-Delete the database object specified by the id.
+Delete the database object specified by the ID.
 
 ## Writer Class API
 
@@ -122,7 +122,7 @@ Deletes the current row pointed to by the Direct Access `doctor_t` object.
 
 ```c++
 for (auto doctor_it = doctor_t::list().begin();
-doctor_it != doctor_t::list().end();)
+    doctor_it != doctor_t::list().end();)
 {
     auto next_doctor_it = doctor_it++;
     next_doctor_it->delete_row();
@@ -137,7 +137,7 @@ Includes setters for each field in the class.
 
 `doctor_writer::update_row`
 
-Updates current row pointed to by a DA _t object.
+Updates current row pointed to by a DA_t object.
 
 **insert_row**
 

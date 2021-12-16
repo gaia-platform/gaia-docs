@@ -17,7 +17,6 @@ The information contained in this document represents information about preview 
 The Direct Access Classes implement a reader and a writer class which provides zero-copy reads and direct references to related records.
 This allows you to cache values in a local variable without the overhead of performing copy every time you read a field value.
 
-
 The following are exposed as part of the container `patient _list_t`.
 
 Examples in these articles are taken from the Direct Access sample app that is installed with the SDK at /opt/gaia/examples/direct_access.
@@ -59,19 +58,19 @@ Aliased to remove.
 
 **clear**
 
-`patients_t::<list name().clear()`
+`patients_t::<list name>().clear()`
 
 Removes all relationships (1 side of 1:1 or N side of 1:N) from this reference.
 
 **erase**
 
-`patients_t::list name().erase()`
+`patients_t::<list name>().erase()`
 
 The `erase()` method is functionally the equivalent to the `disconnect()` method except that it takes an iterator that points to the item to disconnect and returns an iterator to the next item in the list.
 
 **size**
 
-`patients_t::list name().size()`
+`patients_t::<list name>().size()`
 
 Gets the number of linked rows.
 
@@ -132,16 +131,16 @@ gaia_log::app().info("Jack's doctor is {}", jacks_doctor.name());
 // Contains with constant.
 auto jane = *(patient_t::list().where(patient_expr::name ==Jane).begin());
 auto janes_doctor_container = doctor_t::list().where(
-    doctor_expr::patients.contains(jane));
-    auto janes_doctor = *janes_doctor_container.begin();
-    gaia_log::app().info("Jane's doctor is {}", janes_doctor.name());
-    auto doctors_with_no_patients =
-        doctor_t::list().where(doctor_expr::patients.empty());
+doctor_expr::patients.contains(jane));
+auto janes_doctor = *janes_doctor_container.begin();
+gaia_log::app().info("Jane's doctor is {}", janes_doctor.name());
+auto doctors_with_no_patients =
+    doctor_t::list().where(doctor_expr::patients.empty());
 
-    if (doctors_with_no_patients.begin() == doctors_with_no_patients.end())
-    {
-        gaia_log::app().info(All the doctors have at least one patient);
-    }
+if (doctors_with_no_patients.begin() == doctors_with_no_patients.end())
+{
+    gaia_log::app().info(All the doctors have at least one patient);
+}
 ...
 ```
 
