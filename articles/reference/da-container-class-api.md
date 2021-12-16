@@ -10,10 +10,13 @@ lastupdate:
 
 The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
 
-
 ---
 
 # Container Class API
+
+The Direct Access Classes implement a reader and a writer class which provides zero-copy reads and direct references to related records.
+This allows you to cache values in a local variable without the overhead of performing copy every time you read a field value.
+
 
 The following are exposed as part of the container `patient _list_t`.
 
@@ -32,7 +35,7 @@ Examples in these articles are taken from the Direct Access sample app that is i
 * One that accepts a gaia_id_t, which isn't typesafe, and avoids the  creation of objects if you already have the Gaia id.
 * One that accepts an instance of a Direct Access class, which is typesafe, and does not allow passing instances of the wrong type.
 
-Synonym for disconnect.
+Synonym for disconnect().
 
 **remove**
 
@@ -40,13 +43,13 @@ Synonym for disconnect.
 
 Breaks a relationship between rows.
 
-Synonym for disconnect.
+Synonym for disconnect().
 
 **connect**
 
 `patients_t::<list name>().connect()`
 
-Aliased to insert.
+Synonym for connect().
 
 **disconnect**
 
@@ -63,8 +66,6 @@ Removes all relationships (1 side of 1:1 or N side of 1:N) from this reference.
 **erase**
 
 `patients_t::list name().erase()`
-
-Removes a Value Linked Reference from the list.
 
 The `erase()` method is functionally the equivalent to the `disconnect()` method except that it takes an iterator that points to the item to disconnect and returns an iterator to the next item in the list.
 
@@ -175,7 +176,7 @@ The following code snippet shows the usage of the `contains()` and `empty()` met
 auto jacks_doctor_container = doctor_t::list().where(
     doctor_expr::patients.contains(patient_expr::name == Jack));
 auto jacks_doctor = *jacks_doctor_container.begin();
-gaia_log::app().info("Jack\'s doctor is {}", jacks_doctor.name());
+gaia_log::app().info("Jack's doctor is {}", jacks_doctor.name());
 
 // Contains with constant.
 auto jane = *(patient_t::list().where(patient_expr::name == Jane).begin());
