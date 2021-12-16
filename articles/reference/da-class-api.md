@@ -10,8 +10,6 @@ lastupdate:
 
 The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
 
-Examples in these articles are taken from the Direct Access sample app that is installed with the SDK at /opt/gaia/examples/direct_access.
-
 ---
 
 # Direct Access Classes API
@@ -19,6 +17,8 @@ Examples in these articles are taken from the Direct Access sample app that is i
 The Direct Access Classes model the tables in the database.
 
 For each table in the database, gaiac generates code for a Direct Access Class (DAC) that includes the following items.
+
+Direct Access Classes implements reader and writer classes that provide zero-copy reads and direct references to related records. This allows you to cache values in a local variable without the overhead of performing copy every time you read a field value.
 
 Accessors: The DAC implements an accessor for each field in the table to retrieve the value of the field. For example:
 
@@ -28,6 +28,8 @@ Accessors: The DAC implements an accessor for each field in the table to retriev
 * `bool doctor_t::field_name4() const`
 
 For information on the full set of supported types, see [create table](ddl-create-table.md).
+
+Examples in these articles are taken from the Direct Access sample app that is installed with the SDK at /opt/gaia/examples/direct_access.
 
 ## Constructors
 
