@@ -18,9 +18,12 @@ The Direct Access Classes model the tables in the database.
 
 For each table in the database, gaiac generates code for a Direct Access Class (DAC) that includes the following items.
 
-Direct Access Classes implements reader and writer classes that provide zero-copy reads and direct references to related records. This allows you to cache values in a local variable without the overhead of performing copy every time you read a field value.
+Direct Access Classes implements reader and writer classes that provide zero-copy reads and direct references to related records.
+This allows you to avoid caching values in a local variable which eliminate the overhead of performing copy every time you access a field value.
 
-Accessors: The DAC implements an accessor for each field in the table to retrieve the value of the field. For example:
+## Accessors
+
+The DAC implements an accessor for each field in the table to retrieve the value of the field. For example:
 
 * `const char* doctor_t::field_name1() const`
 * `uint64_t doctor_t::field_name2() const`
@@ -76,8 +79,6 @@ It this example doctor is the class name that replaces \[class name\] in the tem
  };
 ```
 
-## Additional Methods
-
 In addition, the DAC exposes additional methods that enable you to work with table data.
 
 **writer**
@@ -112,15 +113,17 @@ Delete the database object specified by the ID.
 
 ## Writer Class API
 
-The writer class provides methods that allow you to add, update, and delete rows from DAC.
+**doctor_writer** (as a typedef in the generated code)
 
-Code is not generated for the following exposed methods:
+The writer class provides methods that allow you to add, update, and delete rows from DAC. This includes setters for each field in the class.
 
 **delete_row**
 
 `doctor_t::delete_row()`
 
 Deletes the current row pointed to by the Direct Access `doctor_t` object.
+
+The following code snippet uses the Declarative C++ [`for`](declarative-for-statement.md) statement to iterate through the list of doctors and delete each doctor.
 
 ```c++
 for (auto doctor_it = doctor_t::list().begin();
@@ -130,10 +133,6 @@ for (auto doctor_it = doctor_t::list().begin();
     next_doctor_it->delete_row();
 }
 ```
-
-**doctor_writer** (as a typedef in the generated code)
-
-Includes setters for each field in the class.
 
 **update_row**
 

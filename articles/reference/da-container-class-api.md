@@ -38,7 +38,7 @@ Synonym for disconnect().
 
 **remove**
 
-`patients_t::<list name>().remove()`
+`patients_t::[list_name]().remove()`
 
 Breaks a relationship between rows.
 
@@ -46,35 +46,35 @@ Synonym for disconnect().
 
 **connect**
 
-`patients_t::<list name>().connect()`
+`patients_t::[list_name]().connect()`
 
 Synonym for connect().
 
 **disconnect**
 
-`patients_t::<list name>().disconnect()`
+`patients_t::[list_name]().disconnect()`
 
 Aliased to remove.
 
 **clear**
 
-`patients_t::<list name>().clear()`
+`patients_t::[list_name]().clear()`
 
 Removes all relationships (1 side of 1:1 or N side of 1:N) from this reference.
 
 **erase**
 
-`patients_t::<list name>().erase()`
+`patients_t::[list_name]().erase()`
 
 The `erase()` method is functionally the equivalent to the `disconnect()` method except that it takes an iterator that points to the item to disconnect and returns an iterator to the next item in the list.
 
 **size**
 
-`patients_t::<list name>().size()`
+`patients_t::[list_name]().size()`
 
 Gets the number of linked rows.
 
-Examples:
+Example
 
 ```cpp
 patient_t jane = patient_t::get(patient_t::insert_row(Jane, 183, true));

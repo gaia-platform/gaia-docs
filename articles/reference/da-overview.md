@@ -21,6 +21,7 @@ Examples in these articles are taken from the Direct Access sample app that is i
 For a discussion of the sample, see [Using the Direct Access Classes](../apps-direct-access.md).
 
 There are four classes that you use when interacting with your data:
+
 * DA class (class_name_t)
   * There is one class generated for each table defined in the database schema.
 
