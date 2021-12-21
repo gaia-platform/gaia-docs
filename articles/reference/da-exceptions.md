@@ -29,3 +29,15 @@ To connect two objects, a `gaia_id` is needed but not available until create is 
 `edc_already_inserted`
 
 An attempt was made to insert a member that has already been inserted.
+
+`invalid_object_id`
+
+An attempt was made by a transaction to reference an object ID that does not exist.
+
+`no_open_transaction`
+
+There is no open transaction in this session.
+
+`transaction_update_conflict`
+
+The transaction conflicts with another transaction.

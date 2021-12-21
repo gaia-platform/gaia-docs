@@ -19,7 +19,7 @@ The Direct Access Classes model the tables in the database.
 For each table in the database, gaiac generates code for a Direct Access Class (DAC) that includes the following items.
 
 Direct Access Classes implements reader and writer classes that provide zero-copy reads and direct references to related records.
-This allows you to avoid caching values in a local variable which eliminate the overhead of performing copy every time you access a field value.
+Since the Gaia database resides in memory, accessing a record is the same as accessing a local variable. This eliminates the need to cache database values in the client code.
 
 ## Accessors
 
@@ -123,7 +123,7 @@ The writer class provides methods that allow you to add, update, and delete rows
 
 Deletes the current row pointed to by the Direct Access `doctor_t` object.
 
-The following code snippet uses the Declarative C++ [`for`](declarative-for-statement.md) statement to iterate through the list of doctors and delete each doctor.
+The following code snippet deletes all the values in the table doctor.
 
 ```c++
 for (auto doctor_it = doctor_t::list().begin();
