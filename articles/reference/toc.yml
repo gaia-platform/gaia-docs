@@ -31,7 +31,10 @@
     href: ddl-gaia.md
     items:
     - name: Relationships
-      href: ddl-relationships.md    
+      href: ddl-relationships.md
+      items:
+      - name: Implicit Relationships
+        href: ddl-implicit-relationships.md
     - name: create database
       href: ddl-create-database.md
     - name: create index
@@ -44,8 +47,6 @@
       href: ddl-drop-table.md
     - name: use
       href: ddl-use.md
-    - name: Value Linked References
-      href: ddl-value-linked-references.md
   - name: Direct Access Classes
     href: da-overview.md
     items:

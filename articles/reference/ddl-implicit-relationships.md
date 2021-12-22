@@ -11,9 +11,16 @@ lastupdate:
 The information contained in this document represents information about preview features of the product. Features might change when the product is released for general availability.
 
 ---
-# Value Linked References
+
+# Implicit Relationships
+
+Implicit relationships link rows in table by setting a reference value and the relationship is data dependent.
+
+In the Data Definition Language (DDL) file you specify a Value Linked Reference that will establish the relationship.
 
 `field_name references table_name [using [table_name].field_name] [where table_1.field = table_2.field]`
+
+The relationship is considered 'implicit' since linkage is data dependent and the rows are linked by the reference value.
 
 The `using` keyword is optional. It is only needed when you have more than one relationship between the two specified tables.
 
@@ -28,6 +35,7 @@ create table doctor (
  name string,
  patients references patient[]
 )
+
 create table patient (
  name string,
  doctor references doctor.patients
