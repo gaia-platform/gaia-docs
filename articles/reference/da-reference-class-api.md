@@ -39,6 +39,8 @@ Exposes:
 
 **Connect and Disconnect methods**
 
+The `connect()` and `disconnect()` methods link rows in an [explicit relationship](ddl-relationships.md).
+
 `bool connect(gaia::common::gaia_id_t id);`
 
 `bool connect(const doctor_t_t& object);`
