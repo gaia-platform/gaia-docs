@@ -14,13 +14,13 @@ The information contained in this document represents information about preview 
 
 # Implicit Relationships
 
-Implicit relationships link rows in table by setting a reference value and the relationship is data dependent.
+Implicit relationships link rows in two tables by defining a relationship between fields in those tables. This relationship is data dependent.
 
 In the Data Definition Language (DDL) file you specify a Value Linked Reference that will establish the relationship.
 
 `field_name references table_name [using [table_name].field_name] [where table_1.field = table_2.field]`
 
-The relationship is considered 'implicit' since linkage is data dependent and the rows are linked by the reference value.
+The relationship is considered 'implicit' because links between rows are created automatically based on the content of the tables in a reference, and optionally, values in those records.
 
 The `using` keyword is optional. It is only needed when you have more than one relationship between the two specified tables.
 
