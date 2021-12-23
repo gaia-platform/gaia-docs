@@ -43,6 +43,5 @@ When writing your declarative code, keep in mind that each Rule runs within a se
 
 To state this another way:
 
-- Rules run on separate threads. When data identified by an Active Field changes, your app can check the database before rules based on the field run. 
-=Rules processing is atomic. A Rule must complete execution before you can see the results of actions due to the changes.
-
+- Rules run on separate threads. When data identified by an Active Field changes, your app can check the database before rules based on the field run.
+- Rules processing is atomic. A Rule must complete execution before you can see the results of actions due to the changes.
