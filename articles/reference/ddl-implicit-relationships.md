@@ -20,7 +20,7 @@ In the Data Definition Language (DDL) file you specify a Value Linked Reference 
 
 `field_name references table_name [using [table_name].field_name] where table_1.field = table_2.field`
 
-The relationship is considered *implicit* because links between rows are created automatically based on the values of their linked fields as specified by the where clause. This relationship is data-dependent: the linked fields in two related rows must have identical values.
+The relationship is considered *implicit* because links between rows are created automatically based on the values of their linked fields as specified by the `where` clause. This relationship is data-dependent: the linked fields in two related rows must have identical values.
 
 The `using` keyword is optional. It is only needed when you have more than one relationship between the two specified tables.
 
