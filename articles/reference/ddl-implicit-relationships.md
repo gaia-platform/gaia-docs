@@ -16,7 +16,7 @@ The information contained in this document represents information about preview 
 
 Implicit relationships link rows in tables by defining a relationship between fields in those tables.
 
-In the Data Definition Language (DDL) file you specify a Value Linked Reference that will establish the relationship. An implicit relationship is defined in much the same manner as an explicit relationship except that you use a `where` clause to specify the fields on which the relationship is established.
+In the Data Definition Language (DDL) file you specify a Value Linked Reference that will establish the relationship. An implicit relationship is defined similarly to an explicit relationship except that you use a `where` clause to specify the fields that define the relationship.
 
 `field_name references table_name [using [table_name].field_name] where table_1.field = table_2.field`
 
@@ -42,4 +42,4 @@ create table patient (
 );
 ```
 
-If the doctor table definition is terminated with a semicolon the compilation of the DDL will fail since the patient table has not yet been defined.
+If the `doctor` table definition is terminated with a semicolon, the compilation of the DDL will fail since the `patient` table has not yet been defined.
