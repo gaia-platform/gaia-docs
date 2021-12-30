@@ -31,7 +31,7 @@ For more information on Implicit Relationships, see Implicit [Relationships](ddl
 
 ## create
 
-Creates a one to one or a one to  many link between tables.
+Creates a one-to-one or a one-to-many link between tables.
 
 ```
 [create] relationship [if not exists] relationship_name (
