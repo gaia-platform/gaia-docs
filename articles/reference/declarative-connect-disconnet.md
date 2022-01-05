@@ -14,7 +14,7 @@ The information contained in this document represents information about preview 
 
 # Connect and Disconnect
 
-Connect and Disconnect are methods on a field in a table in the Gaia catalog.
+Connect and Disconnect are methods on a field in the class representation of a table in the Gaia catalog.
 
 ## Connect
 

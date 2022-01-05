@@ -14,8 +14,24 @@ The information contained in this document represents information about preview 
 
 # Relationships
 
+Relationships in the Gaia Database allow a row in one table to reference one or more rows in another table. There are two ways to create a relationship between tables:
+
+* Explicit Relationships
+* Implicit Relationships
+
+## Explicit Relationships
+
+To create an Explicit Relationship you link the rows using the [connect()](ddl-connect-disconnect.md) method. To unlink the row you call the [disconnect()](ddl-connect-disconnect.md) method. The relationship is considered *explicit* because you specify links between specific rows in the database, independently of the data in those rows.
+
+## Implicit Relationships
+
+To associate two tables with an Implicit Relationship, specify a Value Linked Reference in the Data Definition Language (DDL) file. When two rows in different tables contain the same value in their linked fields, a link is automatically created between the rows and a relationship is created between the tables. The relationship is considered *implicit* because links between rows are data-dependent: two rows are linked if the values in their linked fields are identical.
+
+For more information on Implicit Relationships, see Implicit [Relationships](ddl-implicit-relationships.md).
+
 ## create
-Creates a one to one or a one to  many link between tables.
+
+Creates a one-to-one or a one-to-many link between tables.
 
 ```
 [create] relationship [if not exists] relationship_name (
