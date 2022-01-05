@@ -25,7 +25,7 @@ To create an Explicit Relationship you link the rows using the [connect()](ddl-c
 
 ## Implicit Relationships
 
-To associate two tables with an Implicit Relationship, specify a Value Linked Reference in the Data Definition Language (DDL) file.When two rows in different tables contain the same value in their linked fields, a link is automatically created between the rows and a relationship is created between the tables. The relationship is considered *implicit* because links between rows are data-dependent: two rows are linked if the values in their linked fields are identical.
+To associate two tables with an Implicit Relationship, specify a Value Linked Reference in the Data Definition Language (DDL) file. When two rows in different tables contain the same value in their linked fields, a link is automatically created between the rows and a relationship is created between the tables. The relationship is considered *implicit* because links between rows are data-dependent: two rows are linked if the values in their linked fields are identical.
 
 For more information on Implicit Relationships, see Implicit [Relationships](ddl-implicit-relationships.md).
 
