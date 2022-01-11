@@ -21,7 +21,8 @@ Relationships in the Gaia Database allow a row in one table to reference one or 
 
 ## Explicit Relationships
 
-To create an Explicit Relationship you link the rows using the [connect()](ddl-connect-disconnect.md) method. To unlink the row you call the [disconnect()](ddl-connect-disconnect.md) method. The relationship is considered *explicit* because you specify links between specific rows in the database, independently of the data in those rows.
+To create an Explicit Relationship you link the rows using the [connect()](declarative-connect-disconnect.md)
+ method. To unlink the row you call the [disconnect()](declarative-connect-disconnect.md) method. The relationship is considered *explicit* because you specify links between specific rows in the database, independently of the data in those rows.
 
 ## Implicit Relationships
 

@@ -8,7 +8,7 @@
     - name: rule_context structure
       href: declarative-rule_context-structure.md
     - name: connect and disconnect
-      href: declarative-connect-disconnet.md
+      href: declarative-connect-disconnect.md
     - name: for(. . . )
       href: declarative-for-statement.md
     - name: if

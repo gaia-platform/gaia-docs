@@ -27,8 +27,8 @@ This document provides guidance on setting up the Gaia SDK, which includes the G
 
 Before you begin, make sure that you have the following prerequisites:
 
--   Ubuntu Linux 20.04
--   A machine that supports the x64 architecture.
+- Ubuntu Linux 20.04
+- A machine that supports the x64 or the arm64 architecture.
 
 The Gaia SDK installer installs the Gaia tools and Clang 10.
 

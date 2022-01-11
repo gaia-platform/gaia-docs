@@ -14,7 +14,7 @@ The information contained in this document represents information about preview 
 
 # Direct Access API overview
 
-The Direct Access Classes (DAC) provide an API to work directly with the Gaia database. You use [gaiac](../tools/tool-gaiac.md) to read a schema from the database and generate the headers that contain the API that you use to access data. For information on loading a schema to the database, see [Specifying the Hello database schema](tutorials/writing-first-gaia-application.html#specifying-the-hello-database-schema) in "Writing your first Gaia application".
+The Direct Access Classes (DAC) provide an API to work directly with the Gaia database. You use [gaiac](../tools/tool-gaiac.md) to read a schema from the database and generate the headers that contain the API that you use to access data. For information on loading a schema to the database, see [Specifying the Hello database schema](../tutorials/writing-first-gaia-application.md#specifying-the-hello-database-schema) in "Writing your first Gaia application".
 
 Examples in these articles are taken from the Direct Access sample app that is installed with the SDK at /opt/gaia/examples/direct_access.
 
