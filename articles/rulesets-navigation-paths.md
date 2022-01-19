@@ -16,18 +16,20 @@ The information contained in this document represents information about preview 
 
 In Gaia, references to a field in the database can take two forms:
 
-* A Reference directly to a single row and field (for example Flight.FlightNumber),
-* A Navigation Path that refers to a set of related data (For example Flight.Passengers->FirstName) through table relationships and can represent 0, 1, or more results.
+* A Direct Reference to a single row and field.
+* A Navigation Path that refers to a set of related data through table relationships and can represent 0, 1, or more results.
 
 You can declare a Navigation Path explicitly as a path through data relationships expressed as references. While this allows you to identify each relationship and to know exactly how the Path is constructed, it can result in long, unwieldy names that reduce comprehension.
 
-Alternatively, you can choose to use abbreviated Navigation Paths. When Gaia can derive the references from the data, you can omit the explicit segments in the path to create an abbreviated Navigation Path. This can result in clearer and simpler Rule code.
+An explicit Navigation Path defines the path based on the relationships defined your Data Definition Language (DDL) file.
+
+Alternatively, you can choose to use abbreviated Navigation Paths. When Gaia can derive the references from the schema defined in the DDL, you can omit the explicit segments in the path to create an abbreviated Navigation Path. This can result in clearer and simpler Rule code.
 
 A Rule statement can contain multiple Navigation Paths. Each Navigation Path in the statement can expand to 0 or more results. This means that the number of times the statement executes can be the product of the result counts of each Navigation Path. For example, if a statement contains three Navigation Paths, with result set sizes 3, 1, and 15, the statement might execute up to 3x1x15 times.
 
-The following Ruleset example shows two rules that contain a multi "segment" path. The first rule iterates using explicit navigation while the second rule iterates using in implicit navigation. 
+The following Ruleset example shows two rules that contain a multi "segment" path. The first rule iterates using explicit navigation while the second rule iterates using implicit navigation.
 
-Each Rule fires when the clinic is closed. 
+Each Rule fires when the clinic is closed.
 
 ```c++
 ruleset clinics_ruleset
@@ -62,7 +64,6 @@ ruleset clinics_ruleset
 
 In the following sample run, there are two clinics. Each clinic as two doctors, each of which has two patients. When a Rule fires, it iterates four times; once for each patient.
 
-
 ```
 [2022-01-18T12:54:04.289] [info] [12886 12886] <app>: Setting Mal's Practice to closed.
 [2022-01-18T12:54:04.290] [info] [12886 12886] <app>: Setting Doc in the Box to closed.
@@ -90,9 +91,9 @@ In the following sample run, there are two clinics. Each clinic as two doctors, 
 
 Navigation Paths occur when a Rule contains a reference to a field in the database.
 
-For example:
+For example, we this field from the baggage handler scenario described in [Writing Rules with Gaia Declarative C++](rulesets-writing-rules.md):
 
-`Traveler.MilesFlown`
+`@Traveler.MemberMiles`
 
 This essentially says:
 

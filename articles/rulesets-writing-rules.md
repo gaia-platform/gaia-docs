@@ -53,7 +53,7 @@ The key to understanding this Rule is that FlightMiles is designated as an Activ
 
 Each flight has many passengers. There is a 1:many relationship between the Flight row in the database, which contains FlightMiles, and the Traveler row, which contains MemberMiles. The rules engine recognizes that relationship from the Catalog and automatically iterates this statement in the Rule for every passenger on the flight. So, that one assignment causes the system to:
 
-= Recognize that there are many passengers on the flight.
+- Recognize that there are many passengers on the flight.
 - Finds all the passengers on this flight; the Rule then iterates over the result set. 
 - Starting from the Flight row, navigate to the correct Traveler row in that table for each passenger. Even here, the rules engine is automatically navigating through several intermediate rows to get from Flight to Traveler.
 - Complete the update for every passenger. Navigation paths execute against sets of rows completely transparently and automatically.
