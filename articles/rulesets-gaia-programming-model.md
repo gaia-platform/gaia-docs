@@ -74,11 +74,14 @@ ruleset <rulesetname2>
 {
     { rule code }
 
-    { rule code }
+    { rule code } 
 }
 ```
 
-**Note**: While the structure of Ruleset code is similar C++ there are differences. Specifically, within the body of a Ruleset, code is not permitted outside the Rule code. For example, the following is not permitted:
+**Note**: While the structure of Ruleset code is similar C++ there are differences. Specifically, within the body of a Ruleset, no code is permitted outside of rule definitions. For example, the following Ruleset psuedocode defines a variable, x, which does not belong to any rule and is therefore not permitted:
+
+Maybe, "no code is permitted outside of rule definitions"? And then, for example the int x does not belong to any rule and is therefore not allowed
+
 ```cpp
 ruleset sample_ruelset
 {
