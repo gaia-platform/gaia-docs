@@ -78,6 +78,18 @@ ruleset <rulesetname2>
 }
 ```
 
+**Note**: While the structure of Ruleset code is similar C++ there are differences. Specifically, within the body of a Ruleset, code is not permitted outside the Rule code. For example, the following is not permitted:
+```cpp
+ruleset sample_ruelset
+{
+    int x;
+
+    { rule code }
+
+    { rule code }
+}
+```
+
 ## Field Names
 
 Every field reference is to a field of a row in a table. To ensure that your field names are unambiguous, qualify them with the table name. However, Gaia also allows for unqualified field names.  If a field name is unique across all tables, you can use it without qualification. If a field name occurs in more than one table other than in a key reference, you must qualify it with the table name. The translation engine flags cases when the qualification is necessary.
