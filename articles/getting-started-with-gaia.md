@@ -29,18 +29,16 @@ Before you begin, make sure that you have the following prerequisites:
 
 - Ubuntu Linux 20.04
 - A machine that supports the x64 or the arm64 architecture.
+- The [clang](http://clang.org/) compiler version 8 or higher.
+- [CMake](https://cmake.org/) is the officially supported method for building Gaia applications. In addition, the Gaia SDK uses CMake to automate code generation from DDL and ruleset files.
 
-The Gaia SDK installer installs the Gaia tools and Clang 10.
-
-CMake is the officially supported method for building Gaia applications. In addition, the Gaia SDK uses CMake to automate code generation from DDL and ruleset files.
-
-To install CMake, run the following command:
+If you don't currently have cmake and clang installed, you can use the following commands to install them:
 
 ```bash
-sudo apt-get install cmake
+sudo apt update && sudo apt upgrade && sudo apt install cmake clang
 ```
 
-To build Gaia exmamples using CMake and make tools, specify the Clang compiler by setting the following variables in your environment:
+To build Gaia examples using CMake and make tools, specify the Clang compiler by setting the following variables in your environment:
 
 ```bash
 export CC=/usr/bin/clang-10
@@ -67,8 +65,8 @@ You must have sudo privileges to install the package.
 
 To install the package:
 
-1.  Navigate to the folder that contains the downloaded package.
-2.  At the command prompt, replace the x.y.z with the correct version number and run the following commands:
+1. Navigate to the folder that contains the downloaded package.
+2. At the command prompt, replace the x.y.z with the correct version number and run the following commands:
 
     ```bash
     sudo apt-get update
@@ -77,7 +75,7 @@ To install the package:
 
 To remove the package:
 
-1.  At the command prompt, run the following command:
+1. At the command prompt, run the following command:
 
     ```bash
     sudo apt-get remove gaia
@@ -85,14 +83,15 @@ To remove the package:
 
 To update the package, remove it and install the updated package:
 
-1.  Download the updated package.
-2.  Remove the currently installed package, run the following command:
+1. Download the updated package.
+2. Remove the currently installed package, run the following command:
 
     ```bash
     sudo apt-get remove gaia
     ```
-3.  Navigate to the folder that contains the updated package.
-4.  After replacing the x.y.z with the version number of the package that you are installing, run the following command:
+
+3. Navigate to the folder that contains the updated package.
+4. After replacing the x.y.z with the version number of the package that you are installing, run the following command:
 
     ```bash
     sudo apt-get install ./gaia-x.y.z_amd64.deb
@@ -197,8 +196,9 @@ To start the server on WSL2 running Ubuntu and run it in the background (Gaia ha
 ```bash
 gaia_db_server --data-dir .<dbname> &
 ```
+
 ## Next Steps
 
-* [Write your first Gaia App](tutorials/writing-first-gaia-application.md)
-* Learn more about [Gaia Rulesets](rulesets-gaia-rulesets.md)
-* [Building apps with Gaia](apps-building-gaia-apps.md)
+- [Write your first Gaia App](tutorials/writing-first-gaia-application.md)
+- Learn more about [Gaia Rulesets](rulesets-gaia-rulesets.md)
+- [Building apps with Gaia](apps-building-gaia-apps.md)

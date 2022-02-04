@@ -17,18 +17,18 @@ Creates a new table. If the table already exists, gaiac returns an error and the
 
 ```
 [CREATE] TABLE [if not exists] table_name ( [
-{ fieldname datatype [UNIQUE]
+{ fieldname datatype [unique][optional]
 [, ... ]
 ] );
 ```
- 
-The if not exists operator is optional. If a table with the same name already exists, the command is ignored. However, there is no verification that the existing table has a structure identical to that indicated by the create table statement. 
+
+The if not exists operator is optional. If a table with the same name already exists, the command is ignored. However, there is no verification that the existing table has a structure identical to that indicated by the create table statement.
 
 The fieldname parameter specifies the name of a field in the table.
 
 The datatype parameter specifies the type of data the field holds (e.g. varchar, integer, date, etc.).
 
-Valid data types are: 
+Valid data types are:
 
 - bool - Boolean data type
 - int8 - 8-bit integer
@@ -42,7 +42,8 @@ Valid data types are:
 - float - signed 4-byte floating-point number
 - double - signed 8-byte floating-point number
 - string - A null-terminated vector of bytes up to the limit of the available payload. Typically ASCII or utf-8.
- 
+- Arrays of scalar types. For example, `history int32[]`. For more information, see [Scalar Arrays](declarative-scalar-arrays.md).
+
 Remarks
 
 Use the optional `if not exists' to prevent an error from occurring if the table exists. If a table with the same name already exists, the command is ignored. However, there is no verification that the existing table has a structure identical to that indicated by the CREATE TABLE statement.
@@ -53,8 +54,21 @@ The short form of the `create table` statement, in which you omit the create ope
 
 The following example creates a table named "department."
 
+```sql
 CREATE TABLE if not exists department ( name string, current bool active);
- 
+```
+
+When you declare an optional value in your DDL, you can specify both optional and unique.
+
+Null values are not considered when evaluating values.
+
+Fields that are speicified as optional differ from non-optional in the following manner:
+
+- If you do not use the optional keyword, Gaia assigns a default value.
+- If you use the option keyword, Gaia assigns a null value.
+
+Optional values in Gaia are implemented in the Direct Access Classes using containers that provide functionality similar to  C++17 optional values. You can expect an optional value to behave like a C++17 optional.
+
 Use the interactive feature of gaiac to list the instantiated tables:
 
 <pre>
