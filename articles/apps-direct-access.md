@@ -20,24 +20,25 @@ The following shows the contents of a DDL file (hospital.ddl) that contains a si
 
 ```sql
     database hospital
-
+    
     table doctor (
         name string,
         patients references patient[]
     )
-
+    
     table patient (
         name string,
-        height uint8,
-        is_female bool,
+        height uint8 optional,
+        is_active bool,
+        analysis_results float[],
         doctor references doctor,
         address references address
     )
-
+    
     table address (
         street string,
         city string,
-        patient references patient 
+        patient references patient
     )
 ```
 

@@ -81,12 +81,6 @@ It this example doctor is the class name that replaces \[class name\] in the tem
 
 In addition, the DAC exposes additional methods that enable you to work with table data.
 
-**writer**
-
-`doctor_t writer();`
-
-Returns a reference that is pre-populated with values from the row.
-
 **gaia_type**
 
 `gaia::common::gaia_type_t gaia_type() override;`
@@ -111,6 +105,18 @@ Delete the database object. This doesn\'t destroy the extended data class object
 
 Delete the database object specified by the ID.
 
+**has_value**
+
+`has_value();`
+
+Returns a boolean indicating whether there is a value in the field.
+
+**writer**
+
+`doctor_t writer();`
+
+Returns a reference that is pre-populated with values from the row.
+
 ## Writer Class API
 
 **doctor_writer** (as a typedef in the generated code)
@@ -134,18 +140,17 @@ for (auto doctor_it = doctor_t::list().begin();
 }
 ```
 
-**update_row**
-
-`doctor_writer::update_row`
-
-Updates current row pointed to by a DA_t object.
-
 **insert_row**
 
 `doctor_writer::insert_row`
 
 Adds a new row in a Direct Access \*class name\*_t object.
 
+**update_row**
+
+`doctor_writer::update_row`
+
+Updates current row pointed to by a DA_t object.
 
 ## Example
 

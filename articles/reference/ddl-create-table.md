@@ -44,7 +44,7 @@ Valid data types are:
 - string - A null-terminated vector of bytes up to the limit of the available payload. Typically ASCII or utf-8.
 - Arrays of scalar types. For example, `history int32[]`. For more information, see [Scalar Arrays](declarative-scalar-arrays.md).
 
-Remarks
+## Remarks
 
 Use the optional `if not exists' to prevent an error from occurring if the table exists. If a table with the same name already exists, the command is ignored. However, there is no verification that the existing table has a structure identical to that indicated by the CREATE TABLE statement.
 
@@ -58,6 +58,8 @@ The following example creates a table named "department."
 CREATE TABLE if not exists department ( name string, current bool active);
 ```
 
+### Optional values
+
 When you declare an optional value in your DDL, you can specify both optional and unique.
 
 Null values are not considered when evaluating values.
@@ -68,6 +70,57 @@ Fields that are speicified as optional differ from non-optional in the following
 - If you use the option keyword, Gaia assigns a null value.
 
 Optional values in Gaia are implemented in the Direct Access Classes using containers that provide functionality similar to  C++17 optional values. You can expect an optional value to behave like a C++17 optional.
+
+The following table declares the height field as optional.
+
+```sql
+    table patient (
+        name string,
+        height uint8 optional,
+        is_active bool,
+        analysis_results float[],
+        doctor references doctor,
+        address references address
+    )
+```
+
+The following examples show inserting a row that contains no value for the height field and then accessing that field to include it in the log output.
+
+```cpp
+    void optional_values()
+    {
+        PRINT_METHOD_NAME();
+    
+        // You can pass nullopt instead of height to denote the absence of value.
+        gaia_id_t id = patient_t::insert_row("John", gaia::common::nullopt, false, {});
+        patient_t john = patient_t::get(id);
+    
+        // john.height() return a gaia::common::optional_t<uint8> which behaves
+        // similarly to a C++17 std::optional.
+        if (john.height().has_value())
+        {
+            throw std::runtime_error("The value for john.height() should be missing.");
+        }
+        else
+        {
+            gaia_log::app().info("No height provided for patient {}", john.name());
+        }
+    
+        // You can update the missing value with a value.
+        patient_writer john_w = john.writer();
+        john_w.height = 178;
+        john_w.update_row();
+    
+        if (john.height().has_value())
+        {
+            gaia_log::app().info("{}'s height is {}", john.name(), john.height().value());
+        }
+        else
+        {
+            throw std::runtime_error("The height column is supposed to have a value.");
+        }
+    }
+```
 
 Use the interactive feature of gaiac to list the instantiated tables:
 

@@ -6,7 +6,7 @@ lastupdate: 10/26/2021
 
 # Relationships
 
-In the example DDL, we had a bunch of relationships. The relationships are reflected in the generated classes the same way other columns are.
+In the example DDL, we declare relationships that link the tables. The relationships are reflected in the generated classes the manner as other columns in the table.
 
 These are our relationships:
 
