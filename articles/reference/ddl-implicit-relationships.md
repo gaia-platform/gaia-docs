@@ -22,7 +22,9 @@ In the Data Definition Language (DDL) file you specify a Value Linked Reference 
 
 The relationship is considered *implicit* because links between rows are created automatically based on the values of their linked fields as specified by the `where` clause. This relationship is data-dependent: the linked fields in two related rows must have identical values.
 
-The `using` keyword is optional. It is only needed when you have more than one relationship between the two specified tables.
+### options
+
+**using**: Indicates the reference in the referenced table for the current reference definition to match. It is only needed when you have more than one reference between the two specified tables.
 
 ## Forward References
 
