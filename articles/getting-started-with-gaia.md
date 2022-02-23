@@ -49,7 +49,7 @@ export LDFLAGS="-B/usr/lib/llvm-10/bin/ -fuse-ld=lld"
 
 ## Download the Gaia SDK
 
-The Gaia SDK is delivered as a Debian software package (DEB): 
+The Gaia SDK is delivered as a Debian software package (DEB):
 
 gaia-x.y.z_amd64.deb
 
@@ -72,6 +72,14 @@ To install the package:
     sudo apt-get update
     sudo apt-get install ./gaia-x.y.z_amd64.deb
     ```
+
+During the installation process Gaia asks whether you want to install Gaia server as a systemd service. If you do not install the database as a service, you must run it from the command line prior running the Gaia tools or running a Gaia app.
+
+To reconfigure whether the database is installed as a service run the following command:
+
+```bash
+sudo dpkg-reconfigure gaia
+```
 
 To remove the package:
 
@@ -115,13 +123,29 @@ To update the package, remove it and install the updated package:
     Library files for the Gaia Platform.
 </pre>
 
-## Start the Gaia server
+## Starting the Gaia server
 
 To build or run any solution that is based on the Gaia Platform, the Gaia server must be running .
 
 We recommend that you don't run gaia\_db\_server in production under the root user. As with any daemon process that is accessible to the outside, running the Database Server process as root, or any other account with special access rights, is a security risk. As best practice in production, run Gaia under a separate user account. This user account should only own the data that is managed by the server, and should not be used to run other daemons. For example, using the user `nobody` is not recommended.
 
 To prevent a compromised server process from modifying the Gaia executables, in production the user account should not own the Gaia executable files.
+
+When starting the Database Server, we recommend that you use the --data-dir argument to specify the location to store the database and that you create a separate database for each project. When the installer configures the database server to run as a server, it specifies the default database location.
+
+To start the server from the command line:
+
+```bash
+gaia_db_server --data-dir .benchmark_db
+```
+
+During development and testing it can be useful to start with a clean database. To facilitate this, you can run the server with data persistence disable.
+
+To start the server from the command line with persistence disabled:
+
+```bash
+gaia_db_server --persistence disable
+```
 
 Gaia server command line arguments:
 
@@ -188,8 +212,6 @@ sudo systemctl start gaia
 ```
 
 ### Starting the Gaia Database Server on Windows Subsystem for Linux (WSL)
-
-When starting the Database Server on WSL, use the --data-dir argument to specify the location to store the database. We recommend that you create a separate database for each project.
 
 To start the server on WSL2 running Ubuntu and run it in the background (Gaia has not been tested on WSL1):
 
