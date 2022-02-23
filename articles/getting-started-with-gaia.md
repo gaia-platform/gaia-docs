@@ -28,7 +28,10 @@ This document provides guidance on setting up the Gaia SDK, which includes the G
 Before you begin, make sure that you have the following prerequisites:
 
 - Ubuntu Linux 20.04
-- A machine that supports the x64 or the arm64 architecture.
+- An environment that supports the x64 or the arm64 architecture. This can be:
+  - A physical machine
+  - A virtual machine
+  - A subsystem such as Windows Subsystem for Linux
 - The [clang](http://clang.org/) compiler version 8 or higher.
 - [CMake](https://cmake.org/) is the officially supported method for building Gaia applications. In addition, the Gaia SDK uses CMake to automate code generation from DDL and ruleset files.
 
@@ -74,6 +77,8 @@ To install the package:
     ```
 
 During the installation process Gaia asks whether you want to install Gaia server as a systemd service. If you do not install the database as a service, you must run it from the command line prior running the Gaia tools or running a Gaia app.
+
+**NOTE**: The database is configured as a systemd service. On platforms that do not support systemd the request to install as a service is not honored.
 
 To reconfigure whether the database is installed as a service run the following command:
 
@@ -194,7 +199,7 @@ To permanently set the minimum open file descriptor limit:
 
 1. Open /etc/security/limits.conf in an editor with root privileges and add the following lines:
 
-    ```
+     ```
     * soft nofile 65535
     * hard nofile 65535
     ```
@@ -221,6 +226,6 @@ gaia_db_server --data-dir .<dbname> &
 
 ## Next Steps
 
+- [Building apps with Gaia](apps-building-gaia-apps.md)
 - [Write your first Gaia App](tutorials/writing-first-gaia-application.md)
 - Learn more about [Gaia Rulesets](rulesets-gaia-rulesets.md)
-- [Building apps with Gaia](apps-building-gaia-apps.md)
