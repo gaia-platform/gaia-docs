@@ -13,7 +13,7 @@ The information contained in this document represents information about prerelea
 
 ---
 
-The Gaia Catalog Tool (gaiac) creates the datastore and tables that support your application. It also translates Gaia DDL files into the Gaia headers you include in your Ruleset and app code files.
+The Gaia Catalog Tool (gaiac) creates the datastore and tables that support your application. It also translates Gaia Data Definition Language (DDL) files into the Gaia headers you include in your Ruleset and app code files.
 
 ## Usage
 

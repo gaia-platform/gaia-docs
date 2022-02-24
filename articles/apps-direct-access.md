@@ -14,9 +14,9 @@ This walkthrough models the doctor/patient relationships in a hospital setting.
 
 ## Generating Direct Access Classes
 
-You use gaiac to read the schema of a database and generate the Direct Access Classes (DACsho) for the tables contained in it.
+You use gaiac to read the schema of a database and generate the Direct Access Classes (DAC) for the tables contained in it.
 
-The following shows the contents of a DDL file (hospital.ddl) that contains a simple schema for a database that relates patients to their doctor.
+The following shows the contents of a Data Definition Language (DDL) file (hospital.ddl) that contains a simple schema for a database that relates patients to their doctor.
 
 ```sql
     database hospital

@@ -20,7 +20,7 @@ Examples in these articles are taken from the Direct Access sample app that is i
 
 `class_name_ref_t`
 
-Reference order is determined by the order of the tables in the DDL.
+Reference order is determined by the order of the tables in the Data Definition Language (DDL)).
 
 The _ref_t class is only exposed on the first table that specifies the relationship in the DDL. This means that you can change membership of the related records using the first table and not the second. The second table only exposes the table_t type for the 1:1 link and not the table_ref_t type.
 
@@ -51,4 +51,4 @@ Links rows between two tables based on an existing relationship between the tabl
 
 `bool disconnect(common::gaia_id_t id);`
 
-Breaks the connection between rows. 
+Breaks the connection between rows.

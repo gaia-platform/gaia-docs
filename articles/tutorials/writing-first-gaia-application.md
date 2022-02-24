@@ -57,7 +57,7 @@ You'll execute all of the commands specified in this document in this folder.
 
 ## Specifying the Hello database schema
 
-If you are familiar with SQL syntax the Gaia DDL definition format will be familiar to you.
+If you are familiar with SQL syntax, the Gaia Data Definition Language (DDL definition format will be familiar to you.
 
 In your source folder, create a hello.ddl text file. Copy and paste the following definitions in it:
 

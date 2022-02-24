@@ -60,7 +60,7 @@ CREATE TABLE if not exists department ( name string, current bool active);
 
 ### Optional values
 
-When you declare an optional value in your DDL, you can specify both optional and unique.
+When you declare an optional value in your Data Definition Language (DDL), you can specify both optional and unique.
 
 Null values are not considered when evaluating values.
 

@@ -22,7 +22,7 @@ After your design phase, the Gaia Platform architecture lends itself best to the
 The schema Describes input to the system that Gaia uses to fire a Rule. Events can be generated from incoming sensor data, Database operations (such as a commit), Field updates; pretty much anything that you can attach to a processing action (a Rule). Events are defined at the source of the change (a sensor's input stream, a schema entry) and a type of event. The event also names a Rule that is to be fired when the specific type of event occurs.
 This is, of course, an iterative process. As you refine your application, you will make changes to the schema and Ruleset. A good start is to add the input table with an Active Field, then add a Ruleset that contains a Rule that fires when rows are inserted. Build from there (iterate) with tables for output and managing the application's state.
 
-You define the schema in a Data Definition Language (DDL )file.
+You define the schema in a Data Definition Language (DDL)file.
 
 ```sal
 create table if not exists names
@@ -45,3 +45,7 @@ To state this another way:
 - Rules run on separate threads. When data identified by an Active Field changes, it is possible for your app to check the database before Rules based on the field run.
 - Rules processing is atomic, a Rule must complete before you can see the results of actions due to the changes.
 - Rules only fire after the transaction that contains the change to the [Active Field](gaia-glossary.md#active-fields-rules-engine) is committed. Said more succinctly, Rules run post-commit.
+
+## See Also
+
+[Gaia Data Definition Language](reference/ddl-gaia.md)

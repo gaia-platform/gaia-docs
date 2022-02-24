@@ -50,7 +50,7 @@ The Gaia Platform consists of the following elements:
 
 And provides the following tools:
 
--   Gaia Catalog compiler. The catalog compiler creates the datastore and tables that support your application. It also translates Gaia DDL files into the Gaia headers you include in your ruleset and     app code files. For more information, see [Gaiac and DDL](articles/reference/ddl-gaia.md).
+-   Gaia Catalog compiler. The catalog compiler creates the datastore and tables that support your application. It also translates Gaia Data Definition Language (DDL) files into the Gaia headers you include in your ruleset and app code files. For more information, see [Gaia Data Definition Language](articles/reference/ddl-gaia.md).
 -   Gaia Translation Engine. The translation engine converts your rulesets into code files that you include in your app.
 
 These components and tools interact to create an end-to-end solution. To accomplish this, Gaia addresses the PUA paradigm: Perceive, Understand, and Act. In Gaia, this is expressed as:

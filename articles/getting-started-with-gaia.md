@@ -33,7 +33,7 @@ Before you begin, make sure that you have the following prerequisites:
   - A virtual machine
   - A subsystem such as Windows Subsystem for Linux
 - The [clang](http://clang.org/) compiler version 8 or higher.
-- [CMake](https://cmake.org/) is the officially supported method for building Gaia applications. In addition, the Gaia SDK uses CMake to automate code generation from DDL and ruleset files.
+- [CMake](https://cmake.org/) is the officially supported method for building Gaia applications. In addition, the Gaia SDK uses CMake to automate code generation from Data Definition Language (DDL) and Ruleset files.
 
 If you don't currently have cmake and clang installed, you can use the following commands to install them:
 
@@ -80,7 +80,7 @@ During the installation process Gaia asks whether you want to install Gaia serve
 
 **NOTE**: The database is configured as a systemd service. On platforms that do not support systemd the request to install as a service is not honored.
 
-To reconfigure whether the database is installed as a service run the following command:
+To reconfigure whether the database is installed as a service, run the following command:
 
 ```bash
 sudo dpkg-reconfigure gaia
