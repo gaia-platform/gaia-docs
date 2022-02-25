@@ -25,7 +25,7 @@ The following shows the contents of a Data Definition Language (DDL) file (hospi
         name string,
         patients references patient[]
     )
-    
+
     table patient (
         name string,
         height uint8 optional,
@@ -34,7 +34,7 @@ The following shows the contents of a Data Definition Language (DDL) file (hospi
         doctor references doctor,
         address references address
     )
-    
+
     table address (
         street string,
         city string,

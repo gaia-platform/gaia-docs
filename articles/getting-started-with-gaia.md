@@ -68,8 +68,9 @@ You must have sudo privileges to install the package.
 
 To install the package:
 
+1. Open a terminal session.
 1. Navigate to the folder that contains the downloaded package.
-2. At the command prompt, replace the x.y.z with the correct version number and run the following commands:
+1. At the command prompt, run the following commands; replacing the x.y.z with the correct version number:
 
     ```bash
     sudo apt-get update
