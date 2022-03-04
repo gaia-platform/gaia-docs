@@ -9,6 +9,8 @@
     href: rulesets-gaia-programming-model.md
   - name: Writing Rules with Gaia Declarative C++
     href: rulesets-writing-rules.md
+  - name: Navigation Paths
+    href: rulesets-navigation-paths.md
   - name: Cursors in Gaia
     href: rulesets-cursors-in-gaia.md
   - name: Using Tags
