@@ -13,7 +13,7 @@ The information contained in this document represents information about prerelea
 
 ---
 
-The Gaia Catalog Tool (gaiac) creates the datastore and tables that support your application. It also translates Gaia DDL files into the Gaia headers you include in your ruleset and app code files.
+The Gaia Catalog Tool (gaiac) creates the datastore and tables that support your application. It also translates Gaia Data Definition Language (DDL) files into the Gaia headers you include in your Ruleset and app code files.
 
 ## Usage
 
@@ -31,6 +31,8 @@ Command line arguments
 | -h                | \--help               | Prints help information.          |
 | -v                | \--version            | Prints version information.          |
 | \<ddl file name\> |                       | Specifies the DDL file to process.   |
+
+<a name="gaiac-interactive">
 
 ## Interactive mode commands
 
@@ -51,7 +53,6 @@ In the interactive mode, the following commands are available:
 | \\lr [PATTERN]                 | Lists the relationships in the Gaia catalog. Optionally, you can filter the results by specifying a regex pattern. <p>For more information on regex, see [ECMAScript syntax](http://www.cplusplus.com/reference/regex/ECMAScript/%22%3E) on the [cplusplus.com](http://cplusplus.com/)  website. </p>|
 | \\l[t] [PATTERN]             | Lists the tables in the Gaia catalog. Optionally, you can filter the results by specifying a regex pattern.  <p>For more information on regex, see [ECMAScript syntax](http://www.cplusplus.com/reference/regex/ECMAScript/%22%3E) on the [cplusplus.com](http://cplusplus.com/)  website. </p>|
 | \\q                              | Quit |
-
 
 Gaiac has three modes of operation:
 

@@ -16,34 +16,35 @@ The information contained in this document represents information about preview 
 
 In this walkthrough, you'll write and run your first Gaia Platform application. The code that you will write is also available under the /opt/gaia/examples/hello folder of the distribution package. If you encounter any errors along the way, you can compare the files that you generated from these instructions against those already provided.
 
-The example walks you through most aspects of the Gaia Platform system.You'll learn how to:
+The example walks you through most aspects of the Gaia Platform system. You'll learn how to:
 
--   Define a database schema and compile it with the Gaia Catalog Tool (gaiac).
--   Write a few simple rules and translate them using the Gaia Translation Engine (gaiat).
--   Write, build, and execute a simple application to fire our rules by inserting data into the database.
+- Define a database schema and compile it with the Gaia Catalog Tool (gaiac).
+- Write a few simple Rules and translate them using the Gaia Translation Engine (gaiat).
+- Write, build, and execute a simple application to fire our Rules by inserting data into the database.
 
-# Prerequisites
+## Prerequisites
 
 For information about the Gaia Platform prerequisites and installing the SDK, see [Getting Started with the Gaia Platform](../getting-started-with-gaia.md).
 
-This walkthrough assumes that you are using Clang 10. 
-# The Hello application
+This walkthrough assumes that you are using Clang 10.
+
+## The Hello application
 
 The goal of the application is to generate greetings for input names. To demonstrate the features of the system, the code inserts names into a table, which fires a Rule that generates greetings for those names and inserts them into a second table. The insertions into the second table fire a second Rule that prints the greetings to the console.
 
 For this purpose, there are two tables:
 
--   A **names** table with a single **name** column, of string type.
--   A **greetings** table with a single **greeting** column, of string type.
+- A **names** table with a single **name** column, of string type.
+- A **greetings** table with a single **greeting** column, of string type.
 
-There are also two rules:
+There are also two Rules:
 
--   A Rule that fires on insertions into the **names** table and that will in turn form and insert a greeting into the **greetings** table.
--   A Rule that fires on insertions into the **greetings** table and prints the greeting values to the console.
+- A Rule that fires on insertions into the **names** table and that will in turn form and insert a greeting into the **greetings** table.
+- A Rule that fires on insertions into the **greetings** table and prints the greeting values to the console.
 
-To put all of this together, you'll also write a small application that inserts some names into the **names** table to fire the rules.
+To put all of this together, you'll also write a small application that inserts some names into the **names** table to fire the Rules.
 
-# Creating a new application folder
+## Creating a new application folder
 
 Create a new folder in which to store the files for the application.
 
@@ -54,9 +55,9 @@ cd hello_sample
 
 You'll execute all of the commands specified in this document in this folder.
 
-# Specifying the Hello database schema
+## Specifying the Hello database schema
 
-If you are familiar with SQL syntax the Gaia DDL definition format will be familiar to you.
+If you are familiar with SQL syntax, the Gaia Data Definition Language (DDL definition format will be familiar to you.
 
 In your source folder, create a hello.ddl text file. Copy and paste the following definitions in it:
 
@@ -82,7 +83,9 @@ The statements define the two tables, **names** and **greetings***, that that ap
 
 You will refer to the database column names in the body of Declarative Rule expressions that you will define later. When your declarative code refers to one of these Fields with a read operation, Gaia fires an Event that schedules the associated Declarative Rules for execution.
 
-The next step is to compile the definitions and generate the tables in the Gaia database. To do this, you use the gaiac tool. At the command line, in the folder in which you created the hello.ddl file, run the following command:
+The next step is to compile the definitions and generate the tables in the Gaia database. To do this, use the [Gaia Catalog Tool](../tools/tool-gaiac.md) (gaiac) to creates the datastore and tables to support the app and translate the Gaia DDL files into Gaia headers that you include in the Ruleset and app code files.
+
+At the command line, in the folder in which you created the hello.ddl file, run the following command:
 
 ```gaiac hello.ddl -g --db-name hello -o hello```
 
@@ -92,16 +95,20 @@ Gaiac generates a gaia_hello.h file that contains definitions necessary to progr
 
 Gaiac generates a second file name hello_generated.h. This is included by the gaia_hello.h file; you will not reference this file directly.
 
+Gaiac provides an interactive mode in which you can view information about the catalog.
+For more information, see [Gaia Catalog Tool](../tools/tool-gaiac.md#gaiac-interactive)
+
 To verify that the tables were successfully created, run gaiac in an interactive mode:
 
 ```gaiac -i```
 
-At the prompt, type the following command to list all the database tables.
+At the prompt, type the following command to list all the database tables:
+
+**NOTE**: Commands in gaiac interactive mode are preceded by a backslash character "\".
 
 **\lt**
 
 You should see two rows for the **names** and **greetings** tables. The other entries are for system catalog tables or other tables that you might have generated with other examples. The entries that you are interested in are listed last and look similar to the following:
-
 
 | Database  | Name  | ID  |Type|
 |---|---|---|---|
@@ -115,7 +122,7 @@ To exit the interactive gaiac session, use the following command:
 
 **exit**
 
-# Specifying the Hello rules
+## Specifying the Hello Rules
 
 Create a new file and name it hello.ruleset. Copy and paste the following content to it:
 
@@ -150,21 +157,21 @@ ruleset hello_ruleset
 
 ```
 
-The ruleset file defines two rules. The rules use the `on_insert()` attribute to watch for insertions to the names and greetings tables.
+The Ruleset file defines two Rules. The Rules use the `on_insert()` attribute to watch for insertions to the names and greetings tables.
 
 To insert the greeting into the greetings table, you use the **gaia::hello::greetings_t::insert_row** method. You can find the signature for the method in the *gaia_hello.h* file that gaiac generated.
 
-Finally, the second rule outputs the greeting to the console.
+Finally, the second Rule outputs the greeting to the console.
 
-The rules code looks very much like C++ but, before you can compile it, you must translate it into proper C++ code using the Gaia translator tool - gaiat.
+The Rules code looks very much like C++ but, before you can compile it, you must translate it into proper C++ code using the Gaia translator tool - gaiat.
 
-To generate C++ code for these rules, execute the following command:
+To generate C++ code for these Rules, execute the following command:
 
 ```gaiat hello.ruleset -output hello_ruleset.cpp -- -I /usr/lib/clang/10/include/ -I /opt/gaia/include/ -I hello ```
 
 **NOTE**: The first two include paths of this command might need to be updated if Gaia and clang are installed in a non-standard way or if you're using a version of Clang other than 10.
 
-The output of this step is the hello_rules.cpp that contains the C++ version of our rules. You are now ready to compile these into an application.
+The output of this step is the hello_rules.cpp that contains the C++ version of our Rules. You are now ready to compile these into an application.
 
 # Writing the Hello application
 
@@ -201,9 +208,9 @@ int main()
 
 Let's go over the main steps of this code:
 
--   **gaia::system::initialize()** initializes the Gaia system.
--   The insertion of the names needs to be done within a transaction that starts with **gaia::db::begin_transaction()** and completes with **gaia::db::commit_transaction()**. The actual insertions use the generated **gaia::hello::names_t** helper from gaia_hello.h.
--   The application completes its execution by calling **gaia::system::shutdown()**, which is the counterpart to the **gaia::system::initialize()** call.
+- **gaia::system::initialize()** initializes the Gaia system.
+- The insertion of the names needs to be done within a transaction that starts with **gaia::db::begin_transaction()** and completes with **gaia::db::commit_transaction()**. The actual insertions use the generated **gaia::hello::names_t** helper from gaia_hello.h.
+- The application completes its execution by calling **gaia::system::shutdown()**, which is the counterpart to the **gaia::system::initialize()** call.
 
 To build this code, use the following command:
 
@@ -229,7 +236,7 @@ Hello Charles!
 Hello example has shut down.
 </pre>
 
-The order in which the rules are triggered is not deterministic. Due to this, the output of the program will vary from run to run.
+The order in which the Rules are triggered is not deterministic. Due to this, the output of the program will vary from run to run.
 
 ## Next Steps
 

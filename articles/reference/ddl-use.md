@@ -14,7 +14,7 @@ The information contained in this document represents information about preview 
 
 # use
 
-Specifies the database to use when compiling the DDL.
+Specifies the database to use when compiling the Data Definition Language (DDL).
 
 ```
 use database_name;

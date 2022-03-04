@@ -42,15 +42,23 @@ Creates a one-to-one or a one-to-many link between tables.
 );
 ```
 
-Removes the specified relationship from the catalog.
+### options
+
+**if not exists**: Specifies that the relationship is to be created only if a relationship of the specified name doesn't already exist.
+**using**:  Indicates the relationship in the referenced table for the current relationship definition to match. It is only needed when you have more than one relationship between the two specified tables.
 
 The short form of the `create relationship` statement, in which you omit the create operator, drops the table before attempting to create it and has the same effect as the following:
 
 `drop relationship if exists foo; create relationship relationship_name;`
 
+
 ## drop 
 
 `drop relationship_name;`
+
+Removes the specified relationship from the catalog.
+
+## Remarks
 
 The relationship statement adds virtual fields to each of the specified tables.
 
@@ -68,12 +76,13 @@ create relationship if not exists incubator_actuators (
 );
 
 ```
+
 In incubator_sensors the incubator.sensors -> sensor[] statement adds a virtual field to the incubators table that links to the sensor.incubator -> incubator  statement  adds a virtual field to the sensor table that links back to the incubator table.
 
-To create a one to one relationship omit the brackets ([]). 
+To create a one to one relationship omit the brackets ([]).
 
 `incubator.sensors -> sensor`
- 
+
 Use the interactive feature of gaiac to list the instantiated relationships:
 
 <pre>

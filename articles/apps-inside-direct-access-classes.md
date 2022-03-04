@@ -38,7 +38,7 @@ The Direct Access Classes map the structure of the DB table at the time of gener
     };
 ```
  
-The most important aspect of this class is the presence of one method per table column (`name()`, `height()`, `is_female()`). You can use these methods to access the column value of a given record. Each DDL type maps to a CPP type.
+The most important aspect of this class is the presence of one method per table column (`name()`, `height()`, `is_female()`). You can use these methods to access the column value of a given record. Each Data Definition Language (DDL) type maps to a CPP type.
 
 There are methods for relationships too. We will look at those later in the document.
 

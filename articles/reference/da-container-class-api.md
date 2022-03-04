@@ -105,7 +105,7 @@ void delete_one_to_many_relationship(gaia_id_t doctor_id)
 }
 ```
 
-## Methods on Value Linked Relationships
+## Methods on Value Linked References
 
 `patients_t::list().begin()`
 

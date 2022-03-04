@@ -1,7 +1,7 @@
 ---
-author: 
+author: Don Glover
 owner: 
-lastupdate: 
+lastupdate: 02/04/2022
 ---
 
 ---
@@ -17,23 +17,23 @@ The information contained in this document represents information about preview 
 Gaia rules are written in Declarative C++. Gaia Declarative C++ differs from traditional C++ in several ways:
 
 - Declarative rules cannot be called directly. Instead, they are invoked by the Gaia system in response to changes to the database. In traditional C++ your code determines the order of execution. When you write Rules in Gaia Declarative C++, the Gaia platform determines the execution order of Rules
-- In a Rule, Gaia Declarative C++ can reference tables and fields within the database as well as local variables. You do not have to declare types that are in the database. Field references do not have type declarations in a Ruleset; the translation engine supplies these from the Schema definitions in the database. Gaia converts the fields that you reference into code-based accessors. 
+- In a Rule, Gaia Declarative C++ can reference tables and fields within the database as well as local variables. You do not have to declare types that are in the database. Field references do not have type declarations in a Ruleset; the translation engine supplies these from the Schema definitions in the database. Gaia converts the fields that you reference into code-based accessors.
 - The Gaia system passes system contexts to the Rules context from which you can access related rows. These are:
-    - data context: you are handed the exact row that changed so you are working on the relevant data. 
-    - navigation context:  you can navigate to related data in other tables relative to the data context.  
+  - data context: you are handed the exact row that changed so you are working on the relevant data.
+  - navigation context:  you can navigate to related data in other tables relative to the data context.  
 
 Because the Rule functions are invoked by the Gaia system, you are automatically operating on the data that caused the change.  
 
 - Since Gaia knows the type of relationship that exists between tables, it can automatically generate iteration over M rows in a 1:M relationship.In the case of a one-to-many relationship, referencing a related table can result in iteration over all of the rows related to the parent data context. Depending on the relationships in your schema, a field reference can return 0,1, or multiple rows. Because the Rule functions are invoked by the Gaia system, you are automatically operating on the data that caused the change.  
 - Gaia Declarative C++ rules are multi-threaded by default.  Each Rule is scheduled to run on a thread in a configurable thread pool and each thread runs in its own transaction. The Gaia system takes care of the synchronization of data in the database for you.
-    - **Note**: While Gaia Declarative C++ doesn’t prohibit the use of global static variables, we recommend against it due to added overhead that you incur ensuring that your code is thread safe.
+  - **Note**: While Gaia Declarative C++ doesn’t prohibit the use of global static variables, we recommend against it due to added overhead that you incur ensuring that your code is thread safe.
 - The Gaia tools translate the Declarative C++ code to traditional C++ code based on what Gaia knows about your data as represented in the Gaia Catalog. This means that you don't have to hand-write traditional data access and navigation code.
 
 In Gaia, Rules and rows are directly connected. In a Rule, data that resides in the Gaia database are field references. Field References in the Rule look like variables, but they reference fields in rows of the database; there is no need to declare them as variables. When data changes in the database, Rules that reference the data execute automatically.
 
-In addition to the Ruleset level declarations, you can declare any number of local variables at the start of a specific Rule using standard C++ syntax, such as int BagCount.  Local variables are scoped to the Rule that they are defined in. 
+In addition to the Ruleset level declarations, you can declare any number of local variables at the start of a specific Rule using standard C++ syntax, such as int BagCount.  Local variables are scoped to the Rule that they are defined in.
 
-Picture an application that manages airplane flights, passengers, and baggage. There is a table that tracks actual flights. At the end of each flight, the unique row for that flight has a field called FlightMiles to reflect the miles flown in the flight. In another table, there is a row for each traveler reflecting MemberMiles. 
+Picture an application that manages airplane flights, passengers, and baggage. There is a table that tracks actual flights. At the end of each flight, the unique row for that flight has a field called FlightMiles to reflect the miles flown in the flight. In another table, there is a row for each traveler reflecting MemberMiles.
 
 Let’s start with four simple rules based on the following schema:
 
@@ -58,7 +58,6 @@ Each flight has many passengers. There is a 1:many relationship between the Flig
 - Starting from the Flight row, navigate to the correct Traveler row in that table for each passenger. Even here, the rules engine is automatically navigating through several intermediate rows to get from Flight to Traveler.
 - Complete the update for every passenger. Navigation paths execute against sets of rows completely transparently and automatically.
 
-
 Member Rule 2
 
 ```cpp
@@ -68,7 +67,7 @@ Member Rule 2
 }
 ```
 
-In this example, MemberMiles is an Active Field. The rules engine automatically fires the Rule each time MemberMiles changes. Rule 1 changes the value of the field and causes the rules engine to fire Rule 2. This is referred to as Forward Chaining which we discuss further in the next section. 
+In this example, MemberMiles is an Active Field. The rules engine automatically fires the Rule each time MemberMiles changes. Rule 1 changes the value of the field and causes the rules engine to fire Rule 2. This is referred to as Forward Chaining which we discuss further in the next section.
 
 We track each trip in a table called Trips which has a counter for TripSegments. How do we know a segment is complete?  One answer could be to add a field in Flights called FlightLanded. Then we could write:
 
@@ -94,7 +93,7 @@ on_insert(BaggageLoadScan)
 }
 ```
 
-In this case, the Rule is defined using the on_insert prefix. 
+In this case, the Rule is defined using the on_insert prefix.
 
 ```
 // Check for overweight situation and raise the alarm
@@ -116,7 +115,7 @@ Sometimes when a field’s value changes, a Rule fires against the individual ro
 
 One of the fundamental results of Forward Chaining is that the order in which Rules execute is determined by the order in which commits that contain changes to active fields occur.
 
-The power derives from the fact that there is no need to create queries, navigate through tables, copy, and map data: Gaia handles all of that automatically. 
+The power derives from the fact that there is no need to create queries, navigate through tables, copy, and map data: Gaia handles all of that automatically.
 
 ## Transactions
 
@@ -130,7 +129,7 @@ In the declarative system, rules based on field changes are the only mechanism f
 
 ## Parallelism
 
-Gaia automatically fires all rules in parallel by default. This is made possible by the Rules Engine’s managed execution environment and the implementation of transactions in the database itself. 
+Gaia automatically fires all rules in parallel by default. This is made possible by the Rules Engine’s managed execution environment and the implementation of transactions in the database itself.
 
 **Important**: Be careful when using objects that have a shared mutable state, such as static variables. There are no protections to prevent all the usual race conditions, timing, and visibility issues common in procedural programming. In short, all multithreading best practices apply when dealing with procedural code.
 
@@ -144,7 +143,9 @@ If a transaction fails due to a concurrent transaction exception, the rules engi
 
 In a Rule, statements that contain references to fields in the database can initiate iterative behavior over the returned result set. Gaia iterates through all indicated values (based on the reference) until the statement has exited, either by running out of values or it is forced to exit via a 'break' or 'return' statement, before proceeding to the next statement in the Rule.
 
-Suppose we have an if statement that iterates over all passengers, which references the luggage for each passenger. 
+The Rules translator translates statements that generate loops from left to right with each successive loop executing within the scope of the previous loop.
+
+Suppose we have an if statement that iterates over all passengers, which references the luggage for each passenger.
 
 ```
 If ( @passengerstatus == “missing” )

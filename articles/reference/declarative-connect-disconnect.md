@@ -26,7 +26,7 @@ The identifier can be either a table name or a tag.
 
 `Table_name1.connect(Table_name2)`
 
-You can use connect/disconnect directly on tables if there is only one relationship between the two tables. Otherwise, you need to use the link name as defined in the DDL. 
+You can use connect/disconnect directly on tables if there is only one relationship between the two tables. Otherwise, you need to use the link name as defined in the Data Definition Language (DDL).
 
 ## Disconnect
 
