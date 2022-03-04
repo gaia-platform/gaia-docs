@@ -89,8 +89,6 @@ The following examples show inserting a row that contains no value for the heigh
 ```cpp
     void optional_values()
     {
-        PRINT_METHOD_NAME();
-    
         // You can pass nullopt instead of height to denote the absence of value.
         gaia_id_t id = patient_t::insert_row("John", gaia::common::nullopt, false, {});
         patient_t john = patient_t::get(id);
