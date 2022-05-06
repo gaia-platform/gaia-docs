@@ -1,7 +1,7 @@
 ---
 author: Don Glover
 owner: Don Glover
-lastupdate: 
+lastupdate:
 ---
 
 # Gaiac
@@ -41,10 +41,6 @@ In the interactive mode, the following commands are available:
 
 | **Command**                      | **Description**                  |
 |-------------------|-----------------------|
-| CREATE DATABASE [if not exists] DATABASE_NAME | Creates a database with the specified database name. If the command succeeds, gaiac returns to the prompt. If the command fails, gaiac returns an error message and returns to the prompt.  |
-| CREATE [if not exists] [DATA_BASE NAME.]TABLE ( \<field definitions\>) | Creates a table with the specified name and fields. If the command succeeds, gaiac returns to the prompt. If the command fails, gaiac returns an error message and returns to the prompt.                                  <p>For more information on table specifications, see the CREATETABLE section below. </p>|
-| DROP DATABASE NAME;               | Removes the database specified  by NAME from the catalog.        |
-| DROP TABLE [DATA_BASE_NAME.]TABLE_NAME; | Removes the table specified by TABLE_NAME from the specified database specified by TABLE_NAME. If you do not specify a database, the default database \'()\' is assumed.|
 | \\h                              | Print help information.|
 | \\dd [NAME]                    | Lists the tables present in the  database specified by NAME. If you do not specify a database, tables in the default database    \'()\' are displayed.            |
 | \\d[t] NAME                    | Lists the fields and references  in the table specified by NAME.  |
