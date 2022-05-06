@@ -32,8 +32,6 @@ Command line arguments
 | -v                | \--version            | Prints version information.          |
 | \<ddl file name\> |                       | Specifies the DDL file to process.   |
 
-<a name="gaiac-interactive">
-
 ## Interactive mode commands
 
 In the interactive mode, the following commands are available:
